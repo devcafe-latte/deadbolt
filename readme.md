@@ -15,3 +15,11 @@ npm run serve
 # Start transpiled version of the app
 npm run start
 ```
+
+## todo
+Add User manager class
+Add routes that call the appropriate things.
+Add JWT
+Add Group Memberships
+Add Authorizations or something.
+Add Api keys

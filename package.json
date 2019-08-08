@@ -12,7 +12,9 @@
   "author": "Co van Leeuwen (coo@covle.com)",
   "license": "MIT",
   "dependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.17.0",
+    "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "typescript": "^3.5.3"
   },
