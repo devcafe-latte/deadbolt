@@ -2,3 +2,5 @@
 /build
 .vscode/
 .ds_store
+/.env
+/src/tests/resources/*.key*

@@ -1,13 +1,12 @@
 import container from './DiContainer';
+import * as jwt from 'jsonwebtoken';
 import { SqlHelper } from './helpers';
 import { Session } from './Session';
 import { User } from './User';
 
 export class UserManager {
 
-  constructor() {
-
-  }
+  constructor() { }
 
   public async getUser(id: number) {
     await container.ready();
@@ -32,6 +31,10 @@ export class UserManager {
     }
 
     user.session = await Session.new(user);
+
+    //todo Make a JWT
+    //jwt.sign()
+
     return LoginResult.success(user);
   }
 
