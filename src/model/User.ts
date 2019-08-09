@@ -1,12 +1,16 @@
 import { hashSync, compareSync } from 'bcrypt';
+import { Session } from './Session';
+import { toObject, stripComplexTypes } from './helpers';
 
 export class User {
   id: number = null
-  userName: string = null;
+  username: string = null;
   passwordHash: string = null;
   firstName?: string = null;
   lastName?: string = null;
   email?: string = null;
+  session?: Session = null;
+  active: Boolean = null;
 
   get displayName(): string {
     if (this.lastName || this.firstName){
@@ -15,7 +19,7 @@ export class User {
       return `${first} ${last}`.trim();
     }
 
-    return this.userName;
+    return this.username;
   }
 
   constructor() { }
@@ -29,4 +33,12 @@ export class User {
     return compareSync(pass, this.passwordHash);
   }
 
+  static fromDb(row: any[]): User {
+    const u = toObject<User>(User, row);
+    return u;
+  }
+
+  toDb() {
+    return stripComplexTypes(this);
+  }
 }

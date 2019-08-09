@@ -1,34 +1,69 @@
 import { User } from './User';
+import { Session } from './Session';
+import container from './DiContainer';
+import { SqlHelper } from './helpers';
 
 export class UserManager {
 
-  users: User[] = [];
-
   constructor() {
-    //for debug
-    const u = new User();
-    u.userName = 'c00';
-    u.setPassword('password');
-    u.firstName = 'Co';
-    u.lastName = 'van Leeuwen';
 
-    this.users.push(u);
   }
 
-  public login(userName: string, pass: string): LoginResult {
-    const user = this.users.find((u) => u.userName === userName);
-    if (!user) return LoginResult.failed("Not found");
+  public async getUser(id: number) {
+    await container.ready();
+
+    const rows = await container.db.query("SELECT * FROM user WHERE id = ?", [id]);
+    if (rows.length === 0) return null;
+
+    const user = User.fromDb(rows[0]);
+    return user;
+  }
+
+  public async login(username: string, pass: string): Promise<LoginResult> {
+    await container.ready();
+
+    const rows = await container.db.query("SELECT * FROM user WHERE username = ?", [username]);
+    if (rows.length === 0) return LoginResult.failed("Not found");
+
+    const user = User.fromDb(rows[0]);
 
     if (!user.checkPassword(pass)) {
       return LoginResult.failed("Password incorrect");
     }
 
+    user.session = await Session.new(user);
     return LoginResult.success(user);
   }
 
-  /* public renew(): User {
+  public async updateUser(user: User): Promise<number> {
+    const update = SqlHelper.update('user', user.toDb());
+    update.sql += " WHERE id = ?";
+    update.values.push(user.id);
+    const result = await container.db.query(update.sql, update.values);
 
-  } */
+    return result.affectedRows;
+  }
+
+  public async activateUser(userId: number, active: boolean) {
+    const update = SqlHelper.update('user', { active });
+    update.sql += " WHERE id = ?";
+    update.values.push(userId);
+    const result = await container.db.query(update.sql, update.values);
+
+    return result.affectedRows;
+  }
+
+  public addUser() {
+
+  }
+
+  public removeUser() {
+
+  }
+
+  public renewSession() {
+
+  }
 }
 
 export class LoginResult {

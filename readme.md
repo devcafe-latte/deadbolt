@@ -17,7 +17,7 @@ npm run start
 ```
 
 ## todo
-Add User manager class
+Add Database
 Add routes that call the appropriate things.
 Add JWT
 Add Group Memberships
