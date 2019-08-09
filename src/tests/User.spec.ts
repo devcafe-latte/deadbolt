@@ -1,9 +1,9 @@
-import { User } from './User';
+import { User } from '../model/User';
 
 describe('User', function() {
   it('displayName', () => {
     const u = new User();
-    u.userName = 'c00';
+    u.username = 'c00';
     expect(u.displayName).toEqual('c00');
     u.firstName = "Co";
     expect(u.displayName).toEqual('Co');
@@ -15,7 +15,7 @@ describe('User', function() {
 
   it('password', () => {
     const u = new User();
-    u.userName = 'c00';
+    u.username = 'c00';
     expect(u.passwordHash).toBeNull("Password hash should still be empty!");
 
     u.setPassword('123');

@@ -1,14 +1,19 @@
-import container from './DiContainer';
-import { User } from './User';
+import container from '../model/DiContainer';
+import { User } from '../model/User';
+import { TestHelper } from './TestHelper';
 
-describe('UserManager', function() {
+describe('UserManager', () => {
   const correct = {
     name: 'Co',
     pass: 'password'
   };
+  let th: TestHelper;
+
+  beforeEach(async () => {
+    th = await TestHelper.new();
+  });  
 
   it('Update User', async () => {
-    await container.ready();
     const um = container.um;
     const user = new User();
     user.id = 1;
@@ -17,9 +22,28 @@ describe('UserManager', function() {
     expect(rowsAffected).toBe(1);
   }); 
 
-  it('Activate user', async () => {
-    await container.ready();
+  it('Add User', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    user.email = "paul@someplace.com";
+    user.setPassword('password');
+    await um.addUser(user);
+    expect(user.id).toBeGreaterThan(0);
+  }); 
 
+  it('Remove User', async () => {
+    const um = container.um;
+    let user = await um.getUser(1);
+    expect(user).toBeTruthy();
+
+    await um.removeUser(1);
+    user = await um.getUser(1);
+    expect(user).toBeFalsy();
+  }); 
+
+  it('Activate user', async () => {
     let user = await container.um.getUser(1);
     expect(user.active).toBe(true);
 

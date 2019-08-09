@@ -1,4 +1,4 @@
-import container from './DiContainer';
+import container from '../model/DiContainer';
 
 describe('Dependency Container tests', () => {
 

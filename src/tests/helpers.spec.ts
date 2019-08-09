@@ -1,5 +1,5 @@
-import { toObject, SqlHelper, stripComplexTypes } from './helpers';
-import { User } from './User';
+import { toObject, SqlHelper, stripComplexTypes } from '../model/helpers';
+import { User } from '../model/User';
 describe('Helpers', function() {
   
   it('Tests toObject', () => {

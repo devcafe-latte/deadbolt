@@ -1,7 +1,7 @@
-import { User } from './User';
-import { Session } from './Session';
 import container from './DiContainer';
 import { SqlHelper } from './helpers';
+import { Session } from './Session';
+import { User } from './User';
 
 export class UserManager {
 
@@ -53,16 +53,17 @@ export class UserManager {
     return result.affectedRows;
   }
 
-  public addUser() {
-
+  public async addUser(user: User) {
+    const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
+    user.id = result.insertId
   }
 
-  public removeUser() {
-
+  public async removeUser(id: Number) {
+    await container.db.query("DELETE FROM `user` WHERE ID = ?", [id]);
   }
 
-  public renewSession() {
-
+  public async renewSession() {
+    //todo with JWT
   }
 }
 
