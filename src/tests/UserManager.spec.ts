@@ -3,6 +3,7 @@ import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
 import { Membership } from '../model/Membership';
 import { PasswordAuth } from '../model/authMethod/PasswordAuth';
+import moment from 'moment';
 
 const correct = {
   name: 'Co',
@@ -38,6 +39,9 @@ describe('User Tests', () => {
     user.email = "paul@someplace.com";
     await um.addUser(user);
     expect(user.id).toBeGreaterThan(0);
+    expect(user.emailConfirmed).toBe(null);
+    expect(user.emailConfirmToken).toBeDefined();
+    expect(user.emailConfirmTokenExpires).toBeDefined();    
   }); 
 
   it('Remove User', async () => {
@@ -103,6 +107,7 @@ describe('User Tests', () => {
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('User cannot login');
   }); 
+
 });
 
 describe('Session Tests', () => {
@@ -178,4 +183,61 @@ describe('Membership tests', () => {
     const user = await container.um.getUser(userId);
     expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
   });
+});
+
+describe("Email Confirmation Tests", () => {
+
+  beforeEach(async () => {
+    th = await TestHelper.new();
+  });
+
+  it('confirm Email By Token', async () => {
+    let user = new User();
+    user.username = "Paul";
+    user.email = "paul@someplace.com";
+    await container.um.addUser(user);
+
+    user = await container.um.getUser(user.id);
+    expect(user.emailConfirmTokenExpires).toBeDefined();
+    expect(user.emailConfirmToken).toBeDefined();
+    expect(user.emailConfirmed).toBe(null);
+
+    container.um.confirmEmail(user.emailConfirmToken);
+    user = await container.um.getUser(user.id);
+    expect(user.emailConfirmTokenExpires).toBe(null);
+    expect(user.emailConfirmToken).toBe(null);
+    expect(user.emailConfirmed).toBeDefined();
+
+  });
+
+  it('confirmEmailByUserId', async () => {
+    let user = new User();
+    user.username = "Paul";
+    user.email = "paul@someplace.com";
+    await container.um.addUser(user);
+
+    user = await container.um.getUser(user.id);
+    expect(user.emailConfirmTokenExpires).toBeDefined();
+    expect(user.emailConfirmToken).toBeDefined();
+    expect(user.emailConfirmed).toBe(null);
+
+    container.um.confirmEmailByUserId(user.id);
+    user = await container.um.getUser(user.id);
+    expect(user.emailConfirmTokenExpires).toBe(null);
+    expect(user.emailConfirmToken).toBe(null);
+    expect(user.emailConfirmed).toBeDefined();
+  });
+
+  it('email not confirmed', async () => {
+    await container.db.query("UPDATE user SET emailConfirmToken = ?, emailConfirmed = null, emailConfirmTokenExpires = ? WHERE id = ?", ["some-token", moment().subtract(1, 'minute').unix(), 1]);
+
+    const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
+    expect(result.success).toBe(false, "Should not log in");
+    expect(result.reason).toBe('Email address not confirmed.');
+
+    //todo confirm and try again
+    container.um.confirmEmailByUserId(1);
+    const result2 = await container.um.login(correct.name, PasswordAuth, correct.pass);
+    expect(result2.success).toBe(true, "Now it's confirmed.");
+  }); 
 });

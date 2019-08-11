@@ -35,7 +35,10 @@ export class PasswordAuth implements iAuthMethod {
     if (!result.success) return result;
     if (result.record.isExpired()) return { success: false, reason: "Token expired." };
 
-    return this.setPassword(result.record.userId, newPassword);
+    const setResult = await this.setPassword(result.record.userId, newPassword);
+
+    await container.um.confirmEmailByUserId(result.record.userId);
+    return setResult;
   }
 
   async generateResetToken(userId: number): Promise<PasswordRecordResult> {

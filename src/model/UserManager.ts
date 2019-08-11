@@ -20,7 +20,7 @@ export class UserManager {
 
   private userQuery() {
     const sql = "SELECT * FROM `user` u " + 
-      "JOIN `membership` m ON u.id = m.userId ";
+      "LEFT OUTER JOIN `membership` m ON u.id = m.userId ";
 
       return sql;
   }
@@ -60,10 +60,6 @@ export class UserManager {
     return users[0];
   }
 
-  public async auth() {
-
-  }
-
   public async login(username: string, authMethod: any, authOptions: any): Promise<LoginResult> {
     await container.ready();
 
@@ -79,6 +75,10 @@ export class UserManager {
 
     if (!user.active) {
       return LoginResult.failed("User cannot login");
+    }
+
+    if (!user.emailConfirmed && user.emailConfirmTokenExpires.isBefore()) {
+      return LoginResult.failed("Email address not confirmed.");
     }
 
     await this.createSession(user);
@@ -109,6 +109,12 @@ export class UserManager {
     user.uuid = uuidv4();
     user.created = moment();
     user.lastActivity = moment();
+
+    if (!user.emailConfirmed) {
+      user.emailConfirmToken = uuidv4();
+      const expiresHours = process.env.CONFIRM_TOKEN_EXPIRES_HOURS || 24 * 7;
+      user.emailConfirmTokenExpires = moment().add(expiresHours, 'hours');
+    }
     
     const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
     user.id = result.insertId;
@@ -167,6 +173,26 @@ export class UserManager {
 
   public async removeApp(userId: number, app: string) {
     await container.db.query("DELETE FROM `membership` WHERE userId = ? AND app = ?", [userId, app]);
+  }
+
+  public async confirmEmailByUserId(userId: number) {
+    const data = {
+      emailConfirmed: moment().unix(),
+      emailConfirmToken: null,
+      emailConfirmTokenExpires: null,
+    };
+
+    await container.db.query("UPDATE `user` SET ? WHERE id = ?", [ data, userId ]);
+  }
+
+  public async confirmEmail(confirmToken: string) {
+    const data = {
+      emailConfirmed: moment().unix(),
+      emailConfirmToken: null,
+      emailConfirmTokenExpires: null,
+    };
+
+    await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [ data, confirmToken ]);
   }
 
   private async touchSession(session: Session) {

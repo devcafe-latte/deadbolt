@@ -36,12 +36,11 @@ npm test
 
 ## todo
 
-Password Resets
-Email Confirmations
 Add routes that call the appropriate things.
 Code coverage
+Make Docker container to build and run.
 Add Social Logins
 - Google
 - Facebook? :(
-Make Docker container to build and run.
+
 

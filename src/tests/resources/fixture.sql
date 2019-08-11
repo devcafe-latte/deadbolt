@@ -18,12 +18,15 @@ CREATE TABLE `user` (
   `active` tinyint(4) NOT NULL DEFAULT 1,
   `created` int(11) NOT NULL DEFAULT 0,
   `lastActivity` int(11) NOT NULL DEFAULT 0,
+  `emailConfirmed` int(11) DEFAULT NULL,
+  `emailConfirmToken` varchar(36) DEFAULT NULL,
+  `emailConfirmTokenExpires` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`id`, `uuid`, `username`, `email`, `firstName`, `lastName`, `active`, `created`, `lastActivity`) VALUES
-(1,	'ee13624b-cf22-4597-adb9-bfa4b16baa71',	'Co',	NULL,	NULL,	NULL,	1,	0,	0),
-(2,	'db3df155-3b3e-4557-bfab-fa544fabf7ee',	'Jordan',	'jordan@example.com',	'Jordan',	'Benge',	1,	0,	0);
+INSERT INTO `user` (`id`, `uuid`, `username`, `email`, `firstName`, `lastName`, `active`, `created`, `lastActivity`, `emailConfirmed`, `emailConfirmToken`, `emailConfirmTokenExpires`) VALUES
+(1,	'ee13624b-cf22-4597-adb9-bfa4b16baa71',	'Co',	NULL,	NULL,	NULL,	1,	0,	0,	1565550000,	NULL,	NULL),
+(2,	'db3df155-3b3e-4557-bfab-fa544fabf7ee',	'Jordan',	'jordan@example.com',	'Jordan',	'Benge',	1,	0,	0,  1565550000,	NULL,	NULL);
 
 DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (

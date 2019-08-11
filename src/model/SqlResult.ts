@@ -60,7 +60,8 @@ export class SqlResult {
       const collection = this.data[key];
       const object = row[key];
       
-      if (!object.id) throw new Error("I need an id to group stuff...");
+      //With outer joins, it's possible for id to be null.
+      if (!object.id) continue;
 
       //Add this row to it if it didn't exist.
       if (!collection[object.id]) {

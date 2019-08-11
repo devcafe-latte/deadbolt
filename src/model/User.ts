@@ -11,6 +11,9 @@ export class User {
   firstName?: string = null;
   lastName?: string = null;
   email?: string = null;
+  emailConfirmed?: Moment = null;
+  emailConfirmToken?: string = null;
+  emailConfirmTokenExpires?: Moment = null;
   session?: Session = null;
   created: Moment = null;
   lastActivity: Moment = null;
@@ -33,6 +36,8 @@ export class User {
     const obj: any = stripComplexTypes(this);
     if (this.created) obj.created = + this.created.unix();
     if (this.lastActivity) obj.lastActivity = + this.lastActivity.unix();
+    if (this.emailConfirmed) obj.emailConfirmed = + this.emailConfirmed.unix();
+    if (this.emailConfirmTokenExpires) obj.emailConfirmTokenExpires = + this.emailConfirmTokenExpires.unix();
     
     return obj;
   }
@@ -41,7 +46,9 @@ export class User {
     const u = toObject<User>(User, row);
     if (row.created) u.created = moment.unix(row.created);
     if (row.lastActivity) u.lastActivity = moment.unix(row.lastActivity);
-
+    if (row.emailConfirmed) u.emailConfirmed = moment.unix(row.emailConfirmed);
+    if (row.emailConfirmTokenExpires) u.emailConfirmTokenExpires = moment.unix(row.emailConfirmTokenExpires);
+    
     return u;
   }
 }
