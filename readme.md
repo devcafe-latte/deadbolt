@@ -37,7 +37,6 @@ npm test
 ## todo
 
 Add routes that call the appropriate things.
-Code coverage
 Make Docker container to build and run.
 Add Social Logins
 - Google

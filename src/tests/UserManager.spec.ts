@@ -183,6 +183,62 @@ describe('Membership tests', () => {
     const user = await container.um.getUser(userId);
     expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
   });
+
+  it ("Removes single membership", async () => {
+    const toAdd: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+      { app: 'test-app', role: 'user', },
+      { app: 'some-other-app', role: 'newbie', }
+    ];
+
+    const toRemove: Membership = { app: 'test-app', role: 'user', };
+    const userId = 2;
+
+    await container.um.addMemberships(userId, toAdd);
+    await container.um.removeMemberships(userId, toRemove);
+
+
+    const user = await container.um.getUser(userId);
+    expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
+    
+    expect(user.memberships[0].app).toEqual('test-app');
+    expect(user.memberships[0].role).toEqual('admin');
+
+    expect(user.memberships[1].app).toEqual('some-other-app');
+    expect(user.memberships[1].role).toEqual('newbie');
+
+  });
+
+  it ("Removes multiple memberships", async () => {
+    const memberships: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+      { app: 'test-app', role: 'user', },
+      { app: 'some-other-app', role: 'newbie', }
+    ];
+    const userId = 2;
+
+    await container.um.addMemberships(userId, memberships);
+    await container.um.removeMemberships(userId, memberships);
+    const user = await container.um.getUser(userId);
+    expect(user.memberships.length).toBe(0, "All memberships are gone.");
+  });
+
+  it ("Removes app", async () => {
+    const memberships: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+      { app: 'test-app', role: 'user', },
+      { app: 'some-other-app', role: 'newbie', }
+    ];
+    const userId = 2;
+
+    await container.um.addMemberships(userId, memberships);
+    await container.um.removeApp(userId, 'test-app');
+    const user = await container.um.getUser(userId);
+    expect(user.memberships.length).toBe(1, "Should have one left.");
+    expect(user.memberships[0].app).toEqual('some-other-app');
+    expect(user.memberships[0].role).toEqual('newbie');
+    
+  });
 });
 
 describe("Email Confirmation Tests", () => {
