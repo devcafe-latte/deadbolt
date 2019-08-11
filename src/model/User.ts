@@ -3,6 +3,7 @@ import { Session } from './Session';
 import { toObject, stripComplexTypes } from './helpers';
 import { Moment } from 'moment';
 import moment from 'moment';
+import { Membership } from './Membership';
 
 export class User {
   id: number = null;
@@ -16,7 +17,7 @@ export class User {
   created: Moment = null;
   lastActivity: Moment = null;
   active: Boolean = null;
-
+  memberships: Membership[] = [];
 
   get displayName(): string {
     if (this.lastName || this.firstName){

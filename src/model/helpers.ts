@@ -34,7 +34,5 @@ export class SqlHelper {
     }
     const sql = `UPDATE \`${table}\` SET ` + strings.join(', '); 
     return {sql, values};
-  }
-
-  
+  }  
 }

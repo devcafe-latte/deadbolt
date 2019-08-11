@@ -25,7 +25,6 @@ npm test
 
 ## todo
 
-Add Group Memberships
 Add routes that call the appropriate things.
 Add Social Logins
 - Google

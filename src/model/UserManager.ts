@@ -6,6 +6,8 @@ import { SqlHelper } from './helpers';
 import { LoginResult } from './LoginResult';
 import { Session } from './Session';
 import { User } from './User';
+import { Membership } from './Membership';
+import { SqlResult } from './SqlResult';
 
 export class UserManager {
   private _sessionHours: number;
@@ -13,25 +15,55 @@ export class UserManager {
   constructor() {
     //Default to 2 weeks.
     this._sessionHours = Number(process.env.SESSION_HOURS) || 24 * 14;
-   }
+  }
 
-  public async getUser(id: number) {
+  private userQuery() {
+    const sql = "SELECT * FROM `user` u " + 
+      "JOIN `membership` m ON u.id = m.userId ";
+
+      return sql;
+  }
+
+  private async processUserQuery(sql: string, values: any): Promise<User[]> {
+    const rows = await container.db.query({ sql, values, nestTables: true });
+    if (rows.length === 0) return [];
+    
+    const results = SqlResult.new(rows);
+    results.cast('u', User);
+    
+    const memberships: Membership[] = results.array('m');
+    for (let m of memberships) {
+      results.data.u[m.userId].memberships.push(m);
+    }
+    
+    return results.array('u');
+  }
+
+  public async getUser(id: number): Promise<User|null> {
     await container.ready();
 
-    const rows = await container.db.query("SELECT * FROM user WHERE id = ?", [id]);
-    if (rows.length === 0) return null;
+    const sql = this.userQuery() + "WHERE u.id = ?";
+    const users = await this.processUserQuery(sql, [id]);
+    if (users.length === 0) return null;
 
-    const user = User.fromDb(rows[0]);
-    return user;
+    return users[0];
+  }
+
+  public async getUserByUsername(name: string): Promise<User|null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE u.username = ?";
+    const users = await this.processUserQuery(sql, [name]);
+    if (users.length === 0) return null;
+
+    return users[0];
   }
 
   public async login(username: string, pass: string): Promise<LoginResult> {
     await container.ready();
 
-    const rows = await container.db.query("SELECT * FROM user WHERE username = ?", [username]);
-    if (rows.length === 0) return LoginResult.failed("Not found");
-
-    const user = User.fromDb(rows[0]);
+    const user = await this.getUserByUsername(username);
+    if (!user) return LoginResult.failed("Not found");
 
     if (!user.checkPassword(pass)) {
       return LoginResult.failed("Password incorrect");
@@ -96,6 +128,37 @@ export class UserManager {
   public async expireAllSessions(userId: number) {
     const expires = moment().subtract(1, 'second').unix();
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `userId` = ?", [expires, userId]);
+  }
+
+  public async addMemberships(userId: number, memberships: Membership|Membership[]) {
+    if (!Array.isArray(memberships)) memberships = [memberships];
+    if (memberships.length === 0) return;
+
+    const rows = [];
+    for (let m of memberships) {
+      const row = [ m.app, m.role, userId, moment().unix() ];
+      rows.push(row);
+    }
+
+    //note: rows is now an array in an array in an array... Don't know why, but such is life.
+    // https://stackoverflow.com/questions/8899802/how-do-i-do-a-bulk-insert-in-mysql-using-node-js
+    await container.db.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
+  }
+
+  public async removeMemberships(userId: number, memberships: Membership|Membership[]) {
+    if (!Array.isArray(memberships)) memberships = [memberships];
+    if (memberships.length === 0) return;
+
+    const db = container.db;
+    await db.beginTransaction();
+    for (let m of memberships) {
+      await db.query("DELETE FROM `membership` WHERE userId = ? AND app = ? AND role = ?", [userId, m.app, m.role]);
+    }
+    await db.commit();
+  }
+
+  public async removeApp(userId: number, app: string) {
+    await container.db.query("DELETE FROM `membership` WHERE userId = ? AND app = ?", [userId, app]);
   }
 
   private async touchSession(session: Session) {

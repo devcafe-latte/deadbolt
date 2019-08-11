@@ -35,8 +35,23 @@ CREATE TABLE `session` (
   `expires` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
-  CONSTRAINT `session_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+  CONSTRAINT `session_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `membership`;
+CREATE TABLE `membership` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created` int(11) NOT NULL,
+  `app` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  CONSTRAINT `membership_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `membership` (`id`, `created`, `app`, `role`, `userId`) VALUES
+(1,	1565516907,	'test-app',	'admin',	1),
+(2,	1565516907,	'test-app',	'user',	1);
 
 -- 2019-08-11 08:27:25

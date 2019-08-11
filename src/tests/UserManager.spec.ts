@@ -1,17 +1,24 @@
 import container from '../model/DiContainer';
 import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
+import { Membership } from '../model/Membership';
 
-describe('UserManager', () => {
-  const correct = {
-    name: 'Co',
-    pass: 'password'
-  };
-  let th: TestHelper;
+const correct = {
+  name: 'Co',
+  pass: 'password'
+};
+let th: TestHelper;
+
+describe('User Tests', () => {  
 
   beforeEach(async () => {
     th = await TestHelper.new();
-  });  
+  });
+
+  it('Get User', async () => {
+    const user = await container.um.getUser(1);
+    expect(user).toBeDefined();
+  }); 
 
   it('Update User', async () => {
     const um = container.um;
@@ -69,6 +76,8 @@ describe('UserManager', () => {
     expect(result.user.session.created).toBeDefined();
     expect(result.user.session.userId).toBeDefined();
     expect(result.user.active).toBe(true);
+
+    expect(result.user.memberships.length).toBe(2);
   }); 
 
   it('Wrong user', async () => {
@@ -93,7 +102,12 @@ describe('UserManager', () => {
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('User cannot login');
   }); 
+});
 
+describe('Session Tests', () => {
+  beforeEach(async () => {
+    th = await TestHelper.new();
+  });
 
   it('Validate Session', async () => {
     const result = await container.um.login(correct.name, correct.pass);
@@ -128,6 +142,39 @@ describe('UserManager', () => {
     expect(await container.um.validateSession(token1)).toBeFalsy("Should be expired.");
     expect(await container.um.validateSession(token2)).toBeFalsy("Should be expires.");
   }); 
+});
 
+describe('Membership tests', () => {
+  beforeEach(async () => {
+    th = await TestHelper.new();
+  });
 
+  it('adds single membership', async () => {
+    const membership: Membership = {
+      app: 'test-app',
+      role: 'admin',
+    };
+    const userId = 2;
+
+    await container.um.addMemberships(userId, membership);
+    const user = await container.um.getUser(userId);
+    expect(user.memberships.length).toBe(1, "Should have a membership now");
+    expect(user.memberships[0].app).toBe(membership.app);
+    expect(user.memberships[0].role).toBe(membership.role);
+    expect(user.memberships[0].id).toBeDefined();
+    expect(user.memberships[0].userId).toBe(userId);
+  });
+
+  it('adds multiple memberships', async () => {
+    const memberships: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+      { app: 'test-app', role: 'user', },
+      { app: 'some-other-app', role: 'newbie', }
+    ];
+    const userId = 2;
+
+    await container.um.addMemberships(userId, memberships);
+    const user = await container.um.getUser(userId);
+    expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
+  });
 });
