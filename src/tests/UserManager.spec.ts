@@ -63,6 +63,11 @@ describe('UserManager', () => {
     expect(result.success).toBe(true, "Should log in just fine.");
     expect(result.user.displayName).toBe('Co');
     expect(result.user.session).toBeDefined();
+    expect(result.user.session.id).toBeDefined();
+    expect(result.user.session.token).toBeDefined();
+    expect(result.user.session.expires).toBeDefined();
+    expect(result.user.session.created).toBeDefined();
+    expect(result.user.session.userId).toBeDefined();
     expect(result.user.active).toBe(true);
   }); 
 
@@ -78,6 +83,50 @@ describe('UserManager', () => {
     const result = await um.login(correct.name, 'magic stick');
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('Password incorrect');
+  }); 
+
+  it('Inactive user', async () => {
+    const um = container.um;
+    container.um.activateUser(1, false);
+
+    const result = await um.login(correct.name, correct.pass);
+    expect(result.success).toBe(false, "Should not log in");
+    expect(result.reason).toBe('User cannot login');
+  }); 
+
+
+  it('Validate Session', async () => {
+    const result = await container.um.login(correct.name, correct.pass);
+
+    const token = result.user.session.token;
+
+    const session = await container.um.validateSession(token);
+    expect(session).toBeDefined("Valid session, should work.");
+    
+    const invalidToken = await container.um.validateSession("notavalidtoken");
+    expect(invalidToken).toBe(null, "Invalid token. Should return null.");
+  }); 
+
+  it('Expire Session', async () => {
+    const result = await container.um.login(correct.name, correct.pass);
+    const token = result.user.session.token;
+
+    await container.um.expireSession(token);
+    const expiredSession = await container.um.validateSession(token);
+    expect(expiredSession).toBe(null, "Expired session. Should return null.");
+  }); 
+
+  it('Expire All Session', async () => {
+    const token1 = (await container.um.login(correct.name, correct.pass)).user.session.token;
+    const token2 = (await container.um.login(correct.name, correct.pass)).user.session.token;
+
+    expect(await container.um.validateSession(token1)).toBeTruthy("Should be valid.");
+    expect(await container.um.validateSession(token2)).toBeTruthy("Should be valid.");
+
+    await container.um.expireAllSessions(1);
+    
+    expect(await container.um.validateSession(token1)).toBeFalsy("Should be expired.");
+    expect(await container.um.validateSession(token2)).toBeFalsy("Should be expires.");
   }); 
 
 

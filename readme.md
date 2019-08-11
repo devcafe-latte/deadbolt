@@ -16,10 +16,19 @@ npm run serve
 npm run start
 ```
 
+## To test
+
+```sh
+# Start transpiled version of the app
+npm test
+```
+
 ## todo
-Add Database
-Add routes that call the appropriate things.
-Add JWT
+
 Add Group Memberships
-Add Authorizations or something.
-Add Api keys
+Add routes that call the appropriate things.
+Add Social Logins
+- Google
+- Facebook? :(
+
+

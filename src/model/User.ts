@@ -1,16 +1,22 @@
 import { hashSync, compareSync } from 'bcrypt';
 import { Session } from './Session';
 import { toObject, stripComplexTypes } from './helpers';
+import { Moment } from 'moment';
+import moment from 'moment';
 
 export class User {
-  id: number = null
+  id: number = null;
+  uuid: string = null;
   username: string = null;
   passwordHash: string = null;
   firstName?: string = null;
   lastName?: string = null;
   email?: string = null;
   session?: Session = null;
+  created: Moment = null;
+  lastActivity: Moment = null;
   active: Boolean = null;
+
 
   get displayName(): string {
     if (this.lastName || this.firstName){
@@ -33,12 +39,20 @@ export class User {
     return compareSync(pass, this.passwordHash);
   }
 
-  static fromDb(row: any[]): User {
-    const u = toObject<User>(User, row);
-    return u;
+
+  toDb(): any {
+    const obj: any = stripComplexTypes(this);
+    if (this.created) obj.created = + this.created.unix();
+    if (this.lastActivity) obj.lastActivity = + this.lastActivity.unix();
+    
+    return obj;
   }
 
-  toDb() {
-    return stripComplexTypes(this);
+  static fromDb(row: any): User {
+    const u = toObject<User>(User, row);
+    if (row.created) u.created = moment.unix(row.created);
+    if (row.lastActivity) u.lastActivity = moment.unix(row.lastActivity);
+
+    return u;
   }
 }
