@@ -13,23 +13,11 @@ describe('User', function() {
     expect(u.displayName).toEqual('van Leeuwen');
   }); 
 
-  it('password', () => {
-    const u = new User();
-    u.username = 'c00';
-    expect(u.passwordHash).toBeNull("Password hash should still be empty!");
-
-    u.setPassword('123');
-    expect(u.passwordHash).toBeDefined("Password hash seems empty!");
-    expect(u.checkPassword('123')).toEqual(true, "Should be the correct password");
-    expect(u.checkPassword('not the password')).toEqual(false, "Wrong password password");
-  });
-
   it('fromdb', () => {
     const row = {
       id: 1,
       uuid: '1234567890',
       username: 'test',
-      passwordHash: 'poiuytrewq',
       created: 1565513069,
       lastActivity: 1565513069
     };
@@ -38,7 +26,6 @@ describe('User', function() {
     expect(u.id).toBe(row.id);
     expect(u.uuid).toBe(row.uuid);
     expect(u.username).toBe(row.username);
-    expect(u.passwordHash).toBe(row.passwordHash);
     expect(u.created.unix()).toBe(row.created);
     expect(u.lastActivity.unix()).toBe(row.lastActivity);
     expect(u.firstName).toBe(null);

@@ -32,7 +32,7 @@ export class SqlHelper {
       strings.push(key + " = ?");
       values.push(object[key]);
     }
-    const sql = `UPDATE \`${table}\` SET ` + strings.join(', '); 
+    const sql = `UPDATE \`${table}\` SET ` + strings.join(', ') + " "; 
     return {sql, values};
   }  
 }

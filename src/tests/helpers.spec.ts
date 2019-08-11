@@ -30,7 +30,7 @@ describe('Helpers', function() {
 
   it("test SqlHelper", () => {
     const result = SqlHelper.update('user', {id: 1, firstName: 'coo', passwordHash: '1234567890'});
-    expect(result.sql).toEqual("UPDATE `user` SET id = ?, firstName = ?, passwordHash = ?");
+    expect(result.sql).toEqual("UPDATE `user` SET id = ?, firstName = ?, passwordHash = ? ");
     expect(result.values).toEqual([1, 'coo', '1234567890']);
   });
 });

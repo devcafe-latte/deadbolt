@@ -1,15 +1,13 @@
-import { hashSync, compareSync } from 'bcrypt';
-import { Session } from './Session';
-import { toObject, stripComplexTypes } from './helpers';
-import { Moment } from 'moment';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
+
+import { stripComplexTypes, toObject } from './helpers';
 import { Membership } from './Membership';
+import { Session } from './Session';
 
 export class User {
   id: number = null;
   uuid: string = null;
   username: string = null;
-  passwordHash: string = null;
   firstName?: string = null;
   lastName?: string = null;
   email?: string = null;
@@ -30,16 +28,6 @@ export class User {
   }
 
   constructor() { }
-
-  setPassword(value: string) {
-    this.passwordHash = hashSync(value, 10);
-  }
-
-  checkPassword(pass: string): boolean {
-    if (!this.passwordHash) return false;
-    return compareSync(pass, this.passwordHash);
-  }
-
 
   toDb(): any {
     const obj: any = stripComplexTypes(this);

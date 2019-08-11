@@ -2,6 +2,7 @@ import container from '../model/DiContainer';
 import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
 import { Membership } from '../model/Membership';
+import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 
 const correct = {
   name: 'Co',
@@ -24,7 +25,7 @@ describe('User Tests', () => {
     const um = container.um;
     const user = new User();
     user.id = 1;
-    user.setPassword('password');
+    user.firstName = 'Cookie'
     const rowsAffected = await um.updateUser(user);
     expect(rowsAffected).toBe(1);
   }); 
@@ -35,7 +36,6 @@ describe('User Tests', () => {
     user.username = "Paul";
     user.firstName = "Paul";
     user.email = "paul@someplace.com";
-    user.setPassword('password');
     await um.addUser(user);
     expect(user.id).toBeGreaterThan(0);
   }); 
@@ -66,7 +66,8 @@ describe('User Tests', () => {
 
   it('Logs in', async () => {
     const um = container.um;
-    const result = await um.login(correct.name, correct.pass);
+    const result = await um.login(correct.name, PasswordAuth, correct.pass);
+
     expect(result.success).toBe(true, "Should log in just fine.");
     expect(result.user.displayName).toBe('Co');
     expect(result.user.session).toBeDefined();
@@ -82,14 +83,14 @@ describe('User Tests', () => {
 
   it('Wrong user', async () => {
     const um = container.um;
-    const result = await um.login("Gandalf", correct.pass);
+    const result = await um.login("Gandalf", PasswordAuth, correct.pass);
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('Not found');
   }); 
 
   it('Wrong pasword', async () => {
     const um = container.um;
-    const result = await um.login(correct.name, 'magic stick');
+    const result = await um.login(correct.name, PasswordAuth, 'magic stick');
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('Password incorrect');
   }); 
@@ -98,7 +99,7 @@ describe('User Tests', () => {
     const um = container.um;
     container.um.activateUser(1, false);
 
-    const result = await um.login(correct.name, correct.pass);
+    const result = await um.login(correct.name, PasswordAuth, correct.pass);
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('User cannot login');
   }); 
@@ -110,7 +111,7 @@ describe('Session Tests', () => {
   });
 
   it('Validate Session', async () => {
-    const result = await container.um.login(correct.name, correct.pass);
+    const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
 
     const token = result.user.session.token;
 
@@ -122,7 +123,7 @@ describe('Session Tests', () => {
   }); 
 
   it('Expire Session', async () => {
-    const result = await container.um.login(correct.name, correct.pass);
+    const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
     const token = result.user.session.token;
 
     await container.um.expireSession(token);
@@ -131,8 +132,8 @@ describe('Session Tests', () => {
   }); 
 
   it('Expire All Session', async () => {
-    const token1 = (await container.um.login(correct.name, correct.pass)).user.session.token;
-    const token2 = (await container.um.login(correct.name, correct.pass)).user.session.token;
+    const token1 = (await container.um.login(correct.name, PasswordAuth, correct.pass)).user.session.token;
+    const token2 = (await container.um.login(correct.name, PasswordAuth, correct.pass)).user.session.token;
 
     expect(await container.um.validateSession(token1)).toBeTruthy("Should be valid.");
     expect(await container.um.validateSession(token2)).toBeTruthy("Should be valid.");

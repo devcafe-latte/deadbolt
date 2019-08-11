@@ -8,6 +8,7 @@ import { Session } from './Session';
 import { User } from './User';
 import { Membership } from './Membership';
 import { SqlResult } from './SqlResult';
+import { iAuthMethod } from './authMethod/iAuthMethod';
 
 export class UserManager {
   private _sessionHours: number;
@@ -59,13 +60,20 @@ export class UserManager {
     return users[0];
   }
 
-  public async login(username: string, pass: string): Promise<LoginResult> {
+  public async auth() {
+
+  }
+
+  public async login(username: string, authMethod: any, authOptions: any): Promise<LoginResult> {
     await container.ready();
 
     const user = await this.getUserByUsername(username);
     if (!user) return LoginResult.failed("Not found");
 
-    if (!user.checkPassword(pass)) {
+    const authService: iAuthMethod = new authMethod();
+    const authenticated = await authService.verify(user, authOptions);
+
+    if (!authenticated) {
       return LoginResult.failed("Password incorrect");
     }
 

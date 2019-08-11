@@ -12,7 +12,6 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `uuid` varchar(36) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `passwordHash` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `firstName` varchar(100) DEFAULT NULL,
   `lastName` varchar(100) DEFAULT NULL,
@@ -22,9 +21,9 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`id`, `uuid`, `username`, `passwordHash`, `email`, `firstName`, `lastName`, `active`, `created`, `lastActivity`) VALUES
-(1,	'ee13624b-cf22-4597-adb9-bfa4b16baa71',	'Co',	'$2b$10$Y.Vdh2cW/knJHGXBhm1rwuXTsVcVgmnunOmnqA0CXDmqVdW/rpL62',	NULL,	NULL,	NULL,	1,	0,	0),
-(2,	'db3df155-3b3e-4557-bfab-fa544fabf7ee',	'Jordan',	'$2b$10$1kdgXCXIR601WcDco46hcu0ga6TZBVxnnUTlevm7wYpsYC9wophY2',	'jordan@example.com',	'Jordan',	'Benge',	1,	0,	0);
+INSERT INTO `user` (`id`, `uuid`, `username`, `email`, `firstName`, `lastName`, `active`, `created`, `lastActivity`) VALUES
+(1,	'ee13624b-cf22-4597-adb9-bfa4b16baa71',	'Co',	NULL,	NULL,	NULL,	1,	0,	0),
+(2,	'db3df155-3b3e-4557-bfab-fa544fabf7ee',	'Jordan',	'jordan@example.com',	'Jordan',	'Benge',	1,	0,	0);
 
 DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (
@@ -53,5 +52,24 @@ CREATE TABLE `membership` (
 INSERT INTO `membership` (`id`, `created`, `app`, `role`, `userId`) VALUES
 (1,	1565516907,	'test-app',	'admin',	1),
 (2,	1565516907,	'test-app',	'user',	1);
+
+DROP TABLE IF EXISTS `authPassword`;
+CREATE TABLE `authPassword` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `passwordHash` varchar(255) NOT NULL,
+  `resetToken` varchar(36) DEFAULT NULL,
+  `resetTokenExpires` int(11) DEFAULT NULL,
+  `created` int(11) NOT NULL,
+  `updated` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  CONSTRAINT `authPassword_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `authPassword` (`id`, `userId`, `passwordHash`, `resetToken`, `resetTokenExpires`, `created`, `updated`) VALUES
+(1,	1,	'$2b$10$Y.Vdh2cW/knJHGXBhm1rwuXTsVcVgmnunOmnqA0CXDmqVdW/rpL62',	NULL,	NULL,	0,	0),
+(2,	2,	'$2b$10$1kdgXCXIR601WcDco46hcu0ga6TZBVxnnUTlevm7wYpsYC9wophY2',	NULL,	NULL,	0,	0);
+
 
 -- 2019-08-11 08:27:25
