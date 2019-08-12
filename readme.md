@@ -12,6 +12,9 @@ All settings can be set through environment variables or a `.env` file in the ro
 - DB_PASS - Mysql server password
 - DB_PORT - Mysql server port
 - DB_NAME - Mysql Database name
+- RESET_TOKEN_EXPIRES_HOURS - The amount of hours before a password reset token expires. Defaults to 24.
+- CONFIRM_TOKEN_EXPIRES_HOURS = The amount of hours before a email confirm token expires. Defaults to 24 * 7.
+- SESSION_HOURS - The amount of hours a new session is valid. Defaults to 24 * 14.
 
 ## To develop
 
@@ -37,6 +40,8 @@ npm test
 ## todo
 
 Add routes that call the appropriate things.
+Protect against weird usernames (alphanumerics only) ?? Maybe not. Let the main app deal with it.
+Allow login with either username or email
 Make Docker container to build and run.
 Add Social Logins
 - Google

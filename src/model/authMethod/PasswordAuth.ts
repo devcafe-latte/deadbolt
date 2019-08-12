@@ -1,4 +1,4 @@
-import { compareSync, hashSync } from 'bcrypt';
+import { compareSync, hashSync, hash } from 'bcrypt';
 import moment, { Moment } from 'moment';
 
 import container from '../DiContainer';
@@ -8,6 +8,7 @@ import { iAuthMethod } from './iAuthMethod';
 import uuidv4 from 'uuid/v4';
 
 export class PasswordAuth implements iAuthMethod {
+  static ROUNDS = 10;
 
   async verify(user: User, password: string) {
     const result = await this.getRecord(user.id);
@@ -25,9 +26,23 @@ export class PasswordAuth implements iAuthMethod {
     if (password.length <= minLen) return { success: false, reason: "Password to shitty" };
     if (password.length >= maxLen) return { success: false, reason: "Password to long" };
 
-    const hash = hashSync(password, 10);
-    await container.db.query("UPDATE `authPassword` SET passwordHash = ?, resetToken = null, resetTokenExpires = null, updated = ? WHERE userId = ?", [hash, moment().unix(), userId]);
-    return { success: true };
+    //Check whether to update or add.
+    const recordResult = await this.getRecord(userId);
+    if (recordResult.success) {
+      //update record
+      const hash = hashSync(password, PasswordAuth.ROUNDS);
+      await container.db.query("UPDATE `authPassword` SET passwordHash = ?, resetToken = null, resetTokenExpires = null, updated = ? WHERE userId = ?", [hash, moment().unix(), userId]);
+      return { success: true };
+    } else if (await container.um.userExists(userId)) {
+      //Create record
+      const record = PasswordRecord.new(userId, password);
+      await container.db.query("INSERT INTO `authPassword` SET ?", record.toDb());
+      return { success: true };
+    } else {
+      return { success: false, reason: "User doesn't exist." };
+    }
+
+    
   }
 
   async resetPassword(resetToken: string, newPassword: string): Promise<PasswordRecordResult> {
@@ -65,7 +80,7 @@ export class PasswordAuth implements iAuthMethod {
   }
 
   private async getRecord(userId: number): Promise<PasswordRecordResult> {
-    const rows = await container.db.query("SELECT * FROM authPassword WHERE userId = ?", [userId]);
+    const rows = await container.db.query("SELECT * FROM `authPassword` WHERE userId = ?", [userId]);
     if (rows.length === 0) return { success: false, reason: "Record not found." };
     if (rows.length > 1) return { success: false, reason: "Found too many records. This is not supposed to happen." };
 
@@ -109,5 +124,15 @@ export class PasswordRecord {
     if (row.resetTokenExpires) r.resetTokenExpires = moment.unix(row.resetTokenExpires);
 
     return r;
+  }
+
+  static new(userId: number, password: string): PasswordRecord {
+    const p = new PasswordRecord();
+    p.userId = userId;
+    p.passwordHash = hashSync(password, 10);
+    p.created = moment();
+    p.updated = moment();
+
+    return p;
   }
 }

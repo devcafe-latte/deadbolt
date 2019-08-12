@@ -9,6 +9,7 @@ import { User } from './User';
 import { Membership } from './Membership';
 import { SqlResult } from './SqlResult';
 import { iAuthMethod } from './authMethod/iAuthMethod';
+import { isNumber } from 'util';
 
 export class UserManager {
   private _sessionHours: number;
@@ -18,43 +19,11 @@ export class UserManager {
     this._sessionHours = Number(process.env.SESSION_HOURS) || 24 * 14;
   }
 
-  private userQuery() {
-    const sql = "SELECT * FROM `user` u " + 
-      "LEFT OUTER JOIN `membership` m ON u.id = m.userId ";
-
-      return sql;
-  }
-
-  private async processUserQuery(sql: string, values: any): Promise<User[]> {
-    const rows = await container.db.query({ sql, values, nestTables: true });
-    if (rows.length === 0) return [];
-    
-    const results = SqlResult.new(rows);
-    results.cast('u', User);
-    
-    const memberships: Membership[] = results.array('m');
-    for (let m of memberships) {
-      results.data.u[m.userId].memberships.push(m);
-    }
-    
-    return results.array('u');
-  }
-
   public async getUser(id: number): Promise<User|null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.id = ?";
     const users = await this.processUserQuery(sql, [id]);
-    if (users.length === 0) return null;
-
-    return users[0];
-  }
-
-  public async getUserByUsername(name: string): Promise<User|null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.username = ?";
-    const users = await this.processUserQuery(sql, [name]);
     if (users.length === 0) return null;
 
     return users[0];
@@ -139,7 +108,10 @@ export class UserManager {
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, token]);
   }
 
-  public async expireAllSessions(userId: number) {
+  public async expireAllSessions(userId: string|number) {
+    if (!isNumber(userId)) userId = await this.getIdFromUuid(userId);
+    if (!userId) return null;
+
     const expires = moment().subtract(1, 'second').unix();
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `userId` = ?", [expires, userId]);
   }
@@ -195,6 +167,11 @@ export class UserManager {
     await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [ data, confirmToken ]);
   }
 
+  async userExists(userId: number): Promise<boolean> {
+    const result = await container.db.query("SELECT `id` FROM `user` WHERE `id` = ?", [userId]);
+    return (result.length > 0);
+  }
+
   private async touchSession(session: Session) {
     const expires = moment().add(this._sessionHours, 'hours').unix();
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, session.token]);
@@ -206,5 +183,43 @@ export class UserManager {
     
     const result = await container.db.query("INSERT INTO `session` SET ?", user.session.toDb());
     user.session.id = result.insertId;
+  }
+
+  private async getUserByUsername(name: string): Promise<User|null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE u.username = ?";
+    const users = await this.processUserQuery(sql, [name]);
+    if (users.length === 0) return null;
+
+    return users[0];
+  }
+
+  private async getIdFromUuid(uuid: string): Promise<number|null> {
+    const result = await container.db.query("SELECT `id` FROM `user` WHERE `uuid` = ?", [uuid]);
+    if (result[0]) return result[0].id;
+    return null;
+  }
+  
+  private userQuery() {
+    const sql = "SELECT * FROM `user` u " + 
+      "LEFT OUTER JOIN `membership` m ON u.id = m.userId ";
+
+      return sql;
+  }
+
+  private async processUserQuery(sql: string, values: any): Promise<User[]> {
+    const rows = await container.db.query({ sql, values, nestTables: true });
+    if (rows.length === 0) return [];
+    
+    const results = SqlResult.new(rows);
+    results.cast('u', User);
+    
+    const memberships: Membership[] = results.array('m');
+    for (let m of memberships) {
+      results.data.u[m.userId].memberships.push(m);
+    }
+    
+    return results.array('u');
   }
 }

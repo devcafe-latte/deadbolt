@@ -47,17 +47,40 @@ describe("Password (re)setting", () => {
     await TestHelper.new();
   });
 
-  it("set password", async() => {
+  it("set password, existing record", async() => {
     const pa = new PasswordAuth();
     const u = new User();
     u.id = 1;
     
     expect(await pa.verify(u, "password")).toBe(true, "Check current password");
 
-    await pa.setPassword(1, "password2");
+    const result = await pa.setPassword(1, "password2");
+    expect(result.success).toBe(true, "New password set.");
 
     expect(await pa.verify(u, "password")).toBe(false, "Check current password no longer works.");
     expect(await pa.verify(u, "password2")).toBe(true, "Check new password");
+  });
+
+  it("set password, new record", async() => {
+    const pa = new PasswordAuth();
+    const u = new User();
+    u.id = 1;
+    //kill existing record
+    await container.db.query("DELETE FROM `authPassword` WHERE `userId` = 1");
+    
+    expect(await pa.verify(u, "password")).toBe(false, "No current password set");
+
+    const result = await pa.setPassword(1, "password");
+    expect(result.success).toBe(true, "New password set.");
+
+    expect(await pa.verify(u, "password")).toBe(true, "Password should be set now.");
+  });
+
+  it("set password non existing user", async() => {
+    const pa = new PasswordAuth();
+
+    const result = await pa.setPassword(74, "password");
+    expect(result.success).toBe(false, "User doens't exist.");
   });
 
   it("set too short password", async() => {

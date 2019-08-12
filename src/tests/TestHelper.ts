@@ -7,9 +7,13 @@ import container from '../model/DiContainer';
 export class TestHelper {
   constructor() { }
 
-  private async init() {
+  public static setTestEnv() {
     //Set some test settings (these don't overwrite. So if they are already set, that's good too)
     dotenv.config({ "path": __dirname + '/resources/.env' });
+  }
+
+  private async init() {
+    TestHelper.setTestEnv();
     if (!process.env.DB_NAME.endsWith('_test')) {
       throw new Error("That doesn't look like a test database to me! Should end in '_test'");
     }

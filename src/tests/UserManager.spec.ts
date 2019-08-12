@@ -54,6 +54,11 @@ describe('User Tests', () => {
     expect(user).toBeFalsy();
   }); 
 
+  it("User exists", async () => {
+    expectAsync(container.um.userExists(1)).toBeResolvedTo(true);
+    expectAsync(container.um.userExists(123)).toBeResolvedTo(false);
+  });
+
   it('Activate user', async () => {
     let user = await container.um.getUser(1);
     expect(user.active).toBe(true);

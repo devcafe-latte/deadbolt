@@ -4,7 +4,6 @@ export class LoginResult {
   success: boolean = true;
   reason?: string;
   user?: User;
-  jwt?: string;
 
   constructor() {}
 

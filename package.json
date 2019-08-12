@@ -18,8 +18,10 @@
     "@types/express": "^4.17.0",
     "@types/jsonwebtoken": "^8.3.3",
     "@types/mysql": "^2.15.6",
+    "@types/supertest": "^2.0.8",
     "@types/uuid": "^3.4.5",
     "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "moment": "^2.24.0",
@@ -35,6 +37,7 @@
     "jasmine-ts": "^0.3.0",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
+    "supertest": "^4.0.2",
     "ts-node": "^8.3.0"
   }
 }

@@ -19,7 +19,9 @@ export class Container {
     return this._db;
   }
 
-  constructor() { }
+  debug: boolean;
+
+  constructor() {}
 
   public async ready() {
     if (!this._ready) this._ready = this.init();
@@ -29,6 +31,9 @@ export class Container {
   private async init() {
     //Load dotenv file if any.
     if (existsSync('.env')) dotenv.config(); //todo see if this works.
+
+    //Set debug mode.
+    this.debug = (process.env.NODE_ENV !== "production");
 
     //Setup userManager
     this._um = new UserManager();
