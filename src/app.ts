@@ -11,6 +11,20 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+/**
+ * @swagger
+ *
+ * /:
+ *  get:
+ *   description: See basic status
+ *   produces:
+ *   - application/json
+ *   responses:
+ *    200:
+ *     description: All good
+ *    500:
+ *     description: Database issues
+ */
 app.get('/', async (req, res) => {
   const response: any = {
     express: "ok", 
