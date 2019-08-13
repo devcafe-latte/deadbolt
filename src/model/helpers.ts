@@ -1,3 +1,22 @@
+import { isNumber, isString } from "util";
+
+export function isValidEmail(email: string) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email.toLowerCase());
+}
+
+export function getIdentifierType(identifier: any): string {
+  if (isNumber(identifier)) return "id";
+
+  if (!isString(identifier)) return "unknown"
+
+  if (isValidEmail(identifier)) return "email";
+
+  if (identifier.split("-").length === 5) return "uuid";
+
+  return "username";
+}
+
 export function toObject<T>(type: { new(): T }, data: any): T {
   const o = new type();
   for (let key in o) {

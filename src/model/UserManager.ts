@@ -19,7 +19,7 @@ export class UserManager {
     this._sessionHours = Number(process.env.SESSION_HOURS) || 24 * 14;
   }
 
-  public async getUser(id: number): Promise<User|null> {
+  async getUser(id: number): Promise<User|null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.id = ?";
@@ -29,7 +29,37 @@ export class UserManager {
     return users[0];
   }
 
-  public async login(username: string, authMethod: any, authOptions: any): Promise<LoginResult> {
+  async getUserByUsername(name: string): Promise<User|null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE u.username = ?";
+    const users = await this.processUserQuery(sql, [name]);
+    if (users.length === 0) return null;
+
+    return users[0];
+  }
+
+  async getUserByEmail(email: string): Promise<User|null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE u.email = ?";
+    const users = await this.processUserQuery(sql, [email]);
+    if (users.length === 0) return null;
+
+    return users[0];
+  }
+
+  async getUserByUuid(uuid: string): Promise<User|null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE u.uuid = ?";
+    const users = await this.processUserQuery(sql, [uuid]);
+    if (users.length === 0) return null;
+
+    return users[0];
+  }
+
+  async login(username: string, authMethod: any, authOptions: any): Promise<LoginResult> {
     await container.ready();
 
     const user = await this.getUserByUsername(username);
@@ -55,29 +85,53 @@ export class UserManager {
     return LoginResult.success(user);
   }
 
-  public async updateUser(user: User): Promise<number> {
+  async updateUser(user: User): Promise<number> {
     const update = SqlHelper.update('user', user.toDb());
     update.sql += " WHERE id = ?";
     update.values.push(user.id);
     const result = await container.db.query(update.sql, update.values);
 
+    if (user.active === false) await this.expireAllSessions(user.id);
+
     return result.affectedRows;
   }
 
-  public async activateUser(userId: number, active: boolean) {
+  async purgeUser(uuid: string) {
+    const user = await this.getUserByUuid(uuid);
+    if (!user) {
+      return false;
+    }
+    const result = await container.db.query("DELETE FROM `user` WHERE `uuid` = ?", [uuid]);
+    return (result.affectedRows > 0);
+  }
+
+  async activateUser(userId: number, active: boolean) {
     const update = SqlHelper.update('user', { active });
     update.sql += " WHERE id = ?";
     update.values.push(userId);
     const result = await container.db.query(update.sql, update.values);
-    if (!active) this.expireAllSessions(userId);
+    if (!active) await this.expireAllSessions(userId);
 
     return result.affectedRows;
   }
 
-  public async addUser(user: User) {
+  async addUser(user: User) {
+    //Check validity
+    if (!user.isValid()) {
+      return { success: false, reason: "Username or email is invalid" };
+    }
+    if (await this.userNameTaken(user.username)) {
+      return { success: false, reason: "Username already taken" };
+    }
+    if (user.email && await this.emailTaken(user.email)) {
+      return { success: false, reason: "Email already exists" };
+    }
+
     user.uuid = uuidv4();
     user.created = moment();
     user.lastActivity = moment();
+
+    if (!user.email) user.emailConfirmed = moment();
 
     if (!user.emailConfirmed) {
       user.emailConfirmToken = uuidv4();
@@ -87,13 +141,11 @@ export class UserManager {
     
     const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
     user.id = result.insertId;
+
+    return { success: true };
   }
 
-  public async removeUser(id: Number) {
-    await container.db.query("DELETE FROM `user` WHERE id = ?", [id]);
-  }
-
-  public async validateSession(token: string): Promise<Session|null> {
+  async validateSession(token: string): Promise<Session|null> {
     const now = moment().unix();
     const rows = await container.db.query("SELECT * FROM `session` WHERE `token` = ? AND `expires` > ?", [token, now]);
     if (rows.length === 0) return null;
@@ -103,12 +155,12 @@ export class UserManager {
     return session;
   }
 
-  public async expireSession(token: string) {
+  async expireSession(token: string) {
     const expires = moment().subtract(1, 'second').unix();
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, token]);
   }
 
-  public async expireAllSessions(userId: string|number) {
+  async expireAllSessions(userId: string|number) {
     if (!isNumber(userId)) userId = await this.getIdFromUuid(userId);
     if (!userId) return null;
 
@@ -116,7 +168,7 @@ export class UserManager {
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `userId` = ?", [expires, userId]);
   }
 
-  public async addMemberships(userId: number, memberships: Membership|Membership[]) {
+  async addMemberships(userId: number, memberships: Membership|Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
@@ -131,7 +183,7 @@ export class UserManager {
     await container.db.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
   }
 
-  public async removeMemberships(userId: number, memberships: Membership|Membership[]) {
+  async removeMemberships(userId: number, memberships: Membership|Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
@@ -143,11 +195,11 @@ export class UserManager {
     await db.commit();
   }
 
-  public async removeApp(userId: number, app: string) {
+  async removeApp(userId: number, app: string) {
     await container.db.query("DELETE FROM `membership` WHERE userId = ? AND app = ?", [userId, app]);
   }
 
-  public async confirmEmailByUserId(userId: number) {
+  async confirmEmailByUserId(userId: number) {
     const data = {
       emailConfirmed: moment().unix(),
       emailConfirmToken: null,
@@ -157,7 +209,7 @@ export class UserManager {
     await container.db.query("UPDATE `user` SET ? WHERE id = ?", [ data, userId ]);
   }
 
-  public async confirmEmail(confirmToken: string) {
+  async confirmEmail(confirmToken: string) {
     const data = {
       emailConfirmed: moment().unix(),
       emailConfirmToken: null,
@@ -165,6 +217,21 @@ export class UserManager {
     };
 
     await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [ data, confirmToken ]);
+  }
+
+  async userNameTaken(username: string): Promise<boolean> {
+    const result = await container.db.query("SELECT `id` FROM `user` WHERE `username` = ?", [username]);
+    return (result.length > 0);
+  }
+
+  async emailTaken(email: string): Promise<boolean> {
+    const result = await container.db.query("SELECT `id` FROM `user` WHERE `email` = ?", [email]);
+    return (result.length > 0);
+  }
+
+  async userTaken(username: string, email: string): Promise<boolean> {
+    const result = await container.db.query("SELECT `id` FROM `user` WHERE `username` = ? OR `email` = ?", [username, email]);
+    return (result.length > 0);
   }
 
   async userExists(userId: number): Promise<boolean> {
@@ -183,16 +250,6 @@ export class UserManager {
     
     const result = await container.db.query("INSERT INTO `session` SET ?", user.session.toDb());
     user.session.id = result.insertId;
-  }
-
-  private async getUserByUsername(name: string): Promise<User|null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.username = ?";
-    const users = await this.processUserQuery(sql, [name]);
-    if (users.length === 0) return null;
-
-    return users[0];
   }
 
   private async getIdFromUuid(uuid: string): Promise<number|null> {

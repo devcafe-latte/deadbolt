@@ -8,6 +8,10 @@ import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 TestHelper.setTestEnv();
 
 describe("App", () => {
+  beforeEach(async () => {
+    await TestHelper.new();
+  });
+
   it("tests", async () => {
     const result = await request(app).get("/")
       .expect(200);
@@ -106,14 +110,130 @@ describe("Sessions", () => {
 });
 
 describe("Users", () => {
-  it("Registers a new users", async () => {
+  beforeEach(async () => {
+    await TestHelper.new();
+  });
+
+  it("Registers a new user", async () => {
     const result = await request(app).post('/user')
     .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com" })
     .expect(200);
 
-    //todo
-    //test that result is a user with a session
-    //test I can login
-    // Test I can't register the same email address or username again.
+    const body = result.body;
+    expect(body.session.token).toBeDefined();
+
+    await request(app).post('/session').send({username: 'Morty', password: 'jessica69' }).expect(200);
   });
+
+  it("Try Register with existing username", async () => {
+    const user = await container.um.getUser(1);
+
+    await request(app).post('/user')
+    .send({ username: user.username, password: "doesn'treallymatterdoesit?!", email: "morty999@gmail.com" })
+    .expect(400);
+  });
+
+  it("Try Register with existing email", async () => {
+    await request(app).post('/user')
+    .send({ username: "PeterParker", password: "doesn'treallymatterdoesit?!", email: "jordan@example.com" })
+    .expect(400);
+  });
+
+  it("Updates a user by username", async () => {
+    const data = { firstName: "Swanky", lastName: "McSwankFace", email: "Swanky@doodle.com" };
+
+    await request(app).put("/user")
+    .send({ username: "Co", user: data })
+    .expect(200);
+    
+    const user = await container.um.getUserByUsername("Co");
+    expect(user.firstName).toBe(data.firstName);
+    expect(user.lastName).toBe(data.lastName);
+    expect(user.email).toBe(data.email);
+    expect(user.username).toBe("Co");
+  });
+
+  it("Updates a user by email", async () => {
+    const data = { firstName: "Swanky", lastName: "McSwankFace", email: "Swanky@doodle.com" };
+
+    await request(app).put("/user")
+    .send({ email: "jordan@example.com", user: data })
+    .expect(200);
+    
+    const user = await container.um.getUserByEmail("Swanky@doodle.com");
+    expect(user.firstName).toBe(data.firstName);
+    expect(user.lastName).toBe(data.lastName);
+    expect(user.email).toBe(data.email);
+    expect(user.username).toBe("Jordan");
+  });
+
+  it("Updates a user by uuid", async () => {
+    const data = { firstName: "Swanky", lastName: "McSwankFace", email: "Swanky@doodle.com" };
+
+    await request(app).put("/user")
+    .send({ uuid: "ee13624b-cf22-4597-adb9-bfa4b16baa71", user: data })
+    .expect(200);
+    
+    const user = await container.um.getUserByUuid("ee13624b-cf22-4597-adb9-bfa4b16baa71");
+    expect(user.firstName).toBe(data.firstName);
+    expect(user.lastName).toBe(data.lastName);
+    expect(user.email).toBe(data.email);
+    expect(user.username).toBe("Co");
+  });
+
+  it("(De)activate a user", async () => {
+    await request(app).put("/user")
+    .send({ username: "co", user: { active: false } })
+    .expect(200);
+    
+    let user = await container.um.getUser(1);
+    expect(user.active).toBe(false);
+
+    await request(app).put("/user")
+    .send({ username: "co", user: { active: true } })
+    .expect(200);
+    
+    user = await container.um.getUser(1);
+    expect(user.active).toBe(true);
+  });
+
+  it("Purges a user", async () => {
+    const uuid = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
+    await request(app).delete(`/user/${uuid}`)
+    .expect(200);
+
+    expectAsync(container.um.userExists(1)).toBeResolvedTo(false);
+  });
+
+  it("Purges a non existing user", async () => {
+    const uuid = "notauuid";
+    await request(app).delete(`/user/${uuid}`)
+    .expect(404);
+  });
+
+  it("Get user by uuid", async () => {
+    const identifier = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
+    const result = await request(app).get(`/user/${identifier}`)
+    .expect(200);
+
+    expect(result.body.username).toBe("Co");
+  }); 
+
+  it("Get user by username", async () => {
+    const identifier = "Co";
+    const result = await request(app).get(`/user/${identifier}`)
+    .expect(200);
+
+    expect(result.body.username).toBe("Co");
+  }); 
+
+  it("Get user by email", async () => {
+    const identifier = "jordan@example.com";
+    const encoded = encodeURIComponent(identifier);
+    const result = await request(app).get(`/user/${encoded}`)
+    .expect(200);
+
+    expect(result.body.username).toBe("Jordan");
+  }); 
+
 });

@@ -17,9 +17,28 @@ describe('User Tests', () => {
     th = await TestHelper.new();
   });
 
-  it('Get User', async () => {
+  it('Get User By ID', async () => {
     const user = await container.um.getUser(1);
     expect(user).toBeDefined();
+    expect(user.id).toBe(1);
+  }); 
+
+  it('Get User by UUID', async () => {
+    const user = await container.um.getUserByUuid("ee13624b-cf22-4597-adb9-bfa4b16baa71");
+    expect(user).toBeDefined();
+    expect(user.id).toBe(1);
+  }); 
+
+  it('Get User by Username', async () => {
+    const user = await container.um.getUserByUsername("Co");
+    expect(user).toBeDefined();
+    expect(user.id).toBe(1);
+  }); 
+
+  it('Get User by email', async () => {
+    const user = await container.um.getUserByEmail("jordan@example.com");
+    expect(user).toBeDefined();
+    expect(user.id).toBe(2);
   }); 
 
   it('Update User', async () => {
@@ -37,11 +56,81 @@ describe('User Tests', () => {
     user.username = "Paul";
     user.firstName = "Paul";
     user.email = "paul@someplace.com";
-    await um.addUser(user);
+    const result = await um.addUser(user);
+    expect(result.success).toBe(true);
+
     expect(user.id).toBeGreaterThan(0);
     expect(user.emailConfirmed).toBe(null);
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmTokenExpires).toBeDefined();    
+  }); 
+
+  it('Add User without email', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(true);
+
+    expect(user.id).toBeGreaterThan(0);
+    expect(user.emailConfirmed).toBeDefined;
+    expect(user.emailConfirmToken).toBe(null);
+    expect(user.emailConfirmTokenExpires).toBe(null);    
+  }); 
+
+  it('Add Same Username twice', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    user.email = "paul@someplace.com";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(true);
+
+    expect(user.id).toBeDefined();
+    user.id = null;
+    user.email = "Something@else.com";
+
+    const result2 = await um.addUser(user);
+    expect(result2.success).toBe(false);
+  }); 
+
+  it('Add Same Email twice', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    user.email = "paul@someplace.com";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(true);
+
+    expect(user.id).toBeDefined();
+    user.id = null;
+    user.username = "Something else";
+
+    const result2 = await um.addUser(user);
+    expect(result2.success).toBe(false);
+  }); 
+
+  it('Incorrect username', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul@#$%^";
+    user.firstName = "Paul";
+    user.email = "paul@someplace.com";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(false);
+  }); 
+
+  it('Incorrect Email', async () => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    user.email = "paul's not an email address";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(false);
   }); 
 
   it('Remove User', async () => {
@@ -49,7 +138,10 @@ describe('User Tests', () => {
     let user = await um.getUser(1);
     expect(user).toBeTruthy();
 
-    await um.removeUser(1);
+    const uuid = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
+    expect(await um.purgeUser(uuid)).toBe(true);
+    expect(await um.purgeUser(uuid)).toBe(false, "It's already gone.");
+    
     user = await um.getUser(1);
     expect(user).toBeFalsy();
   }); 
@@ -57,6 +149,25 @@ describe('User Tests', () => {
   it("User exists", async () => {
     expectAsync(container.um.userExists(1)).toBeResolvedTo(true);
     expectAsync(container.um.userExists(123)).toBeResolvedTo(false);
+  });
+
+  it("Username taken", async () => {
+    expectAsync(container.um.userNameTaken("Co")).toBeResolvedTo(true);
+    expectAsync(container.um.userNameTaken("cO")).toBeResolvedTo(true);
+    expectAsync(container.um.userNameTaken("Slagathor")).toBeResolvedTo(false);
+  });
+
+  it("Email taken", async () => {
+    expectAsync(container.um.userNameTaken("jordan@example.com")).toBeResolvedTo(true);
+    expectAsync(container.um.userNameTaken("Slagathor@museumofnecromancy.com")).toBeResolvedTo(false);
+  });
+
+  it("Email or username taken", async () => {
+    expectAsync(container.um.userTaken("Co", "jordan@example.com")).toBeResolvedTo(true);
+    expectAsync(container.um.userTaken("Noop noop", "jordan@example.com")).toBeResolvedTo(true);
+    expectAsync(container.um.userTaken("Co", "co@thegiantbucket.com")).toBeResolvedTo(true);
+    
+    expectAsync(container.um.userTaken("Noop noop", "co@thegiantbucket.com")).toBeResolvedTo(false);
   });
 
   it('Activate user', async () => {

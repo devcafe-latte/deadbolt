@@ -21,7 +21,9 @@ CREATE TABLE `user` (
   `emailConfirmed` int(11) DEFAULT NULL,
   `emailConfirmToken` varchar(36) DEFAULT NULL,
   `emailConfirmTokenExpires` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `uuid`, `username`, `email`, `firstName`, `lastName`, `active`, `created`, `lastActivity`, `emailConfirmed`, `emailConfirmToken`, `emailConfirmTokenExpires`) VALUES

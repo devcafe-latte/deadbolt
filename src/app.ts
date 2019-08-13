@@ -2,7 +2,7 @@ import express = require('express');
 import container from './model/DiContainer';
 import bodyParser from 'body-parser';
 import { PasswordAuth } from './model/authMethod/PasswordAuth';
-import { cleanForSending, hasProperties } from './model/helpers';
+import { cleanForSending, hasProperties, getIdentifierType } from './model/helpers';
 import { isNumber } from 'util';
 import { User } from './model/User';
 
@@ -104,7 +104,11 @@ app.post("/user", async (req, res) => {
   u.firstName = body.firstName;
   u.lastName = body.lastName;
 
-  await container.um.addUser(u);
+  const result = await container.um.addUser(u);
+  if (!result.success) {
+    res.status(400);
+    return res.send({ status: "failed", reason: result.reason });
+  }
 
   const pa = new PasswordAuth();
   const passwordResult = await pa.setPassword(u.id, body.password);
@@ -125,6 +129,79 @@ app.post("/user", async (req, res) => {
   res.send(loginResult.user);
 });
 
+app.put("/user", async (req, res) => {
+  const body = req.body;
+  if ((!body.uuid && !body.username && !body.email) || !body.user){
+    return res.status(400)
+    .send({ status: "failed", reason: "Missing arguments. Need uuid, username or email. Also need a 'user'" });
+  }
+
+  let user: User;
+  if (body.uuid) {
+    user = await container.um.getUserByUuid(body.uuid);
+  } else if (body.username) {
+    user = await container.um.getUserByUsername(body.username);
+  } else if (body.email) {
+    user = await container.um.getUserByEmail(body.email);
+  }
+
+  if (!user) {
+    return res.status(400)
+    .send({status: "failed", reason: "User not found" });
+  }
+
+  //List properties that we are allowed to change
+  const props = ['firstName', 'lastName', 'username', 'email', 'active'];
+  for (let p of props) {
+    if (body.user[p] !== undefined) user[p] = body.user[p];
+  }
+
+  if (!user.isValid()) {
+    return res.status(400)
+    .send({status: "failed", reason: "User is not valid" });
+  }
+
+  await container.um.updateUser(user);
+
+  cleanForSending(user);
+  res.send(user);
+});
+
+app.delete("/user/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  if (!uuid) {
+    return res.status(404)
+    .send({status: "failed", reason: "User not found" });
+  }
+  const success = await container.um.purgeUser(uuid);
+  if (success) {
+    return res.send({ status: "ok" });
+  } else {
+    return res.status(404).send({ status: "failed", reason: "User not found" });
+  }
+});
+
+app.get("/user/:identifier", async (req, res) => {
+  const identifier: any = req.params.identifier;
+  const type = getIdentifierType(identifier);
+  let user: User;
+  //Note: We don't get user by ID, because the id should never be exposed to the outside. We have the uuid for that.
+  
+  if (type === "uuid") {
+    user = await container.um.getUserByUuid(identifier);
+  } else if (type === "username") {
+    user = await container.um.getUserByUsername(identifier);
+  } else if (type === "email") {
+    user = await container.um.getUserByEmail(identifier);
+  } 
+
+  if (!user) {
+    return res.status(404).send({ status: "failed", reason: "User unknown" });
+  }
+
+  cleanForSending(user);
+  res.send(user);
+});
 //endregion Users
 
 app.listen(port, async () => {

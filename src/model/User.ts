@@ -1,6 +1,6 @@
 import moment, { Moment } from 'moment';
 
-import { stripComplexTypes, toObject } from './helpers';
+import { stripComplexTypes, toObject, isValidEmail } from './helpers';
 import { Membership } from './Membership';
 import { Session } from './Session';
 
@@ -31,6 +31,14 @@ export class User {
   }
 
   constructor() { }
+
+  isValid(): boolean {
+    if (!this.username) return false;
+    if (!/^[a-z0-9]+$/i.test(this.username)) return false;
+    if (this.email && !isValidEmail(this.email)) return false;
+
+    return true;
+  }
 
   toDb(): any {
     const obj: any = stripComplexTypes(this);

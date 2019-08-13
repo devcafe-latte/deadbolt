@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties } from '../model/helpers';
+import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties, isValidEmail } from '../model/helpers';
 import { User } from '../model/User';
 import uuidv4 from 'uuid/v4';
 
@@ -101,6 +101,20 @@ describe('Helpers', function() {
     const result = SqlHelper.update('user', {id: 1, firstName: 'coo', passwordHash: '1234567890'});
     expect(result.sql).toEqual("UPDATE `user` SET id = ?, firstName = ?, passwordHash = ? ");
     expect(result.values).toEqual([1, 'coo', '1234567890']);
+  });
+
+  it("Tests email validation", () => {
+    const valid = ["bla@bla.com", "stuff@dudes.what.subdomain.whateverman.net", "snakes@onaplane.org"];
+    const invalid = ["Birdperson", "rick@morty", "1234"];
+
+    for (let v of valid) {
+      expect(isValidEmail(v)).toBe(true);
+    }
+
+    for (let v of invalid) {
+      expect(isValidEmail(v)).toBe(false);
+    }
+    
   });
 });
 

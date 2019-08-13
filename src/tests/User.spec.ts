@@ -30,6 +30,24 @@ describe('User', function() {
     expect(u.lastActivity.unix()).toBe(row.lastActivity);
     expect(u.firstName).toBe(null);
     expect(u.lastName).toBe(null);
+  });
+
+  it("isValid", () => {
+    const u = new User();
+    expect(u.isValid()).toBe(false, "No username");
+
+    u.username = "Fishies!"
+    expect(u.isValid()).toBe(false, "Illegal character '!'");
+
+    u.username = "bluppy";
+    expect(u.isValid()).toBe(true, "A username");
+
+    u.email = "notagoodemail";
+    expect(u.isValid()).toBe(false, "Invalid email");
+
+    u.email = "spoon@thematrix.com";
+    expect(u.isValid()).toBe(true, "All good");
+
 
   });
 });
