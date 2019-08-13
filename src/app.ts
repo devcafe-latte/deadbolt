@@ -186,7 +186,7 @@ app.get("/user/:identifier", async (req, res) => {
   const type = getIdentifierType(identifier);
   let user: User;
   //Note: We don't get user by ID, because the id should never be exposed to the outside. We have the uuid for that.
-  
+
   if (type === "uuid") {
     user = await container.um.getUserByUuid(identifier);
   } else if (type === "username") {
@@ -201,6 +201,37 @@ app.get("/user/:identifier", async (req, res) => {
 
   cleanForSending(user);
   res.send(user);
+});
+
+app.put("/password", async (req, res) => {
+  const body = req.body;
+  if ((!body.uuid && !body.username && !body.email) || !body.password){
+    return res.status(400)
+    .send({ status: "failed", reason: "Missing arguments. Need uuid, username or email. Also need a 'password'" });
+  }
+
+  let user: User;
+  if (body.uuid) {
+    user = await container.um.getUserByUuid(body.uuid);
+  } else if (body.username) {
+    user = await container.um.getUserByUsername(body.username);
+  } else if (body.email) {
+    user = await container.um.getUserByEmail(body.email);
+  }
+
+  if (!user) {
+    return res.status(400)
+    .send({status: "failed", reason: "User not found" });
+  }
+
+  const pa = new PasswordAuth();
+  const result = await pa.setPassword(user.id, body.password);
+  if (!result.success) {
+    return res.status(400)
+    .send({ status: "failed", reason: result.reason });
+  }
+
+  res.send({ result: "ok" });
 });
 //endregion Users
 
