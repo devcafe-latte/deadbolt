@@ -24,19 +24,19 @@ describe('User Tests', () => {
   }); 
 
   it('Get User by UUID', async () => {
-    const user = await container.um.getUserByUuid("ee13624b-cf22-4597-adb9-bfa4b16baa71");
+    const user = await container.um.getUser("ee13624b-cf22-4597-adb9-bfa4b16baa71");
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
   }); 
 
   it('Get User by Username', async () => {
-    const user = await container.um.getUserByUsername("Co");
+    const user = await container.um.getUser("Co");
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
   }); 
 
   it('Get User by email', async () => {
-    const user = await container.um.getUserByEmail("jordan@example.com");
+    const user = await container.um.getUser("jordan@example.com");
     expect(user).toBeDefined();
     expect(user.id).toBe(2);
   }); 
@@ -135,14 +135,14 @@ describe('User Tests', () => {
 
   it('Remove User', async () => {
     const um = container.um;
-    let user = await um.getUser(1);
+    let user = await um.getUserById(1);
     expect(user).toBeTruthy();
 
     const uuid = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
     expect(await um.purgeUser(uuid)).toBe(true);
     expect(await um.purgeUser(uuid)).toBe(false, "It's already gone.");
-    
-    user = await um.getUser(1);
+
+    user = await um.getUserById(1);
     expect(user).toBeFalsy();
   }); 
 
@@ -171,15 +171,15 @@ describe('User Tests', () => {
   });
 
   it('Activate user', async () => {
-    let user = await container.um.getUser(1);
+    let user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
 
     container.um.activateUser(1, false);
-    user = await container.um.getUser(1);
+    user = await container.um.getUserById(1);
     expect(user.active).toBe(false);
 
     container.um.activateUser(1, true);
-    user = await container.um.getUser(1);
+    user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
     
   }); 
@@ -279,7 +279,7 @@ describe('Membership tests', () => {
     const userId = 2;
 
     await container.um.addMemberships(userId, membership);
-    const user = await container.um.getUser(userId);
+    const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(1, "Should have a membership now");
     expect(user.memberships[0].app).toBe(membership.app);
     expect(user.memberships[0].role).toBe(membership.role);
@@ -296,7 +296,7 @@ describe('Membership tests', () => {
     const userId = 2;
 
     await container.um.addMemberships(userId, memberships);
-    const user = await container.um.getUser(userId);
+    const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
   });
 
@@ -314,7 +314,7 @@ describe('Membership tests', () => {
     await container.um.removeMemberships(userId, toRemove);
 
 
-    const user = await container.um.getUser(userId);
+    const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
     
     expect(user.memberships[0].app).toEqual('test-app');
@@ -335,7 +335,7 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, memberships);
     await container.um.removeMemberships(userId, memberships);
-    const user = await container.um.getUser(userId);
+    const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(0, "All memberships are gone.");
   });
 
@@ -349,7 +349,7 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, memberships);
     await container.um.removeApp(userId, 'test-app');
-    const user = await container.um.getUser(userId);
+    const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(1, "Should have one left.");
     expect(user.memberships[0].app).toEqual('some-other-app');
     expect(user.memberships[0].role).toEqual('newbie');
@@ -369,13 +369,13 @@ describe("Email Confirmation Tests", () => {
     user.email = "paul@someplace.com";
     await container.um.addUser(user);
 
-    user = await container.um.getUser(user.id);
+    user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBeDefined();
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmed).toBe(null);
 
     container.um.confirmEmail(user.emailConfirmToken);
-    user = await container.um.getUser(user.id);
+    user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmed).toBeDefined();
@@ -388,13 +388,13 @@ describe("Email Confirmation Tests", () => {
     user.email = "paul@someplace.com";
     await container.um.addUser(user);
 
-    user = await container.um.getUser(user.id);
+    user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBeDefined();
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmed).toBe(null);
 
     container.um.confirmEmailByUserId(user.id);
-    user = await container.um.getUser(user.id);
+    user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmed).toBeDefined();
