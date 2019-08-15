@@ -240,6 +240,16 @@ app.put("/membership", userMiddleware, async (req, res) => {
   res.send(user);
 });
 
+app.delete("/membership/:identifier/:app/:role", userMiddleware, async (req, res) => {
+  let user: User = req.params._user;
+
+  await container.um.removeMemberships(user.id, { app: req.params.app, role: req.params.role });
+
+  user = await container.um.getUser(user.id);
+
+  cleanForSending(user);
+  res.send(user);
+});
 //endregion
 
 app.listen(port, async () => {

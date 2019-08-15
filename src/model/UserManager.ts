@@ -208,7 +208,7 @@ export class UserManager {
   }
 
   async updateMembership(m: Membership) {
-    await container.db.query("UPDATE `membership` SET ? WHERE id = ?", [m, m.id]);
+    await container.db.query("UPDATE `membership` SET ? WHERE m.id = ?", [m, m.id]);
   }
 
   async removeMemberships(userId: number, memberships: Membership | Membership[]) {

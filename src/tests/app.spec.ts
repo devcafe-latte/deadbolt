@@ -295,6 +295,10 @@ describe("Users", () => {
 });
 
 describe("Memberships", () => {
+  beforeEach(async () => {
+    await TestHelper.new();
+  });
+
   it("Adds a membership", async () => {
     const identifier = "co";
     const membership: Membership = { app: 'test-app', role: 'mistress' };
@@ -336,5 +340,16 @@ describe("Memberships", () => {
     const m = user.memberships.find((ms: Membership) => ms.role === data.role);
     expect(user.memberships.length).toBe(2);
     expect(m).toBeDefined();
+  });
+
+  it("Removes a membership", async () => {
+    const identifier = "co";
+    const membership: Membership = { app: 'test-app', role: 'admin' };
+
+    await request(app).delete(`/membership/${identifier}/${membership.app}/${membership.role}`)
+      .expect(200);
+
+    const user = await container.um.getUser(identifier);
+    expect(user.memberships.length).toBe(1);
   });
 });
