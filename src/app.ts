@@ -100,12 +100,19 @@ app.post("/user", async (req, res) => {
   u.firstName = body.firstName;
   u.lastName = body.lastName;
 
+  //Create the user
   const result = await container.um.addUser(u);
   if (!result.success) {
     return res.status(400)
       .send({ status: "failed", reason: result.reason });
   }
 
+  //Add memberships
+  if (body.memberships) {
+    await container.um.addMemberships(u.id, body.memberships);
+  }
+
+  //Set the password
   const pa = new PasswordAuth();
   const passwordResult = await pa.setPassword(u.id, body.password);
   if (!passwordResult.success) {

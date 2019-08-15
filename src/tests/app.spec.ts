@@ -133,6 +133,23 @@ describe("Users", () => {
     await request(app).post('/session').send({ username: 'Morty', password: 'jessica69' }).expect(200);
   });
 
+  it("Registers a new user With Memberships", async () => {
+    const memberships: Membership[] = [
+      { app: "test-app", role: 'pineapple' },
+      { app: "test-app-2", role: 'mega man' },
+      { app: "test-app", role: 'sea star' },
+    ];
+    const result = await request(app).post('/user')
+      .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com", memberships })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.session.token).toBeDefined();
+    expect(body.memberships.length).toBe(3);
+
+    await request(app).post('/session').send({ username: 'Morty', password: 'jessica69' }).expect(200);
+  });
+
   it("Try Register with existing username", async () => {
     const user = await container.um.getUserById(1);
 
