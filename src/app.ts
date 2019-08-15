@@ -1,10 +1,12 @@
-import express = require('express');
-import container from './model/DiContainer';
 import bodyParser from 'body-parser';
+import express = require('express');
+
 import { PasswordAuth } from './model/authMethod/PasswordAuth';
-import { cleanForSending, hasProperties, getIdentifierType } from './model/helpers';
-import { isNumber } from 'util';
+import container from './model/DiContainer';
+import { cleanForSending, hasProperties } from './model/helpers';
 import { User } from './model/User';
+import { userMiddleware } from './model/middlewares';
+import { Membership } from './model/Membership';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -69,14 +71,8 @@ app.get("/session/:token", async (req, res) => {
   res.send(session);
 });
 
-app.delete("/session/all/:identifier", async (req, res) => {
-  const identifier = req.params.identifier;
-  const user = await container.um.getUser(identifier);
-
-  if (!user) {
-    return res.status(404)
-      .send({ status: "failed", reason: "User not found" });
-  }
+app.delete("/session/all/:identifier", userMiddleware, async (req, res) => {
+  const user: User = req.params._user;
 
   await container.um.expireAllSessions(user.uuid);
   res.send({ status: "ok" });
@@ -118,25 +114,18 @@ app.post("/user", async (req, res) => {
   }
 
   const loginResult = await container.um.login(body.username, PasswordAuth, body.password);
-  
+
   cleanForSending(loginResult.user)
   res.send(loginResult.user);
 });
 
-app.put("/user", async (req, res) => {
+app.put("/user", userMiddleware, async (req, res) => {
   const body = req.body;
-  const identifier = body.identifier || body.uuid || body.username || body.email;
+  let user: User = req.params._user;
 
-  if (!identifier || !body.user) {
+  if (!body.user) {
     return res.status(400)
-      .send({ status: "failed", reason: "Missing arguments. Need 'identifier' and  'user'" });
-  }
-
-  let user = await container.um.getUser(identifier);
-
-  if (!user) {
-    return res.status(404)
-      .send({ status: "failed", reason: "User not found" });
+      .send({ status: "failed", reason: "Missing 'user' object" });
   }
 
   //List properties that we are allowed to change
@@ -156,45 +145,27 @@ app.put("/user", async (req, res) => {
   res.send(user);
 });
 
-app.delete("/user/:identifier", async (req, res) => {
-  const identifier = req.params.identifier;
-  const user = await container.um.getUser(identifier);
-
-  if (!user) {
-    return res.status(404)
-      .send({ status: "failed", reason: "User not found" });
-  }
+app.delete("/user/:identifier", userMiddleware, async (req, res) => {
+  const user: User = req.params._user;
 
   await container.um.purgeUser(user.uuid);
   res.send({ status: "ok" });
 });
 
-app.get("/user/:identifier", async (req, res) => {
-  const identifier: any = req.params.identifier;
-  let user = await container.um.getUser(identifier);
-
-  if (!user) {
-    return res.status(404)
-      .send({ status: "failed", reason: "User not found" });
-  }
+app.get("/user/:identifier", userMiddleware, async (req, res) => {
+  let user: User = req.params._user;
 
   cleanForSending(user);
   res.send(user);
 });
 
-app.put("/password", async (req, res) => {
+app.put("/password", userMiddleware, async (req, res) => {
   const body = req.body;
-  const identifier = body.identifier || body.uuid || body.id || body.username || body.email;
+  const user: User = req.params._user;
 
-  if (!identifier || !body.password) {
+  if (!body.password) {
     return res.status(400)
-      .send({ status: "failed", reason: "Missing arguments. Need uuid, username or email. Also need a 'password'" });
-  }
-
-  const user = await container.um.getUser(identifier);
-  if (!user) {
-    return res.status(404)
-      .send({ status: "failed", reason: "User not found" });
+      .send({ status: "failed", reason: "Missing argument: 'password'" });
   }
 
   const pa = new PasswordAuth();
@@ -207,6 +178,62 @@ app.put("/password", async (req, res) => {
   res.send({ result: "ok" });
 });
 //endregion Users
+
+//region Memberships
+app.post("/membership", userMiddleware, async (req, res) => {
+  const body = req.body;
+  const required = ["app", "role"];
+  if (!hasProperties(body, required)) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Missing arguments: " + required.join(", ") });
+  }
+
+  let user = req.params._user;
+
+  //Check if membership already exists.
+  const m = user.memberships.find((ms: Membership) => ms.app === body.app && ms.role === body.role);
+
+  if (m) {
+    //ALready exists.
+    cleanForSending(user);
+    return res.send(user);
+  }
+
+  await container.um.addMemberships(user.id, { app: body.app, role: body.role });
+  user = await container.um.getUser(body.identifier);
+
+  cleanForSending(user);
+  res.send(user);
+});
+
+app.put("/membership", userMiddleware, async (req, res) => {
+  const body = req.body;
+  const required = ["membershipId", "role"];
+  if (!hasProperties(body, required)) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Missing arguments: " + required.join(", ") });
+  }
+
+  let user = req.params._user;
+
+  //Check if membership exists.
+  const m: Membership = user.memberships.find((ms: Membership) => ms.id === body.membershipId);
+
+  if (!m) {
+    return res.status(404)
+      .send({ status: "failed", readon: "Membership not found" });
+  }
+
+  m.role = body.role;
+
+  await container.um.updateMembership(m);
+  user = await container.um.getUser(body.identifier);
+
+  cleanForSending(user);
+  res.send(user);
+});
+
+//endregion
 
 app.listen(port, async () => {
   //warm up

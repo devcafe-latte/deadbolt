@@ -4,6 +4,7 @@ import request from 'supertest';
 import { TestHelper } from './TestHelper';
 import container from '../model/DiContainer';
 import { PasswordAuth } from '../model/authMethod/PasswordAuth';
+import { Membership } from '../model/Membership';
 
 TestHelper.setTestEnv();
 
@@ -262,9 +263,9 @@ describe("Users", () => {
     await request(app).put("/password")
       .send({ username, password })
       .expect(200);
-    
-      const result = await container.um.login(username, PasswordAuth, password);
-      expect(result.success).toBe(true);
+
+    const result = await container.um.login(username, PasswordAuth, password);
+    expect(result.success).toBe(true);
   });
 
   it("tries non existing user", async () => {
@@ -274,7 +275,49 @@ describe("Users", () => {
       .send({ username, password })
       .expect(404);
   });
+});
 
-  //todo change password tests.
+describe("Memberships", () => {
+  it("Adds a membership", async () => {
+    const identifier = "co";
+    const membership: Membership = { app: 'test-app', role: 'mistress' };
+    await request(app).post("/membership")
+      .send({ identifier, app: membership.app, role: membership.role })
+      .expect(200);
 
+    const user = await container.um.getUser(identifier);
+    const m = user.memberships.find((ms: Membership) => ms.app === membership.app && ms.role === membership.role);
+    expect(user.memberships.length).toBe(3);
+    expect(m).toBeDefined();
+  });
+
+  it("Adds same membership twice", async () => {
+    const identifier = "co";
+    const membership: Membership = { app: 'test-app', role: 'mistress' };
+    await request(app).post("/membership")
+      .send({ identifier, app: membership.app, role: membership.role })
+      .expect(200);
+
+    await request(app).post("/membership")
+      .send({ identifier, app: membership.app, role: membership.role })
+      .expect(200);
+
+    const user = await container.um.getUser(identifier);
+    const m = user.memberships.find((ms: Membership) => ms.app === membership.app && ms.role === membership.role);
+    expect(user.memberships.length).toBe(3);
+    expect(m).toBeDefined();
+  });
+
+  it("Updates a membership", async () => {
+    const identifier = "co";
+    const data = { identifier, membershipId: 2, role: 'bottom' };
+    await request(app).put("/membership")
+      .send(data)
+      .expect(200);
+
+    const user = await container.um.getUser(identifier);
+    const m = user.memberships.find((ms: Membership) => ms.role === data.role);
+    expect(user.memberships.length).toBe(2);
+    expect(m).toBeDefined();
+  });
 });

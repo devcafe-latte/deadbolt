@@ -287,6 +287,23 @@ describe('Membership tests', () => {
     expect(user.memberships[0].userId).toBe(userId);
   });
 
+  it('Update membership', async () => {
+    const membership: Membership = {
+      id: 2,
+      app: 'test-app',
+      role: 'Top',
+    };
+    const userId = 1;
+
+    await container.um.updateMembership(membership);
+    
+    const user = await container.um.getUserById(userId);
+    expect(user.memberships.length).toBe(2, "Should have a memberships still");
+    expect(user.memberships[1].id).toBe(2, "Get the right membershipt");
+    expect(user.memberships[1].app).toBe(membership.app);
+    expect(user.memberships[1].role).toBe(membership.role);
+  });
+
   it('adds multiple memberships', async () => {
     const memberships: Membership[] = [
       { app: 'test-app', role: 'admin', },

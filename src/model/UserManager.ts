@@ -207,6 +207,10 @@ export class UserManager {
     await container.db.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
   }
 
+  async updateMembership(m: Membership) {
+    await container.db.query("UPDATE `membership` SET ? WHERE id = ?", [m, m.id]);
+  }
+
   async removeMemberships(userId: number, memberships: Membership | Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
