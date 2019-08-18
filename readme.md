@@ -2,6 +2,8 @@
 
 Just another user authentication library running on Express and Typescript. This project mainly exists to satisfy my curiosity around Express, Typescript, testing, databases, etc.
 
+This service is meant to run as a microservice within your cluster/swarm/whatever. The API is not meant to be exposed to the public.
+
 ## Supported settings
 
 All settings can be set through environment variables or a `.env` file in the root of the project. If a settings exists in both, the environment variable will be used.
@@ -39,8 +41,7 @@ npm test
 
 ## todo
 
-Make test for middlewares
-Swagger document routes
+Swagger document routes (See `swagger-test` branch)
 Make Docker container to build and run.
 Add Social Logins
 - Google

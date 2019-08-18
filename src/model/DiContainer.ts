@@ -21,7 +21,7 @@ export class Container {
 
   debug: boolean;
 
-  constructor() {}
+  constructor() { }
 
   public async ready() {
     if (!this._ready) this._ready = this.init();
@@ -39,7 +39,7 @@ export class Container {
     this._um = new UserManager();
 
     //Setup DB Connection
-    this._db = await createConnection({
+    const config = {
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASS || '',
@@ -53,7 +53,17 @@ export class Container {
           return next();
         }
       }
-    });
+    }
+    try {
+      this._db = await createConnection(config);
+    } catch (err) {
+
+      console.error("Can't connect to database! Shutting down...");
+      console.error(`Tried connecting to '${config.host}' with user '${config.user}'\n\n`);
+      console.error(err);
+
+      process.exit(1);
+    }
   }
 }
 
