@@ -39,7 +39,6 @@ npm test
 
 ## todo
 
-Add routes that call the appropriate things.
 Make test for middlewares
 Swagger document routes
 Make Docker container to build and run.
