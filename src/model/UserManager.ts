@@ -2,7 +2,7 @@ import moment from 'moment';
 import uuidv4 from 'uuid/v4';
 
 import container from './DiContainer';
-import { SqlHelper } from './helpers';
+import { SqlHelper, getIdentifierType } from './helpers';
 import { LoginResult } from './LoginResult';
 import { Session } from './Session';
 import { User } from './User';
@@ -19,7 +19,7 @@ export class UserManager {
     this._sessionHours = Number(process.env.SESSION_HOURS) || 24 * 14;
   }
 
-  async getUser(id: number): Promise<User|null> {
+  async getUserById(id: number): Promise<User | null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.id = ?";
@@ -29,7 +29,35 @@ export class UserManager {
     return users[0];
   }
 
-  async getUserByUsername(name: string): Promise<User|null> {
+  /**
+   * Get a user by either id, uuid, username or email.
+   * 
+   * The function will figure it out what you've supplied and go from there.
+   *
+   * @param {*} identifier
+   * @returns {(Promise<User|null>)}
+   * @memberof UserManager
+   */
+  async getUser(identifier: any): Promise<User|null> {
+    if (!identifier) return null;
+    
+    const type = getIdentifierType(identifier);
+    let user: User;
+
+    if (type === "id") {
+      user = await container.um.getUserById(identifier);
+    } else if (type === "uuid") {
+      user = await container.um.getUserByUuid(identifier);
+    } else if (type === "username") {
+      user = await container.um.getUserByUsername(identifier);
+    } else if (type === "email") {
+      user = await container.um.getUserByEmail(identifier);
+    }
+
+    return user;
+  }
+
+  async getUserByUsername(name: string): Promise<User | null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.username = ?";
@@ -39,7 +67,7 @@ export class UserManager {
     return users[0];
   }
 
-  async getUserByEmail(email: string): Promise<User|null> {
+  async getUserByEmail(email: string): Promise<User | null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.email = ?";
@@ -49,7 +77,7 @@ export class UserManager {
     return users[0];
   }
 
-  async getUserByUuid(uuid: string): Promise<User|null> {
+  async getUserByUuid(uuid: string): Promise<User | null> {
     await container.ready();
 
     const sql = this.userQuery() + "WHERE u.uuid = ?";
@@ -97,10 +125,6 @@ export class UserManager {
   }
 
   async purgeUser(uuid: string) {
-    const user = await this.getUserByUuid(uuid);
-    if (!user) {
-      return false;
-    }
     const result = await container.db.query("DELETE FROM `user` WHERE `uuid` = ?", [uuid]);
     return (result.affectedRows > 0);
   }
@@ -138,14 +162,14 @@ export class UserManager {
       const expiresHours = process.env.CONFIRM_TOKEN_EXPIRES_HOURS || 24 * 7;
       user.emailConfirmTokenExpires = moment().add(expiresHours, 'hours');
     }
-    
+
     const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
     user.id = result.insertId;
 
     return { success: true };
   }
 
-  async validateSession(token: string): Promise<Session|null> {
+  async validateSession(token: string): Promise<Session | null> {
     const now = moment().unix();
     const rows = await container.db.query("SELECT * FROM `session` WHERE `token` = ? AND `expires` > ?", [token, now]);
     if (rows.length === 0) return null;
@@ -160,7 +184,7 @@ export class UserManager {
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, token]);
   }
 
-  async expireAllSessions(userId: string|number) {
+  async expireAllSessions(userId: string | number) {
     if (!isNumber(userId)) userId = await this.getIdFromUuid(userId);
     if (!userId) return null;
 
@@ -168,13 +192,13 @@ export class UserManager {
     await container.db.query("UPDATE `session` SET `expires` = ? WHERE `userId` = ?", [expires, userId]);
   }
 
-  async addMemberships(userId: number, memberships: Membership|Membership[]) {
+  async addMemberships(userId: number, memberships: Membership | Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
     const rows = [];
     for (let m of memberships) {
-      const row = [ m.app, m.role, userId, moment().unix() ];
+      const row = [m.app, m.role, userId, moment().unix()];
       rows.push(row);
     }
 
@@ -183,7 +207,11 @@ export class UserManager {
     await container.db.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
   }
 
-  async removeMemberships(userId: number, memberships: Membership|Membership[]) {
+  async updateMembership(m: Membership) {
+    await container.db.query("UPDATE `membership` SET ? WHERE m.id = ?", [m, m.id]);
+  }
+
+  async removeMemberships(userId: number, memberships: Membership | Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
@@ -206,7 +234,7 @@ export class UserManager {
       emailConfirmTokenExpires: null,
     };
 
-    await container.db.query("UPDATE `user` SET ? WHERE id = ?", [ data, userId ]);
+    await container.db.query("UPDATE `user` SET ? WHERE id = ?", [data, userId]);
   }
 
   async confirmEmail(confirmToken: string) {
@@ -216,7 +244,7 @@ export class UserManager {
       emailConfirmTokenExpires: null,
     };
 
-    await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [ data, confirmToken ]);
+    await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [data, confirmToken]);
   }
 
   async userNameTaken(username: string): Promise<boolean> {
@@ -247,36 +275,36 @@ export class UserManager {
 
   private async createSession(user: User) {
     user.session = await Session.new(user, moment().add(this._sessionHours, 'hours'));
-    
+
     const result = await container.db.query("INSERT INTO `session` SET ?", user.session.toDb());
     user.session.id = result.insertId;
   }
 
-  private async getIdFromUuid(uuid: string): Promise<number|null> {
+  private async getIdFromUuid(uuid: string): Promise<number | null> {
     const result = await container.db.query("SELECT `id` FROM `user` WHERE `uuid` = ?", [uuid]);
     if (result[0]) return result[0].id;
     return null;
   }
-  
+
   private userQuery() {
-    const sql = "SELECT * FROM `user` u " + 
+    const sql = "SELECT * FROM `user` u " +
       "LEFT OUTER JOIN `membership` m ON u.id = m.userId ";
 
-      return sql;
+    return sql;
   }
 
   private async processUserQuery(sql: string, values: any): Promise<User[]> {
     const rows = await container.db.query({ sql, values, nestTables: true });
     if (rows.length === 0) return [];
-    
+
     const results = SqlResult.new(rows);
     results.cast('u', User);
-    
+
     const memberships: Membership[] = results.array('m');
     for (let m of memberships) {
       results.data.u[m.userId].memberships.push(m);
     }
-    
+
     return results.array('u');
   }
 }

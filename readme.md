@@ -39,9 +39,8 @@ npm test
 
 ## todo
 
-Add routes that call the appropriate things.
-Protect against weird usernames (alphanumerics only) ?? Maybe not. Let the main app deal with it.
-Allow login with either username or email
+Make test for middlewares
+Swagger document routes
 Make Docker container to build and run.
 Add Social Logins
 - Google
