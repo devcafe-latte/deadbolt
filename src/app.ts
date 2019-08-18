@@ -1,12 +1,14 @@
 import bodyParser from 'body-parser';
 import express = require('express');
+import swaggerUi from 'swagger-ui-express';
 
 import { PasswordAuth } from './model/authMethod/PasswordAuth';
 import container from './model/DiContainer';
 import { cleanForSending, hasProperties } from './model/helpers';
-import { User } from './model/User';
-import { userMiddleware } from './model/middlewares';
 import { Membership } from './model/Membership';
+import { userMiddleware } from './model/middlewares';
+import { User } from './model/User';
+import { swaggerSpec } from './swagger';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -15,10 +17,25 @@ app.use(bodyParser.json());
 
 /**
  * @swagger
+ * tags:
+ * - name: "Status"
+ *   description: "Service status"
+ * - name: "Session"
+ *   description: "Session actions, e.g. logging in and out."
+ * - name: User
+ *   description: "User actions, e.g. Add, update, disable."
+ * - name: "Memberships"
+ *   description: "Memberschip actions, e.g. Add, change role, remove."
+ */
+
+/**
+ * @swagger
  *
  * /:
  *  get:
  *   description: See basic status
+ *   tags:
+ *   - "Status"
  *   produces:
  *   - application/json
  *   responses:
@@ -49,8 +66,44 @@ app.get('/', async (req, res) => {
   res.send(response);
 });
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Region Sessions
+
+/**
+ * @swagger
+ *
+ * /session:
+ *  post:
+ *   description: "Login / Create a new session"
+ *   tags:
+ *   - "Session"
+ *   produces:
+ *   - application/json
+ *   requestBody:
+ *     description: User credentials
+ *     required: true
+ *     content:
+ *       'application/json':
+ *         schema:
+ *           type: object
+ *           required:
+ *           - username
+ *           - password
+ *           properties:
+ *             username:
+ *               type: string
+ *             password:
+ *               type: string
+ *               format: password
+ *   responses:
+ *    200:
+ *     description: All good
+ *    400:
+ *     description: Missing fields
+ *    404:
+ *     description: User not found
+ */
 app.post('/session', async (req, res) => {
   const username = req.body.username || null;
   const pass = req.body.password || null;

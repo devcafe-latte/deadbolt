@@ -1,0 +1,57 @@
+openapi: '3.0.2'
+info:
+  title: Deadbolt
+  description: A microservice for user management.
+  version: '1.0'
+servers:
+  - url: http://localhost:3000
+    description: Local Devlopment
+
+tags:
+  - name: "Status"
+    description: "Service status"
+  - name: "Session"
+    description: "Session actions, e.g. logging in and out."
+  - name: User
+    description: "User actions, e.g. Add, update, disable."
+  - name: "Memberships"
+    description: "Memberschip actions, e.g. Add, change role, remove."
+paths:
+  /:
+    get:
+      description: See Status of the service
+      tags:
+        - "Status"
+      responses:
+        200:
+          description: All good
+        500:
+          description: Database issues
+  /session:
+    post:
+      description: "Login / Create a new session"
+      tags:
+      - "Session"
+      requestBody:
+        description: User credentials
+        required: true
+        content:
+          'application/json':
+            schema:
+              type: object
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                  format: password
+      responses:
+        200:
+          description: All good
+        400:
+          description: Missing fields
+        404:
+          description: User not found

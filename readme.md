@@ -39,7 +39,6 @@ npm test
 
 ## todo
 
-Make test for middlewares
 Swagger document routes
 Make Docker container to build and run.
 Add Social Logins
