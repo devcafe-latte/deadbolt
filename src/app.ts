@@ -5,7 +5,7 @@ import { PasswordAuth } from './model/authMethod/PasswordAuth';
 import container from './model/DiContainer';
 import { cleanForSending, hasProperties } from './model/helpers';
 import { User } from './model/User';
-import { userMiddleware } from './model/middlewares';
+import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
 
 const app: express.Application = express();
@@ -37,7 +37,7 @@ app.get('/', async (req, res) => {
 
 
 //Region Sessions
-app.post('/session', async (req, res) => {
+app.post('/session', requiredBody("username", "password"), async (req, res) => {
   const username = req.body.username || null;
   const pass = req.body.password || null;
 

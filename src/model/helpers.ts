@@ -37,6 +37,10 @@ export function hasProperties(object: any, properties: string[]): boolean {
   return true;
 }
 
+export function hasProperty(object: any, property: string): boolean {
+  return hasProperties(object, [property])
+}
+
 export function cleanForSending(body: any, depth = 1) {
   if (depth > 5) return;
 
