@@ -7,6 +7,7 @@ import { cleanForSending, hasProperties } from './model/helpers';
 import { User } from './model/User';
 import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
+import { Request, Response } from 'express';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -251,6 +252,32 @@ app.delete("/membership/:identifier/:app/:role", userMiddleware, async (req, res
   res.send(user);
 });
 //endregion
+
+//Error handler
+app.use((req, res) => {
+  //404 handler
+  console.log("404 handler reached");
+  res.status(404);
+  throw new Error("Not found: " + req.method + " " + req.path);
+})
+
+app.use((err: any, req: Request, res: Response, next) => {
+  console.log("custom error handler");
+  res.status(err.status || 500);
+  
+  const data = {
+    status: "failed",
+    path: req.path,
+    reason: err.message || "Unknown Error",
+    error: undefined
+  }
+
+  if (app.get('env') === "development") {
+    data.error = err;
+  }
+
+  res.send(data);
+});
 
 app.listen(port, async () => {
   //warm up
