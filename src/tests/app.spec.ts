@@ -255,6 +255,11 @@ describe("Users", () => {
       .expect(200);
 
     expect(result.body.username).toBe("Co");
+
+    expect(result.body.memberships.length).toBe(2);
+    for (let m of result.body.memberships) {
+      expect(m.userId).toBeUndefined();
+    }
   });
 
   it("Get user by username", async () => {

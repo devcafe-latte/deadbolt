@@ -21,6 +21,10 @@ describe('User Tests', () => {
     const user = await container.um.getUser(1);
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
+
+    //Check memberships
+    expect(user.memberships.length).toBe(2);
+    
   }); 
 
   it('Get User by UUID', async () => {

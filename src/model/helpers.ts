@@ -58,6 +58,7 @@ export function cleanForSending(body: any, depth = 1) {
 
   //Remove id if a UUID or token is present.
   if ((body.uuid || body.token) && body.id) delete body.id;
+  if (body.userId) delete body.userId;
 }
 
 export function stripComplexTypes(object: any, keepNulls = false) {
