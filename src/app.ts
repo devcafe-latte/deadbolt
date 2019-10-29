@@ -8,6 +8,7 @@ import { User } from './model/User';
 import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
 import { Request, Response } from 'express';
+import { Session } from './model/Session';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -70,6 +71,20 @@ app.get("/session/:token", async (req, res) => {
 
   cleanForSending(session);
   res.send(session);
+});
+
+app.get("/user-by-session/:token", async (req, res) => {
+  const token = req.params.token;
+  const session = await container.um.validateSession(token);
+  if (!session) {
+    return res.status(404).send();
+  }
+
+  const user = await container.um.getUserById(session.userId);
+  user.session = session;
+
+  cleanForSending(user);
+  res.send(user);
 });
 
 app.delete("/session/all/:identifier", userMiddleware, async (req, res) => {
@@ -258,7 +273,11 @@ app.use((req, res) => {
   //404 handler
   console.log("404 handler reached");
   res.status(404);
-  throw new Error("Not found: " + req.method + " " + req.path);
+  const error = {
+    message: "Not found: " + req.method + " " + req.path,
+    status: 404
+  };
+  throw error;
 })
 
 app.use((err: any, req: Request, res: Response, next) => {

@@ -21,6 +21,11 @@ describe("App", () => {
     expect(body.express).toBe("ok");
     expect(body.status).toBe("ok");
   });
+
+  it("Checks 404", async () => {
+    const result = await request(app).get("/not-a-real-url")
+      .expect(404);
+  });
 });
 
 describe("Sessions", () => {
@@ -72,6 +77,21 @@ describe("Sessions", () => {
     expect(checkResult.body.created).toBeDefined();
     expect(checkResult.body.created).toBeDefined();
     expect(checkResult.body.token).toBeDefined();
+  });
+
+  it("Check user from session", async () => {
+    const login = await container.um.login("co", PasswordAuth, "password");
+    const user = login.user;
+
+    expect(user.session.token).toBeDefined("Session token should be here");
+
+    const checkResult = await request(app).get(`/user-by-session/${user.session.token}`).expect(200);
+
+    //Check body
+    expect(checkResult.body.username).toBe("Co");
+    expect(checkResult.body.session.created).toBeDefined();
+    expect(checkResult.body.session.created).toBeDefined();
+    expect(checkResult.body.session.token).toBeDefined();
   });
 
   it("Check Wrong session", async () => {
