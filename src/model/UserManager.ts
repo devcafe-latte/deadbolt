@@ -215,12 +215,13 @@ export class UserManager {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
-    const db = container.db;
-    await db.beginTransaction();
+    const con = await container.db.getConnection();
+    await con.beginTransaction();
     for (let m of memberships) {
-      await db.query("DELETE FROM `membership` WHERE userId = ? AND app = ? AND role = ?", [userId, m.app, m.role]);
+      await con.query("DELETE FROM `membership` WHERE userId = ? AND app = ? AND role = ?", [userId, m.app, m.role]);
     }
-    await db.commit();
+    await con.commit();
+    con.release();
   }
 
   async removeApp(userId: number, app: string) {

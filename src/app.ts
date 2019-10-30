@@ -9,6 +9,7 @@ import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
 import { Request, Response } from 'express';
 import { Session } from './model/Session';
+import { PoolConnection } from 'promise-mysql';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -22,8 +23,10 @@ app.get('/', async (req, res) => {
     status: "ok"
   };
 
+  let con: PoolConnection;
   try {
-    await container.db.ping();
+    con = await container.db.getConnection();
+    con.ping();
   } catch (error) {
     response.database = "not ok";
     response.status = "not ok";
@@ -33,6 +36,7 @@ app.get('/', async (req, res) => {
       response.error = error;
     }
   }
+  if (con) con.release();
 
   res.send(response);
 });

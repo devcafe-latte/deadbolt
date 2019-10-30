@@ -1,10 +1,12 @@
 import { userMiddleware } from '../model/middlewares';
+import { TestHelper } from './TestHelper';
 
 describe("userMiddleware", () => {
   let req: any;
   let res: any;
+  let th: TestHelper;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     req = { body: {}, params: {} };
     res = {
       statusCode: 200,
@@ -18,6 +20,9 @@ describe("userMiddleware", () => {
         return res;
       }
     };
+    
+    th = await TestHelper.new();
+    
   });
 
   it("Tests Missing Identifier", async () => {

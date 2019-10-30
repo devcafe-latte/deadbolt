@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { existsSync } from 'fs';
-import { Connection, createConnection } from 'promise-mysql';
+import { Connection, createConnection, createPool, PoolConfig, Pool } from 'promise-mysql';
 
 import { UserManager } from './UserManager';
 
@@ -13,7 +13,7 @@ export class Container {
     return this._um;
   }
 
-  private _db: Connection;
+  private _db: Pool;
   get db() {
     if (!this._db) throw new Error("Container still starting up... (Maybe await ready() first.");
     return this._db;
@@ -39,7 +39,8 @@ export class Container {
     this._um = new UserManager();
 
     //Setup DB Connection
-    const config = {
+    const config: PoolConfig = {
+      connectionLimit : 10,
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASS || '',
@@ -55,7 +56,10 @@ export class Container {
       }
     }
     try {
-      this._db = await createConnection(config);
+      this._db = await createPool(config);
+      this._db.on("connection", () => { console.log("Connection Created"); });
+      this._db.on("acquire", () => { console.log("Connection Acquired"); });
+      this._db.on("release", () => { console.log("Connection Released"); });
     } catch (err) {
 
       console.error("Can't connect to database! Shutting down...");

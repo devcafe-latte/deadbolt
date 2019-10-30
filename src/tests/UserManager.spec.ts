@@ -178,11 +178,11 @@ describe('User Tests', () => {
     let user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
 
-    container.um.activateUser(1, false);
+    await container.um.activateUser(1, false);
     user = await container.um.getUserById(1);
     expect(user.active).toBe(false);
 
-    container.um.activateUser(1, true);
+    await container.um.activateUser(1, true);
     user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
     
@@ -221,7 +221,7 @@ describe('User Tests', () => {
 
   it('Inactive user', async () => {
     const um = container.um;
-    container.um.activateUser(1, false);
+    await container.um.activateUser(1, false);
 
     const result = await um.login(correct.name, PasswordAuth, correct.pass);
     expect(result.success).toBe(false, "Should not log in");
@@ -429,7 +429,7 @@ describe("Email Confirmation Tests", () => {
     expect(result.reason).toBe('Email address not confirmed.');
 
     //todo confirm and try again
-    container.um.confirmEmailByUserId(1);
+    await container.um.confirmEmailByUserId(1);
     const result2 = await container.um.login(correct.name, PasswordAuth, correct.pass);
     expect(result2.success).toBe(true, "Now it's confirmed.");
   }); 

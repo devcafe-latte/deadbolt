@@ -36,15 +36,6 @@ export function requiredBody(...args: any[]) {
         .status(400)
         .send({ status: "failed", reason: "Missing arguments", required: args });
     }
-    /* for (let a of args) {
-      //Check body
-      if (req.body[a] === null || req.params[a] === undefined) {
-        //throw
-        return res
-          .status(400)
-          .send({ status: "failed", reason: "Missing arguments", required: args });
-      }
-    } */
 
     next();
   };
