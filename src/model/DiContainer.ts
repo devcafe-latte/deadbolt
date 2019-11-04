@@ -57,11 +57,7 @@ export class Container {
     }
     try {
       this._db = await createPool(config);
-      this._db.on("connection", () => { console.log("Connection Created"); });
-      this._db.on("acquire", () => { console.log("Connection Acquired"); });
-      this._db.on("release", () => { console.log("Connection Released"); });
     } catch (err) {
-
       console.error("Can't connect to database! Shutting down...");
       console.error(`Tried connecting to '${config.host}' with user '${config.user}'\n\n`);
       console.error(err);

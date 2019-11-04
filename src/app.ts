@@ -302,10 +302,25 @@ app.use((err: any, req: Request, res: Response, next) => {
   res.send(data);
 });
 
-app.listen(port, async () => {
+const server = app.listen(port, async () => {
   //warm up
   await container.ready();
   console.log(`Deadbolt is listening on port ${port}!`);
+});
+
+server.on('close', async () => {
+  console.info("Closing DB Connections...");
+  await container.db.end()
+    .catch(() => { console.warn("Closing DB connections did not go gracefully."); });
+  console.info("Exiting.");
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.info("Got SIGTERM. Gracefully shutting down.");
+
+  console.info("Stopping Express...");
+  server.close();
 });
 
 export { app };
