@@ -87,10 +87,10 @@ export class UserManager {
     return users[0];
   }
 
-  async login(username: string, authMethod: any, authOptions: any): Promise<LoginResult> {
+  async login(usernameOrEmail: string, authMethod: any, authOptions: any): Promise<LoginResult> {
     await container.ready();
 
-    const user = await this.getUserByUsername(username);
+    const user = await this.getUser(usernameOrEmail);
     if (!user) return LoginResult.failed("Not found");
 
     const authService: iAuthMethod = new authMethod();
