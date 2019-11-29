@@ -8,7 +8,6 @@ import { User } from './model/User';
 import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
 import { Request, Response } from 'express';
-import { Session } from './model/Session';
 import { PoolConnection } from 'promise-mysql';
 
 const app: express.Application = express();

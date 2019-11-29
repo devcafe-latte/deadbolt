@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { existsSync } from 'fs';
-import { Connection, createConnection, createPool, PoolConfig, Pool } from 'promise-mysql';
+import { createPool, Pool, PoolConfig } from 'promise-mysql';
 
 import { UserManager } from './UserManager';
 
@@ -30,7 +30,7 @@ export class Container {
 
   private async init() {
     //Load dotenv file if any.
-    if (existsSync('.env')) dotenv.config(); //todo see if this works.
+    if (existsSync('.env')) dotenv.config();
 
     //Set debug mode.
     this.debug = (process.env.NODE_ENV !== "production");
