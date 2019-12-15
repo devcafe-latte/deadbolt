@@ -395,12 +395,19 @@ describe("Email Confirmation Tests", () => {
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmed).toBe(null);
 
-    container.um.confirmEmail(user.emailConfirmToken);
+    const result = await container.um.confirmEmail(user.emailConfirmToken);
+    expect(result).toBe(user.uuid);
+
     user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmed).toBeDefined();
 
+  });
+
+  it('confirm Email wrong token', async () => {
+    const result = await container.um.confirmEmail("not a token");
+    expect(result).toBeNull();
   });
 
   it('confirmEmailByUserId', async () => {
@@ -414,7 +421,7 @@ describe("Email Confirmation Tests", () => {
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmed).toBe(null);
 
-    container.um.confirmEmailByUserId(user.id);
+    await container.um.confirmEmailByUserId(user.id);
     user = await container.um.getUserById(user.id);
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);

@@ -29,6 +29,27 @@ export class UserManager {
     return users[0];
   }
 
+  async getUserByConfirmToken(token: string): Promise<User | null> {
+    await container.ready();
+
+    const sql = this.userQuery() + "WHERE `u`.`emailConfirmToken` = ?";
+    const users = await this.processUserQuery(sql, [token]);
+    if (users.length === 0) return null;
+
+    return users[0];
+  }
+
+  async getUserByResetToken(token: string): Promise<User | null> {
+    throw "Not iplemented";
+    // await container.ready();
+
+    // const sql = this.userQuery() + "WHERE `u`.`emailResetToken` = ?";
+    // const users = await this.processUserQuery(sql, [token]);
+    // if (users.length === 0) return null;
+
+    // return users[0];
+  }
+
   /**
    * Get a user by either id, uuid, username or email.
    * 
@@ -238,7 +259,10 @@ export class UserManager {
     await container.db.query("UPDATE `user` SET ? WHERE id = ?", [data, userId]);
   }
 
-  async confirmEmail(confirmToken: string) {
+  async confirmEmail(confirmToken: string): Promise<string|null> {
+    const user = await this.getUserByConfirmToken(confirmToken);
+    if (!user) return null;
+
     const data = {
       emailConfirmed: moment().unix(),
       emailConfirmToken: null,
@@ -246,6 +270,7 @@ export class UserManager {
     };
 
     await container.db.query("UPDATE `user` SET ? WHERE emailConfirmToken = ?", [data, confirmToken]);
+    return user.uuid;
   }
 
   async userNameTaken(username: string): Promise<boolean> {

@@ -203,6 +203,14 @@ app.put("/password", userMiddleware, async (req, res) => {
 
   res.send({ result: "ok" });
 });
+
+app.post("/confirm-email", requiredBody('token'), async (req, res) => {
+  const token = req.body.token;
+
+  const userUuid = await container.um.confirmEmail(token);
+
+  res.send({ result: userUuid ? 'ok' : 'invalid token', userUuid });
+});
 //endregion Users
 
 //region Memberships
@@ -286,7 +294,7 @@ app.use((req, res) => {
 app.use((err: any, req: Request, res: Response, next) => {
   console.log("custom error handler");
   res.status(err.status || 500);
-  
+
   const data = {
     status: "failed",
     path: req.path,

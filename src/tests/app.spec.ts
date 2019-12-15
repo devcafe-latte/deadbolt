@@ -5,6 +5,7 @@ import { TestHelper } from './TestHelper';
 import container from '../model/DiContainer';
 import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 import { Membership } from '../model/Membership';
+import { User } from '../model/User';
 
 TestHelper.setTestEnv();
 
@@ -310,7 +311,32 @@ describe("Users", () => {
     expect(result.success).toBe(true);
   });
 
-  it("tries non existing user", async () => {
+  it("Confirm Email", async () => {
+    let user = new User();
+    user.username = "Paul";
+    user.email = "paul@someplace.com";
+    await container.um.addUser(user);
+
+    const result = await request(app).post("/confirm-email")
+      .send({ token: user.emailConfirmToken })
+      .expect(200);
+
+      expect(result.body.result).toContain("ok");
+      expect(result.body.userUuid).toBe(user.uuid);
+    
+  });
+
+  it("Confirm Email, wrong", async () => {
+    const result = await request(app).post("/confirm-email")
+      .send({ token: "12345" })
+      .expect(200);
+
+      expect(result.body.result).toContain("invalid");
+      expect(result.body.userUuid).toBeNull();
+    
+  });
+
+  it("tries update password non existing user", async () => {
     const username = "Co213";
     const password = "angryticksfireoutofmynipples";
     await request(app).put("/password")
