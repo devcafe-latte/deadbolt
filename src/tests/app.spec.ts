@@ -6,6 +6,7 @@ import container from '../model/DiContainer';
 import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 import { Membership } from '../model/Membership';
 import { User } from '../model/User';
+import moment from 'moment';
 
 TestHelper.setTestEnv();
 
@@ -311,6 +312,41 @@ describe("Users", () => {
     expect(result.success).toBe(true);
   });
 
+  it("Resets the password", async () => {
+    const token = "token1234";
+    await container.db.query("UPDATE `authPassword` SET resetToken = ?, resetTokenExpires = ? WHERE id = 1", [token, moment().add(1, 'day').unix()]);
+    const username = "Co";
+    const password = "angryticksfireoutofmynipples";
+    await request(app).post("/reset-password")
+      .send({ token, password })
+      .expect(200);
+
+    const result = await container.um.login(username, PasswordAuth, password);
+    expect(result.success).toBe(true);
+  });
+
+  it("Tries Reset the password (Wrong token)", async () => {
+    const token = "token1234";
+    await container.db.query("UPDATE `authPassword` SET resetToken = ?, resetTokenExpires = ? WHERE id = 1", [token, moment().add(1, 'day').unix()]);
+    const password = "angryticksfireoutofmynipples";
+    const result = await request(app).post("/reset-password")
+      .send({ token: "wrong token", password })
+      .expect(400);
+
+    expect(result.body.reason).toContain("Token not found");
+  });
+
+  it("Tries reset the password, token expired", async () => {
+    const token = "token1234";
+    await container.db.query("UPDATE `authPassword` SET resetToken = ?, resetTokenExpires = ? WHERE id = 1", [token, moment().subtract(1, 'day').unix()]);
+    const password = "angryticksfireoutofmynipples";
+    const result = await request(app).post("/reset-password")
+      .send({ token, password })
+      .expect(400);
+
+    expect(result.body.reason).toContain("expired");
+  });
+
   it("Confirm Email", async () => {
     let user = new User();
     user.username = "Paul";
@@ -321,9 +357,9 @@ describe("Users", () => {
       .send({ token: user.emailConfirmToken })
       .expect(200);
 
-      expect(result.body.result).toContain("ok");
-      expect(result.body.userUuid).toBe(user.uuid);
-    
+    expect(result.body.result).toContain("ok");
+    expect(result.body.userUuid).toBe(user.uuid);
+
   });
 
   it("Confirm Email, wrong", async () => {
@@ -331,9 +367,9 @@ describe("Users", () => {
       .send({ token: "12345" })
       .expect(200);
 
-      expect(result.body.result).toContain("invalid");
-      expect(result.body.userUuid).toBeNull();
-    
+    expect(result.body.result).toContain("invalid");
+    expect(result.body.userUuid).toBeNull();
+
   });
 
   it("tries update password non existing user", async () => {

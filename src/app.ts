@@ -204,6 +204,20 @@ app.put("/password", userMiddleware, async (req, res) => {
   res.send({ result: "ok" });
 });
 
+app.post("/reset-password", requiredBody('token', 'password'), async (req, res) => {
+  const token = req.body.token;
+  const newPassword = req.body.password;
+
+  const pa = new PasswordAuth();
+  const result = await pa.resetPassword(token, newPassword);
+  if (!result.success) {
+    return res.status(400)
+      .send({ status: "failed", reason: result.reason });
+  }
+
+  res.send({ result: "ok" });
+});
+
 app.post("/confirm-email", requiredBody('token'), async (req, res) => {
   const token = req.body.token;
 

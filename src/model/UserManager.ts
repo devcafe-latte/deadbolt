@@ -39,17 +39,6 @@ export class UserManager {
     return users[0];
   }
 
-  async getUserByResetToken(token: string): Promise<User | null> {
-    throw "Not iplemented";
-    // await container.ready();
-
-    // const sql = this.userQuery() + "WHERE `u`.`emailResetToken` = ?";
-    // const users = await this.processUserQuery(sql, [token]);
-    // if (users.length === 0) return null;
-
-    // return users[0];
-  }
-
   /**
    * Get a user by either id, uuid, username or email.
    * 
