@@ -32,12 +32,12 @@ export class PasswordAuth implements iAuthMethod {
       //update record
       const hash = hashSync(password, PasswordAuth.ROUNDS);
       await container.db.query("UPDATE `authPassword` SET passwordHash = ?, resetToken = null, resetTokenExpires = null, updated = ? WHERE userId = ?", [hash, moment().unix(), userId]);
-      return { success: true };
+      return await this.getRecord(userId);
     } else if (await container.um.userExists(userId)) {
       //Create record
       const record = PasswordRecord.new(userId, password);
       await container.db.query("INSERT INTO `authPassword` SET ?", record.toDb());
-      return { success: true };
+      return await this.getRecord(userId);
     } else {
       return { success: false, reason: "User doesn't exist." };
     }

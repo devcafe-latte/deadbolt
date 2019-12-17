@@ -118,6 +118,8 @@ describe("Password (re)setting", () => {
     
     const result = await pa.resetPassword(record.resetToken, "password2");
     expect(result.success).toBe(true, "Reset should have happened");
+    expect(result.record).toBeDefined("Reset should have happened");
+    expect(result.record.userId).toBe(1,);
   
     rows = await container.db.query("SELECT * FROM `authPassword`");
     record = PasswordRecord.fromDb(rows[0]);

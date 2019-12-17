@@ -215,7 +215,29 @@ app.post("/reset-password", requiredBody('token', 'password'), async (req, res) 
       .send({ status: "failed", reason: result.reason });
   }
 
-  res.send({ result: "ok" });
+  const u = await container.um.getUserById(result.record.userId);
+
+  res.send({ result: "ok", uuid: u.uuid });
+});
+
+app.post("/reset-password-token", requiredBody('email'), async (req, res, next) => {
+  const email = req.body.email;
+  
+  const u = await container.um.getUserByEmail(email);
+  if (!u) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Email address not found" });
+  }
+
+  const pa = new PasswordAuth();
+  const result = await pa.generateResetToken(u.id);
+
+  if (!result.success) {
+    return res.status(400)
+      .send({ status: "failed", reason: result.reason });
+  }
+
+  res.send({ result: "ok", token: result.record.resetToken, expires: result.record.resetTokenExpires.unix(), uuid: u.uuid });
 });
 
 app.post("/confirm-email", requiredBody('token'), async (req, res) => {

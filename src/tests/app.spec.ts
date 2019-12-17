@@ -312,6 +312,37 @@ describe("Users", () => {
     expect(result.success).toBe(true);
   });
 
+  it("Requests password reset", async (done) => {
+    const email = "jordan@example.com";
+
+    const result = await request(app).post("/reset-password-token")
+      .send({ email })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.result).toBe("ok");
+
+    expect(typeof body.token).toBe("string");
+    expect(body.token.length).toBeGreaterThan(10);
+
+    expect(typeof body.expires).toBe("number");
+
+    expect(typeof body.uuid).toBe("string");
+    expect(body.uuid.length).toBeGreaterThan(10);
+    
+    done();
+  });
+
+  it("Requests password reset wrong email", async (done) => {
+    const email = "someoneelse@example.com";
+
+    await request(app).post("/reset-password-token")
+      .send({ email })
+      .expect(400);
+    
+    done();
+  });
+
   it("Resets the password", async () => {
     const token = "token1234";
     await container.db.query("UPDATE `authPassword` SET resetToken = ?, resetTokenExpires = ? WHERE id = 1", [token, moment().add(1, 'day').unix()]);
