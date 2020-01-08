@@ -144,6 +144,26 @@ describe("Users", () => {
     await TestHelper.new();
   });
 
+  it("Search for users", async () => {
+    const result = await request(app).get('/users?q=jordan')
+      .expect(200);
+
+    const body = result.body;
+    expect(body.users.length).toBe(1);
+    expect(body.criteria.orderBy).toEqual(['u.id']);    
+    expect(body.users[0].firstName).toBe("Jordan");
+  });
+
+  it("Search for users, based on role", async () => {
+    const result = await request(app).get('/users?memberships=admin&memberships=whatever')
+      .expect(200);
+
+    const body = result.body;
+    expect(body.users.length).toBe(1);
+    expect(body.criteria.orderBy).toEqual(['u.id']);    
+    expect(body.users[0].username).toBe("Co");
+  });
+
   it("Registers a new user", async () => {
     const result = await request(app).post('/user')
       .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com" })

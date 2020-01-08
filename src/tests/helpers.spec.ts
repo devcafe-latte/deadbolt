@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties, isValidEmail } from '../model/helpers';
+import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties, isValidEmail, trimCharLeft } from '../model/helpers';
 import { User } from '../model/User';
 import uuidv4 from 'uuid/v4';
 
@@ -22,6 +22,13 @@ describe('Helpers', function() {
     expect(user.firstName).toBe('coo');
     expect(user.id).toBe(1);
   }); 
+
+  it("tests trimCharLeft", () => {
+    expect(trimCharLeft("bluh")).toBe("bluh");
+    expect(trimCharLeft(",bluh")).toBe("bluh");
+    expect(trimCharLeft(",,,,bluh")).toBe("bluh");
+    expect(trimCharLeft("*****bluh", '*')).toBe("bluh");
+  });
 
   it("tests transform Moments", () => {
     const input: any = {

@@ -9,6 +9,7 @@ import { userMiddleware, requiredBody } from './model/middlewares';
 import { Membership } from './model/Membership';
 import { Request, Response } from 'express';
 import { PoolConnection } from 'promise-mysql';
+import { SearchCriteria } from './model/SearchCriteria';
 
 const app: express.Application = express();
 const port = process.env.PORT || 3000;
@@ -105,6 +106,18 @@ app.delete("/session/:token", async (req, res) => {
 //endregion Sessions
 
 //region Users
+app.get("/users", async (req, res, next) => {
+  const search = SearchCriteria.fromQueryParams(req.query);
+
+  try {
+    const result = await container.um.getUsers(search);
+    cleanForSending(result);
+    res.send(result);
+  } catch (err){
+    next(err);
+  }
+});
+
 app.post("/user", async (req, res) => {
   const body = req.body;
   const required = ["username", "password", "email"];

@@ -10,6 +10,8 @@ import { Membership } from './Membership';
 import { SqlResult } from './SqlResult';
 import { iAuthMethod } from './authMethod/iAuthMethod';
 import { isNumber } from 'util';
+import { SearchCriteria } from './SearchCriteria';
+import { UsersPage } from './UsersPage';
 
 export class UserManager {
   private _sessionHours: number;
@@ -48,9 +50,9 @@ export class UserManager {
    * @returns {(Promise<User|null>)}
    * @memberof UserManager
    */
-  async getUser(identifier: any): Promise<User|null> {
+  async getUser(identifier: any): Promise<User | null> {
     if (!identifier) return null;
-    
+
     const type = getIdentifierType(identifier);
     let user: User;
 
@@ -65,6 +67,46 @@ export class UserManager {
     }
 
     return user;
+  }
+
+  async getUsers(search: SearchCriteria): Promise<UsersPage> {
+
+    //Get full count
+    const countResults = await container.db.query(search.getSqlBuilder().getSql("SELECT COUNT(DISTINCT u.id) count", false));
+    const total = Number(countResults[0].count);
+
+    //Get page Ids
+    const idResult = await container.db.query(search.getSqlBuilder().getSql("SELECT DISTINCT u.id"));
+    const ids = idResult.map(r => r.id);
+
+    if (ids.length === 0) {
+      return {
+        criteria: search,
+        users: [],
+        lastPage: 0,
+      }
+    }
+
+    //Get users
+    const sql = this.userQuery() + "WHERE u.id IN (?)";
+    const users = await this.processUserQuery(sql, [ids]);
+
+    const page: UsersPage = {
+      criteria: search,
+      users,
+      lastPage: Math.ceil(total / search.perPage) - 1,
+    };
+
+    return page;
+  }
+
+  private async getSearchTotals(search: SearchCriteria) {
+    let select = "SELECT COUNT(DISTINCT u.id)";
+
+    const builder = search.getSqlBuilder();
+
+    const totalResult = await container.db.query(`${select} ${builder.getFrom()} ${builder.getWhere()} ${builder.getOrderBy()} ${builder.getLimit()}`);
+
   }
 
   async getUserByUsername(name: string): Promise<User | null> {
@@ -248,7 +290,7 @@ export class UserManager {
     await container.db.query("UPDATE `user` SET ? WHERE id = ?", [data, userId]);
   }
 
-  async confirmEmail(confirmToken: string): Promise<string|null> {
+  async confirmEmail(confirmToken: string): Promise<string | null> {
     const user = await this.getUserByConfirmToken(confirmToken);
     if (!user) return null;
 

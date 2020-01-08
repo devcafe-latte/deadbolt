@@ -41,6 +41,12 @@ export function hasProperty(object: any, property: string): boolean {
   return hasProperties(object, [property])
 }
 
+export function trimCharLeft(input: string, char = ','): string {
+  if (input[0] === char) return trimCharLeft(input.substring(1), char);
+
+  return input;
+}
+
 export function cleanForSending(body: any, depth = 1) {
   if (depth > 5) return;
 
@@ -51,6 +57,8 @@ export function cleanForSending(body: any, depth = 1) {
     //Convert Moment objects to unix timestamp
     if (typeof body[key] === "object" && body[key] !== null && body[key].constructor.name === 'Moment') {
       body[key] = body[key].unix();
+    } else if (typeof body[key] === "object" && body[key] !== null && body[key].constructor.name === 'SearchCriteria') {
+      body[key] = body[key].toClient();
     } else if (typeof body[key] === "object" && body[key] !== null) {
       cleanForSending(body[key], depth + 1);
     }

@@ -4,6 +4,7 @@ import { TestHelper } from './TestHelper';
 import { Membership } from '../model/Membership';
 import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 import moment from 'moment';
+import { SearchCriteria } from '../model/SearchCriteria';
 
 const correct = {
   name: 'Co',
@@ -43,6 +44,42 @@ describe('User Tests', () => {
     const user = await container.um.getUser("jordan@example.com");
     expect(user).toBeDefined();
     expect(user.id).toBe(2);
+  }); 
+
+  it('Get Users', async () => {
+    const s = new SearchCriteria();
+
+    const page = await container.um.getUsers(s);
+    expect(page.criteria).toBe(s);
+    expect(page.lastPage).toBe(0);
+    expect(page.users.length).toBe(2);
+  }); 
+
+  it('Get Users paging', async () => {
+    const s = new SearchCriteria();
+    s.perPage = 1;
+
+    let page = await container.um.getUsers(s);
+    expect(page.criteria).toBe(s);
+    expect(page.lastPage).toBe(1);
+    expect(page.users.length).toBe(1);
+
+    s.page = 1;
+    page = await container.um.getUsers(s);
+    expect(page.users.length).toBe(1);
+
+    s.page = 2;
+    page = await container.um.getUsers(s);
+    expect(page.users.length).toBe(0);
+  }); 
+
+  it('Get Users with search term', async () => {
+    const s = new SearchCriteria();
+    s.q = "jordan";
+
+    let page = await container.um.getUsers(s);
+    expect(page.users.length).toBe(1);
+    expect(page.users[0].firstName).toBe("Jordan");
   }); 
 
   it('Update User', async () => {
