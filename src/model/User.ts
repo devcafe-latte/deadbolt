@@ -32,6 +32,10 @@ export class User {
 
   constructor() { }
 
+  hasRole(role: string): boolean {
+    return Boolean(this.memberships.find(m => m.role === role));
+  }
+
   isValid(): boolean {
     if (!this.username) return false;
     if (!/^[a-z0-9]+$/i.test(this.username)) return false;

@@ -113,7 +113,7 @@ app.get("/users", async (req, res, next) => {
     const result = await container.um.getUsers(search);
     cleanForSending(result);
     res.send(result);
-  } catch (err){
+  } catch (err) {
     next(err);
   }
 });
@@ -235,7 +235,7 @@ app.post("/reset-password", requiredBody('token', 'password'), async (req, res) 
 
 app.post("/reset-password-token", requiredBody('email'), async (req, res, next) => {
   const email = req.body.email;
-  
+
   const u = await container.um.getUserByEmail(email);
   if (!u) {
     return res.status(400)
@@ -283,6 +283,33 @@ app.post("/membership", userMiddleware, async (req, res) => {
   }
 
   await container.um.addMemberships(user.id, { app: body.app, role: body.role });
+  user = await container.um.getUser(body.identifier);
+
+  cleanForSending(user);
+  res.send(user);
+});
+
+app.post("/memberships", userMiddleware, async (req, res) => {
+  const body = req.body;
+  if (!body.memberships || !Array.isArray(body.memberships)) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Missing arguments: memberships" });
+  }
+
+  const required = ["app", "role"];
+  const newMemberships = [];
+  let user = req.params._user;
+
+  for (let m of body.memberships) {
+    if (!hasProperties(m, required)) {
+      return res.status(400)
+        .send({ status: "failed", reason: "Missing membership arguments: " + required.join(", ") });
+    }
+
+    if (!user.hasRole(m.role)) newMemberships.push(m);
+  }
+
+  await container.um.addMemberships(user.id, newMemberships);
   user = await container.um.getUser(body.identifier);
 
   cleanForSending(user);

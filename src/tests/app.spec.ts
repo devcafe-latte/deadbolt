@@ -450,6 +450,19 @@ describe("Memberships", () => {
     expect(m).toBeDefined();
   });
 
+  it("Adds multiple memberships", async () => {
+    const identifier = "co";
+    const memberships: Membership[] = [{ app: 'test-app', role: 'mistress' }, { app: 'test-app', role: 'astronaut' }];
+    await request(app).post("/memberships")
+      .send({ identifier, memberships })
+      .expect(200);
+
+    const user = await container.um.getUser(identifier);
+    expect(user.hasRole('mistress')).toBe(true);
+    expect(user.hasRole('astronaut')).toBe(true);
+    expect(user.hasRole('kosmonaut')).toBe(false);
+  });
+
   it("Adds same membership twice", async () => {
     const identifier = "co";
     const membership: Membership = { app: 'test-app', role: 'mistress' };
