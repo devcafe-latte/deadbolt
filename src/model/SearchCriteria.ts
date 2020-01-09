@@ -8,8 +8,11 @@ export class SearchCriteria {
   perPage: number = 25;
   orderBy: OrderByCriteria[] = [{ column: 'u.id' }];
 
-  static fromQueryParams(params): SearchCriteria {
+  static fromQueryParams(params: any): SearchCriteria {
     const s = toObject<SearchCriteria>(SearchCriteria, params);
+
+    if (params.page) s.page = Number(params.page);
+    if (params.perPage) s.perPage = Number(params.perPage);
 
     s.setOrderBy(params.orderBy);
 
