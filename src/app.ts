@@ -158,6 +158,27 @@ app.post("/user", async (req, res) => {
   res.send(loginResult.user);
 });
 
+app.post("/verify-password", userMiddleware, async (req, res) => {
+  const body = req.body;
+  const required = ["password"];
+  if (!hasProperties(body, required)) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Missing arguments: " + required.join(", ") });
+  }
+
+  const user = req.params._user;
+  const pa = new PasswordAuth();
+  try {
+    const verified = await pa.verify(user, body.password);
+    return res.send({ result: 'ok', verified });
+  } catch (error) {
+    console.error("Error verifying password", error);
+    return res.status(500)
+      .send({ status: "failed", reason: "Server error.", error: error.message || null });
+  }
+  
+});
+
 app.put("/user", userMiddleware, async (req, res) => {
   const body = req.body;
   let user: User = req.params._user;

@@ -144,6 +144,30 @@ describe("Users", () => {
     await TestHelper.new();
   });
 
+  it("Verify password", async () => {
+    const result = await request(app).post('/verify-password').send({ email: 'co', password: 'password' })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.verified).toBe(true);
+  });
+
+  it("Verify password, wrong password", async () => {
+    const result = await request(app).post('/verify-password').send({ email: 'co', password: 'foo' })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.verified).toBe(false);
+  });
+
+  it("Verify password, wrong user", async () => {
+    const result = await request(app).post('/verify-password').send({ email: 'notauser', password: 'password' })
+      .expect(404);
+
+    const body = result.body;
+    expect(body.reason).toBe("User not found");
+  });
+
   it("Search for users", async () => {
     const result = await request(app).get('/users?q=jordan')
       .expect(200);

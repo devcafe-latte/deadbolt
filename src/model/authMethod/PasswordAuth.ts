@@ -1,11 +1,11 @@
-import { compareSync, hashSync, hash } from 'bcrypt';
+import { compareSync, hash, hashSync } from 'bcrypt';
 import moment, { Moment } from 'moment';
+import uuidv4 from 'uuid/v4';
 
 import container from '../DiContainer';
-import { stripComplexTypes, toObject, SqlHelper } from '../helpers';
+import { SqlHelper, stripComplexTypes, toObject } from '../helpers';
 import { User } from '../User';
 import { iAuthMethod } from './iAuthMethod';
-import uuidv4 from 'uuid/v4';
 
 export class PasswordAuth implements iAuthMethod {
   static ROUNDS = 10;

@@ -1,6 +1,6 @@
 {
   "name": "deadbolt",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Authentication server",
   "main": "index.ts",
   "scripts": {
