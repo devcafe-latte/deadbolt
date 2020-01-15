@@ -496,9 +496,11 @@ describe("Memberships", () => {
       .send({ identifier, memberships: firstMemberships })
       .expect(200);
 
-    await request(app).put("/memberships")
+    const result = await request(app).put("/memberships")
       .send({ identifier, memberships: newMemberships })
       .expect(200);
+
+    expect(result.body.memberships.length).toBe(2);
 
     const user = await container.um.getUser(identifier);
     expect(user.hasRole('mistress')).toBe(false);
