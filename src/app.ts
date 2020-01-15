@@ -364,6 +364,29 @@ app.put("/membership", userMiddleware, async (req, res) => {
   res.send(user);
 });
 
+app.put("/memberships", userMiddleware, async (req, res) => {
+  const body = req.body;
+  const required = ["memberships"];
+  if (!hasProperties(body, required)) {
+    return res.status(400)
+      .send({ status: "failed", reason: "Missing arguments: " + required.join(", ") });
+  }
+
+  const memberships: Membership[] = [];
+  for (let m of body.memberships) {
+    const required = ["app", "role"];
+    if (hasProperties(m, required)) memberships.push(m);
+  }
+
+  let user = req.params._user;
+
+  await container.um.replaceMemberships(user.id, memberships);
+  user = await container.um.getUser(body.identifier);
+
+  cleanForSending(user);
+  res.send(user);
+});
+
 app.delete("/membership/:identifier/:app/:role", userMiddleware, async (req, res) => {
   let user: User = req.params._user;
 

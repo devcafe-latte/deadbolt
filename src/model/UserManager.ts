@@ -263,6 +263,25 @@ export class UserManager {
     await container.db.query("UPDATE `membership` SET ? WHERE id = ?", [m, m.id]);
   }
 
+  async replaceMemberships(userId: number, memberships: Membership[]) {
+    const con = await container.db.getConnection();
+    await con.beginTransaction();
+    
+    await con.query("DELETE FROM `membership` WHERE `userId` = ?", userId );
+
+    if (memberships.length > 0){
+      const rows = [];
+      for (let m of memberships) {
+        const row = [m.app, m.role, userId, moment().unix()];
+        rows.push(row);
+      }
+      await con.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
+    }
+
+    await con.commit();
+    await con.release();
+  }
+
   async removeMemberships(userId: number, memberships: Membership | Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;

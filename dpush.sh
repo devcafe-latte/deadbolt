@@ -57,7 +57,7 @@ replace Dockerfile "$OLD_LABEL" "$NEW_LABEL"
 
 # Build it.
 echo "Building Docker image: $NAME:$VERSION..."
-docker build . -t "$NAME:$VERSION" -t "$REGISTRY/$NAME:$VERSION"
+docker build . -t "$NAME:$VERSION" -t "$REGISTRY/$NAME:$VERSION" -t "$NAME:latest" -t "$REGISTRY/$NAME:latest"
 echo "Pushing $REGISTRY/$NAME:$VERSION..."
 docker push $REGISTRY/$NAME:$VERSION
 

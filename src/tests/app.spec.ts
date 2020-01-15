@@ -174,7 +174,7 @@ describe("Users", () => {
 
     const body = result.body;
     expect(body.users.length).toBe(1);
-    expect(body.criteria.orderBy).toEqual(['u.id']);    
+    expect(body.criteria.orderBy).toEqual(['u.id']);
     expect(body.users[0].firstName).toBe("Jordan");
   });
 
@@ -184,7 +184,7 @@ describe("Users", () => {
 
     const body = result.body;
     expect(body.users.length).toBe(1);
-    expect(body.criteria.orderBy).toEqual(['u.id']);    
+    expect(body.criteria.orderBy).toEqual(['u.id']);
     expect(body.users[0].username).toBe("Co");
   });
 
@@ -373,7 +373,7 @@ describe("Users", () => {
 
     expect(typeof body.uuid).toBe("string");
     expect(body.uuid.length).toBeGreaterThan(10);
-    
+
     done();
   });
 
@@ -383,7 +383,7 @@ describe("Users", () => {
     await request(app).post("/reset-password-token")
       .send({ email })
       .expect(400);
-    
+
     done();
   });
 
@@ -485,6 +485,27 @@ describe("Memberships", () => {
     expect(user.hasRole('mistress')).toBe(true);
     expect(user.hasRole('astronaut')).toBe(true);
     expect(user.hasRole('kosmonaut')).toBe(false);
+  });
+
+  it("Replaces memberships", async (done) => {
+    const identifier = "co";
+    const firstMemberships: Membership[] = [{ app: 'test-app', role: 'mistress' }];
+    const newMemberships: Membership[] = [{ app: 'test-app', role: 'barista' }, { app: 'test-app', role: 'astronaut' }];
+
+    await request(app).put("/memberships")
+      .send({ identifier, memberships: firstMemberships })
+      .expect(200);
+
+    await request(app).put("/memberships")
+      .send({ identifier, memberships: newMemberships })
+      .expect(200);
+
+    const user = await container.um.getUser(identifier);
+    expect(user.hasRole('mistress')).toBe(false);
+    expect(user.hasRole('barista')).toBe(true);
+    expect(user.hasRole('astronaut')).toBe(true);
+    
+    done();
   });
 
   it("Adds same membership twice", async () => {

@@ -358,6 +358,45 @@ describe('Membership tests', () => {
     expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
   });
 
+  it('replaces multiple memberships', async () => {
+
+    const initial: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+    ];
+    const newMemberships: Membership[] = [
+      { app: 'test-app', role: 'user', },
+      { app: 'some-other-app', role: 'newbie', }
+    ];
+    const userId = 2;
+
+    await container.um.addMemberships(userId, initial);
+    let user = await container.um.getUserById(userId);
+    expect(user.memberships.length).toBe(1, "Should have 1 memberships now");
+
+    //Replace
+    await container.um.replaceMemberships(userId, newMemberships);
+    user = await container.um.getUserById(userId);
+    expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
+  });
+
+  it('replaces with 0 memberships', async () => {
+
+    const initial: Membership[] = [
+      { app: 'test-app', role: 'admin', },
+    ];
+    const newMemberships: Membership[] = [];
+    const userId = 2;
+
+    await container.um.addMemberships(userId, initial);
+    let user = await container.um.getUserById(userId);
+    expect(user.memberships.length).toBe(1, "Should have 1 memberships now");
+
+    //Replace
+    await container.um.replaceMemberships(userId, newMemberships);
+    user = await container.um.getUserById(userId);
+    expect(user.memberships.length).toBe(0, "Should have 0 memberships now");
+  });
+
   it ("Removes single membership", async () => {
     const toAdd: Membership[] = [
       { app: 'test-app', role: 'admin', },
