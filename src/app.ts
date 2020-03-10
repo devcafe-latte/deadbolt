@@ -365,6 +365,8 @@ app.put("/membership", userMiddleware, async (req, res) => {
 });
 
 app.put("/memberships", userMiddleware, async (req, res) => {
+  console.log("Replacing memberships " + req.params._user.uuid);
+  
   const body = req.body;
   const required = ["memberships"];
   if (!hasProperties(body, required)) {
@@ -381,7 +383,7 @@ app.put("/memberships", userMiddleware, async (req, res) => {
   let user = req.params._user;
 
   await container.um.replaceMemberships(user.id, memberships);
-  user = await container.um.getUser(body.identifier);
+  user = await container.um.getUser(user.uuid);
 
   cleanForSending(user);
   res.send(user);
