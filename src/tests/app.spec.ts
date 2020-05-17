@@ -109,7 +109,7 @@ describe("Sessions", () => {
 
     const body = result.body;
     expect(body.data.secret.length).toBe(52);
-    expect(body.data.qr).toBeDefined();
+    expect(body.data.otpAuthUrl).toBeDefined();
 
     //Create a token
     const secret = body.data.secret;
