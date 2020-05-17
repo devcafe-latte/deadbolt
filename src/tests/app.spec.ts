@@ -60,6 +60,46 @@ describe("Sessions", () => {
     done();
   });
 
+  it("New Session 2fa", async (done) => {
+
+    const user = await container.um.getUser("co");
+    user.twoFactor = "email";
+    await container.um.updateUser(user);
+
+    const result = await request(app)
+      .post('/session')
+      .send({ username: 'Co', password: "password" })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.user.session).toBeNull();
+    expect(body.twoFactorData.type).toBe("email");
+    expect(body.twoFactorData.token.length).toBe(6);
+
+    const token = body.twoFactorData.token;
+    const result2 = await request(app)
+      .post('/verify-2fa')
+      .send({ username: 'Co', type: 'email', data: { token } })
+      .expect(200);
+
+    const body2 = result2.body;
+    expect(body2.user.session.token).toBeDefined();
+
+    done();
+  });
+
+  it("Setup Email 2fa", async (done) => {
+    const result = await request(app)
+      .post('/setup-2fa')
+      .send({ username: 'Co', type: "email" })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.data.message).toContain("no setup needed");
+
+    done();
+  });
+
   it("New Session", async (done) => {
     const result = await request(app)
       .post('/session')
@@ -67,7 +107,7 @@ describe("Sessions", () => {
       .expect(200);
 
     const body = result.body;
-    expect(body.session.token).toBeDefined();
+    expect(body.user.session.token).toBeDefined();
 
     done();
   });
@@ -78,8 +118,8 @@ describe("Sessions", () => {
       .send({ username: 'Co', password: "password", app: 'test-app' })
       .expect(200);
 
-    const body = result.body;
-    expect(body.session.token).toBeDefined();
+    const user = result.body.user;
+    expect(user.session.token).toBeDefined();
 
     done();
   });

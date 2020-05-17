@@ -1,10 +1,10 @@
 import moment from 'moment';
 
-import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties, isValidEmail, trimCharLeft } from '../model/helpers';
+import { SqlHelper, stripComplexTypes, toObject, cleanForSending, hasProperties, isValidEmail, trimCharLeft, getEnumValue } from '../model/helpers';
 import { User } from '../model/User';
 import uuidv4 from 'uuid/v4';
 
-describe('Helpers', function() {
+describe('Helpers', function () {
 
   it("Tests hasProperties", () => {
     const props = ["name", "email"];
@@ -18,10 +18,10 @@ describe('Helpers', function() {
   });
 
   it('Tests toObject', () => {
-    const user = toObject<User>(User, {id: 1, firstName: 'coo'});
+    const user = toObject<User>(User, { id: 1, firstName: 'coo' });
     expect(user.firstName).toBe('coo');
     expect(user.id).toBe(1);
-  }); 
+  });
 
   it("tests trimCharLeft", () => {
     expect(trimCharLeft("bluh")).toBe("bluh");
@@ -44,7 +44,7 @@ describe('Helpers', function() {
     };
 
     cleanForSending(input);
-    
+
     expect(expected).toEqual(input);
   });
 
@@ -52,7 +52,7 @@ describe('Helpers', function() {
     let input: any = { id: 3, uuid: uuidv4() };
 
     cleanForSending(input);
-    
+
     expect(input.id).toBeUndefined("Uuid is present, so id gets removed.");
     expect(input.uuid).toBeDefined("uuid gets to stay.");
   });
@@ -61,7 +61,7 @@ describe('Helpers', function() {
     let input: any = { id: 3, some: "value" };
 
     cleanForSending(input);
-    
+
     expect(input.id).toBeDefined("No uuid, so id should stay.");
   });
 
@@ -69,7 +69,7 @@ describe('Helpers', function() {
     let input: any = { name: "peter", uuid: uuidv4(), a: { b: { c: { id: 1, uuid: uuidv4(), created: moment() } } } };
 
     cleanForSending(input);
-    
+
     expect(input.uuid).toBeDefined("uuid gets to stay.");
     expect(input.a.b.c.uuid).toBeDefined("uuid gets to stay.");
     expect(input.a.b.c.id).toBeUndefined("id should be cleared");
@@ -80,15 +80,15 @@ describe('Helpers', function() {
     let input: any = { id: 3, some: null };
 
     cleanForSending(input);
-    
+
     expect(input.some).toBe(null);
   });
 
   it('Tests stripComplexTypes', () => {
     const foo = {
       id: 1,
-      someArray: [1, 2 ,3],
-      someObject:{ bar: "baz" },
+      someArray: [1, 2, 3],
+      someObject: { bar: "baz" },
       name: "a string",
       nothing: null
     };
@@ -102,10 +102,10 @@ describe('Helpers', function() {
 
     const keepNulls = stripComplexTypes(foo, true);
     expect(keepNulls.nothing).toBe(null);
-  }); 
+  });
 
   it("test SqlHelper", () => {
-    const result = SqlHelper.update('user', {id: 1, firstName: 'coo', passwordHash: '1234567890'});
+    const result = SqlHelper.update('user', { id: 1, firstName: 'coo', passwordHash: '1234567890' });
     expect(result.sql).toEqual("UPDATE `user` SET id = ?, firstName = ?, passwordHash = ? ");
     expect(result.values).toEqual([1, 'coo', '1234567890']);
   });
@@ -121,7 +121,23 @@ describe('Helpers', function() {
     for (let v of invalid) {
       expect(isValidEmail(v)).toBe(false);
     }
-    
+
+  });
+
+  it("tests getEnumValue", () => {
+    expect(getEnumValue<testEnum>("bar", testEnum, testEnum.foo)).toBe(testEnum.bar);
+    expect(getEnumValue<testEnum>(testEnum.baz, testEnum, testEnum.foo)).toBe(testEnum.baz);
+    expect(getEnumValue<testEnum>("bluppie", testEnum, testEnum.foo)).toBe(testEnum.foo);
+    expect(getEnumValue<testEnum>(null, testEnum, testEnum.foo)).toBe(testEnum.foo);
+    expect(getEnumValue<testEnum>(undefined, testEnum, testEnum.foo)).toBe(testEnum.foo);
+    expect(getEnumValue<testEnum>("", testEnum, testEnum.foo)).toBe(testEnum.foo);
   });
 });
+
+enum testEnum {
+  foo = 'foo',
+  bar = 'bar',
+  baz = 'baz',
+
+}
 

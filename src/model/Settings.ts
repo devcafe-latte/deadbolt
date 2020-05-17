@@ -1,5 +1,8 @@
+import { getEnumValue } from './helpers';
 export class Settings {
   debug: boolean = (process.env.NODE_ENV !== "production");
+
+  emailTwoFactorTokenType: twoFactorTokenType = getEnumValue<twoFactorTokenType>(process.env.EMAIL_2FA_TOKEN_TYPE, twoFactorTokenType, twoFactorTokenType.digits);
 
   port: number = Number(process.env.PORT) || 3000;
   dbHost: string = process.env.DB_HOST || 'localhost';
@@ -22,3 +25,8 @@ export class Settings {
   }
 
 }
+
+export enum twoFactorTokenType {
+  uuid = 'uuid',
+  digits= 'digits',
+} 

@@ -1,5 +1,14 @@
 # Deadbolt 
 
+# Update to v2 from v1
+
+- `POST /session` will return the user in an envelope now, and will return Two Factor Auth data if needed.
+- Migrations have been added.
+- Database can now be seeded
+- Passwords can easily by reset (for development) by changing the `passwordHash` to "plain:whatever". Will be converted to proper hash when login occurs.
+
+# Intro
+
 Just another user authentication library running on Express and Typescript. This project mainly exists to satisfy my curiosity around Express, Typescript, testing, databases, etc.
 
 This service is meant to run as a microservice within your cluster/swarm/whatever. The API is not meant to be exposed to the public.
@@ -41,16 +50,15 @@ npm test
 
 ## todo
 
-- Add login with app filter           DONE
-- Make sessions expire depending on 
-  login params.                       DONE
-- Let plaintext passwords work 
-  until first login                   DONE
-- Add 2fa for emails and TOTP         
-- Replace db model stuff              
-- Fix Tests                           DONE
-- Make new api class                  DONE
-- refactor all process.env settings   DONE    
-- Make tests work again               DONE
-- Add migrations                      DONE
-- Add seeding                         DONE
+- Add 2fa for emails and TOTP      
+  ROUTES
+    Add setup         
+    add Verify        DONE
+  EMAIL
+    Create class      DONE
+  USER MANAGER
+    Login with 2fa    DONE
+    Verify2fa         DONE
+    
+
+- Replace db model stuff              ?

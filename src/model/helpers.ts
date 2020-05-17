@@ -47,6 +47,11 @@ export function trimCharLeft(input: string, char = ','): string {
   return input;
 }
 
+export function getEnumValue<T>(val: any, enumType: any, defaultValue: T): T {
+  if (Object.keys(enumType).indexOf(val) === -1) return defaultValue;
+  return val;
+}
+
 export function cleanForSending(body: any, depth = 1) {
   if (depth > 5) return;
 

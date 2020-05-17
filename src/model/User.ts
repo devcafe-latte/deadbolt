@@ -3,6 +3,7 @@ import moment, { Moment } from 'moment';
 import { stripComplexTypes, toObject, isValidEmail } from './helpers';
 import { Membership } from './Membership';
 import { Session } from './Session';
+import { twoFactorType } from './twoFactor/2faHelper';
 
 export class User {
   id: number = null;
@@ -19,6 +20,7 @@ export class User {
   lastActivity: Moment = null;
   active: Boolean = null;
   memberships: Membership[] = [];
+  twoFactor: twoFactorType = null;
 
   get displayName(): string {
     if (this.lastName || this.firstName){

@@ -24,6 +24,41 @@ const wrongPass: LoginRequest = {
 
 let th: TestHelper;
 
+describe('2fa Tests', () => {
+
+  beforeEach(async (done) => {
+    th = await TestHelper.new();
+    done();
+  });
+
+  afterEach(async (done) => {
+    await th.shutdown();
+    done();
+  });
+
+  it('Login with email 2fa', async (done) => {
+    const user = await container.um.getUser("co");
+    user.twoFactor = "email";
+    await container.um.updateUser(user);
+
+    const result = await container.um.login(correct, PasswordAuth, correct.password);
+    expect(result.user).toBeDefined();
+    expect(result.user.session).toBeNull();
+
+    expect(result.twoFactorData.type).toBe("email");
+    expect(result.twoFactorData.token).toBeDefined();
+
+    const tokenData = { token: result.twoFactorData.token };
+    const result2 = await container.um.verifyTwoFactor(result.user, result.twoFactorData.type, tokenData);
+
+    expect(result2.success).toBe(true);
+    expect(result2.user.session).not.toBeNull();
+
+    done();
+  });
+
+});
+
 describe('User Tests', () => {
 
   beforeEach(async (done) => {

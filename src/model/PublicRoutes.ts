@@ -7,10 +7,11 @@ import { PasswordAuth } from './authMethod/PasswordAuth';
 import { cleanForSending, hasProperties } from './helpers';
 import { Membership } from './Membership';
 import { requiredBody, userMiddleware } from './middlewares';
-import { SearchCriteria } from './SearchCriteria';
-import { User } from './User';
-import { Seeder } from './Seeder';
 import { LoginRequest } from './RequestBody';
+import { SearchCriteria } from './SearchCriteria';
+import { Seeder } from './Seeder';
+import { User } from './User';
+import { get2fa } from './twoFactor/2faHelper';
 
 const router = express.Router();
 
@@ -52,6 +53,40 @@ router.post('/seed', async (req, res, next) => {
   }
 });
 
+//Region 2FA
+router.post('/verify-2fa', userMiddleware, requiredBody("type", "data"), async (req, res, next) => {
+  const type: any = req.body.type;
+  const user: User = req.params._user;
+
+  try {
+    const result = await container.um.verifyTwoFactor(user, type, req.body.data);
+    if (!result.success) {
+      return res.status(422)
+        .send({ status: "failed", reason: result.reason });
+    }
+
+    cleanForSending(result)
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/setup-2fa', userMiddleware, requiredBody("type"), async (req, res, next) => {
+  const type: any = req.body.type;
+  const user: User = req.params._user;
+
+  try {
+    const two = get2fa(type);
+    const data = await two.setup(user);
+
+    cleanForSending(data)
+    res.send({ result: 'ok', data });
+  } catch (err) {
+    next(err);
+  }
+});
+//endregion
 
 //Region Sessions
 router.post('/session', requiredBody("username", "password"), async (req, res) => {
@@ -67,8 +102,8 @@ router.post('/session', requiredBody("username", "password"), async (req, res) =
       .send({ status: "failed", reason: result.reason });
   }
 
-  cleanForSending(result.user)
-  res.send(result.user);
+  cleanForSending(result)
+  res.send(result);
 });
 
 router.get("/session/:token", async (req, res) => {
@@ -189,7 +224,7 @@ router.put("/user", userMiddleware, async (req, res) => {
   }
 
   //List properties that we are allowed to change
-  const props = ['firstName', 'lastName', 'username', 'email', 'active'];
+  const props = ['firstName', 'lastName', 'username', 'email', 'active', 'twoFactor'];
   for (let p of props) {
     if (body.user[p] !== undefined) user[p] = body.user[p];
   }

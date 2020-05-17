@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 import { createConnection } from 'promise-mysql';
@@ -35,6 +36,9 @@ export class TestHelper {
       multipleStatements: true
     });
     await connection.query(readFileSync(__dirname + "/resources/fixture.sql").toString());
+
+    //Run migrations
+    execSync("npx db-migrate up");
 
     //Make the container happen
     await container.ready();

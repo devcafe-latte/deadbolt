@@ -13,6 +13,7 @@ import { isNumber } from 'util';
 import { SearchCriteria } from './SearchCriteria';
 import { UsersPage } from './UsersPage';
 import { LoginRequest } from './RequestBody';
+import { get2fa, twoFactorType } from './twoFactor/2faHelper';
 
 export class UserManager {
   private _sessionHours: number;
@@ -163,6 +164,30 @@ export class UserManager {
 
     if (!user.emailConfirmed && user.emailConfirmTokenExpires.isBefore()) {
       return LoginResult.failed("Email address not confirmed.");
+    }
+
+    //Two factor Auth needed?
+    if (user.twoFactor) {
+      const two = get2fa(user.twoFactor);
+      const result = await two.request(user);
+      return LoginResult.twoFactor(user, result);
+    }
+
+    await this.createSession(user, data.sessionHours);
+
+    return LoginResult.success(user);
+  }
+
+  async verifyTwoFactor(user: User, type: twoFactorType, data: any): Promise<LoginResult> {
+    const two = get2fa(type);
+    const verified = await two.verify(user, data);
+    
+    if (!verified) return LoginResult.failed("two-factor-verification-failed");
+
+    //Set as 2-factor method
+    if (!user.twoFactor) {
+      user.twoFactor = type;
+      await this.updateUser(user);
     }
 
     await this.createSession(user, data.sessionHours);
