@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { createConnection } from 'promise-mysql';
 
 import container from '../model/DiContainer';
+import { Settings } from '../model/Settings';
 
 export class TestHelper {
   constructor() { }
@@ -14,17 +15,19 @@ export class TestHelper {
 
   private async init() {
     TestHelper.setTestEnv();
-    if (!process.env.DB_NAME.endsWith('_test')) {
+    const s = new Settings();
+
+    if (!s.dbName.endsWith('_test')) {
       throw new Error("That doesn't look like a test database to me! Should end in '_test'");
     }
 
     //Reset the database
     const connection = await createConnection({
-      host     : process.env.DB_HOST,
-      user     : process.env.DB_USER,
-      password : process.env.DB_PASS,
-      database : process.env.DB_NAME,
-      port     : Number(process.env.DB_PORT),
+      host     : s.dbHost,
+      user     : s.dbUser,
+      password : s.dbPass,
+      database : s.dbName,
+      port     : s.dbPort,
       multipleStatements: true
     });
     await connection.query(readFileSync(__dirname + "/resources/fixture.sql").toString());

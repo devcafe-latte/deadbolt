@@ -3,6 +3,7 @@ import { existsSync } from 'fs';
 import { createPool, Pool, PoolConfig } from 'promise-mysql';
 
 import { UserManager } from './UserManager';
+import { Settings } from './Settings';
 
 export class Container {
   private _ready: Promise<void>;
@@ -19,7 +20,11 @@ export class Container {
     return this._db;
   }
 
-  debug: boolean;
+  get debug(): boolean {
+    return this.settings.debug;
+  }
+
+  settings: Settings;
 
   constructor() { }
 
@@ -32,8 +37,7 @@ export class Container {
     //Load dotenv file if any.
     if (existsSync('.env')) dotenv.config();
 
-    //Set debug mode.
-    this.debug = (process.env.NODE_ENV !== "production");
+    this.settings = new Settings();
 
     //Setup userManager
     this._um = new UserManager();
@@ -41,11 +45,12 @@ export class Container {
     //Setup DB Connection
     const config: PoolConfig = {
       connectionLimit : 10,
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASS || '',
-      database: process.env.DB_NAME || 'deadbolt',
-      port: Number(process.env.DB_PORT) || 3306,
+      host: this.settings.dbHost,
+      user: this.settings.dbUser,
+      password: this.settings.dbPass,
+      database: this.settings.dbName,
+      port: this.settings.dbPort || 3306,
+
       typeCast: (field, next) => {
         if (field.type === 'TINY') {
           //Convert tiny ints to bools.

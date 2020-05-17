@@ -17,8 +17,7 @@ export class UserManager {
   private _sessionHours: number;
 
   constructor() {
-    //Default to 2 weeks.
-    this._sessionHours = Number(process.env.SESSION_HOURS) || 24 * 14;
+    this._sessionHours = container.settings.sessionExpires;
   }
 
   async getUserById(id: number): Promise<User | null> {
@@ -211,7 +210,7 @@ export class UserManager {
 
     if (!user.emailConfirmed) {
       user.emailConfirmToken = uuidv4();
-      const expiresHours = process.env.CONFIRM_TOKEN_EXPIRES_HOURS || 24 * 7;
+      const expiresHours = container.settings.confirmTokenExpires;
       user.emailConfirmTokenExpires = moment().add(expiresHours, 'hours');
     }
 

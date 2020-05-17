@@ -57,7 +57,7 @@ export class PasswordAuth implements iAuthMethod {
   }
 
   async generateResetToken(userId: number): Promise<PasswordRecordResult> {
-    const expiresHours = process.env.RESET_TOKEN_EXPIRES_HOURS || 24;
+    const expiresHours = container.settings.resetTokenExpires;
     const result = await this.getRecord(userId);
     if (!result.success) return result;
     result.record.resetTokenExpires = moment().add(expiresHours, 'hours');

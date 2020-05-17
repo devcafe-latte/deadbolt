@@ -1,5 +1,3 @@
-import { app } from '../app';
-
 import request from 'supertest';
 import { TestHelper } from './TestHelper';
 import container from '../model/DiContainer';
@@ -7,11 +5,15 @@ import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 import { Membership } from '../model/Membership';
 import { User } from '../model/User';
 import moment from 'moment';
+import { deadbolt } from '../model/DeadboltApi';
 
 TestHelper.setTestEnv();
+let app: Express.Application;
 
 describe("App", () => {
+
   beforeEach(async () => {
+    app = deadbolt.app;  
     await TestHelper.new();
   });
 
@@ -32,6 +34,7 @@ describe("App", () => {
 
 describe("Sessions", () => {
   beforeEach(async () => {
+    app = deadbolt.app;  
     await TestHelper.new();
   });
 
@@ -141,6 +144,7 @@ describe("Sessions", () => {
 
 describe("Users", () => {
   beforeEach(async () => {
+    app = deadbolt.app;  
     await TestHelper.new();
   });
 
@@ -458,6 +462,7 @@ describe("Users", () => {
 
 describe("Memberships", () => {
   beforeEach(async () => {
+    app = deadbolt.app;  
     await TestHelper.new();
   });
 

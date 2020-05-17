@@ -14,48 +14,53 @@ let th: TestHelper;
 
 describe('User Tests', () => {  
 
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     th = await TestHelper.new();
+    done();
   });
 
-  it('Get User By ID', async () => {
+  it('Get User By ID', async (done) => {
     const user = await container.um.getUser(1);
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
 
     //Check memberships
     expect(user.memberships.length).toBe(2);
-    
+    done();
   }); 
 
-  it('Get User by UUID', async () => {
+  it('Get User by UUID', async (done) => {
     const user = await container.um.getUser("ee13624b-cf22-4597-adb9-bfa4b16baa71");
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
+    done();
   }); 
 
-  it('Get User by Username', async () => {
+  it('Get User by Username', async (done) => {
     const user = await container.um.getUser("Co");
     expect(user).toBeDefined();
     expect(user.id).toBe(1);
+    done();
   }); 
 
-  it('Get User by email', async () => {
+  it('Get User by email', async (done) => {
     const user = await container.um.getUser("jordan@example.com");
     expect(user).toBeDefined();
     expect(user.id).toBe(2);
+    done();
   }); 
 
-  it('Get Users', async () => {
+  it('Get Users', async (done) => {
     const s = new SearchCriteria();
 
     const page = await container.um.getUsers(s);
     expect(page.criteria).toBe(s);
     expect(page.lastPage).toBe(0);
     expect(page.users.length).toBe(2);
+    done();
   }); 
 
-  it('Get Users paging', async () => {
+  it('Get Users paging', async (done) => {
     const s = new SearchCriteria();
     s.perPage = 1;
 
@@ -71,27 +76,30 @@ describe('User Tests', () => {
     s.page = 2;
     page = await container.um.getUsers(s);
     expect(page.users.length).toBe(0);
+    done();
   }); 
 
-  it('Get Users with search term', async () => {
+  it('Get Users with search term', async (done) => {
     const s = new SearchCriteria();
     s.q = "jordan";
 
     let page = await container.um.getUsers(s);
     expect(page.users.length).toBe(1);
     expect(page.users[0].firstName).toBe("Jordan");
+    done();
   }); 
 
-  it('Update User', async () => {
+  it('Update User', async (done) => {
     const um = container.um;
     const user = new User();
     user.id = 1;
     user.firstName = 'Cookie'
     const rowsAffected = await um.updateUser(user);
     expect(rowsAffected).toBe(1);
+    done();
   }); 
 
-  it('Add User', async () => {
+  it('Add User', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -104,9 +112,10 @@ describe('User Tests', () => {
     expect(user.emailConfirmed).toBe(null);
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmTokenExpires).toBeDefined();    
+    done();
   }); 
 
-  it('Add User without email', async () => {
+  it('Add User without email', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -118,9 +127,10 @@ describe('User Tests', () => {
     expect(user.emailConfirmed).toBeDefined;
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmTokenExpires).toBe(null);    
+    done();
   }); 
 
-  it('Add Same Username twice', async () => {
+  it('Add Same Username twice', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -135,9 +145,10 @@ describe('User Tests', () => {
 
     const result2 = await um.addUser(user);
     expect(result2.success).toBe(false);
+    done();
   }); 
 
-  it('Add Same Email twice', async () => {
+  it('Add Same Email twice', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -152,9 +163,10 @@ describe('User Tests', () => {
 
     const result2 = await um.addUser(user);
     expect(result2.success).toBe(false);
+    done();
   }); 
 
-  it('Incorrect username', async () => {
+  it('Incorrect username', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul@#$%^";
@@ -162,9 +174,10 @@ describe('User Tests', () => {
     user.email = "paul@someplace.com";
     const result = await um.addUser(user);
     expect(result.success).toBe(false);
+    done();
   }); 
 
-  it('Incorrect Email', async () => {
+  it('Incorrect Email', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -172,9 +185,10 @@ describe('User Tests', () => {
     user.email = "paul's not an email address";
     const result = await um.addUser(user);
     expect(result.success).toBe(false);
+    done();
   }); 
 
-  it('Remove User', async () => {
+  it('Remove User', async (done) => {
     const um = container.um;
     let user = await um.getUserById(1);
     expect(user).toBeTruthy();
@@ -185,33 +199,38 @@ describe('User Tests', () => {
 
     user = await um.getUserById(1);
     expect(user).toBeFalsy();
+    done();
   }); 
 
-  it("User exists", async () => {
+  it("User exists", async (done) => {
     expectAsync(container.um.userExists(1)).toBeResolvedTo(true);
     expectAsync(container.um.userExists(123)).toBeResolvedTo(false);
+    done();
   });
 
-  it("Username taken", async () => {
+  it("Username taken", async (done) => {
     expectAsync(container.um.userNameTaken("Co")).toBeResolvedTo(true);
     expectAsync(container.um.userNameTaken("cO")).toBeResolvedTo(true);
     expectAsync(container.um.userNameTaken("Slagathor")).toBeResolvedTo(false);
+    done();
   });
 
-  it("Email taken", async () => {
+  it("Email taken", async (done) => {
     expectAsync(container.um.userNameTaken("jordan@example.com")).toBeResolvedTo(true);
     expectAsync(container.um.userNameTaken("Slagathor@museumofnecromancy.com")).toBeResolvedTo(false);
+    done();
   });
 
-  it("Email or username taken", async () => {
+  it("Email or username taken", async (done) => {
     expectAsync(container.um.userTaken("Co", "jordan@example.com")).toBeResolvedTo(true);
     expectAsync(container.um.userTaken("Noop noop", "jordan@example.com")).toBeResolvedTo(true);
     expectAsync(container.um.userTaken("Co", "co@thegiantbucket.com")).toBeResolvedTo(true);
     
     expectAsync(container.um.userTaken("Noop noop", "co@thegiantbucket.com")).toBeResolvedTo(false);
+    done();
   });
 
-  it('Activate user', async () => {
+  it('Activate user', async (done) => {
     let user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
 
@@ -222,10 +241,10 @@ describe('User Tests', () => {
     await container.um.activateUser(1, true);
     user = await container.um.getUserById(1);
     expect(user.active).toBe(true);
-    
+    done();    
   }); 
 
-  it('Logs in', async () => {
+  it('Logs in', async (done) => {
     const um = container.um;
     const result = await um.login(correct.name, PasswordAuth, correct.pass);
 
@@ -240,39 +259,44 @@ describe('User Tests', () => {
     expect(result.user.active).toBe(true);
 
     expect(result.user.memberships.length).toBe(2);
+    done();
   }); 
 
-  it('Wrong user', async () => {
+  it('Wrong user', async (done) => {
     const um = container.um;
     const result = await um.login("Gandalf", PasswordAuth, correct.pass);
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('Not found');
+    done();
   }); 
 
-  it('Wrong pasword', async () => {
+  it('Wrong pasword', async (done) => {
     const um = container.um;
     const result = await um.login(correct.name, PasswordAuth, 'magic stick');
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('Password incorrect');
+    done();
   }); 
 
-  it('Inactive user', async () => {
+  it('Inactive user', async (done) => {
     const um = container.um;
     await container.um.activateUser(1, false);
 
     const result = await um.login(correct.name, PasswordAuth, correct.pass);
     expect(result.success).toBe(false, "Should not log in");
     expect(result.reason).toBe('User cannot login');
+    done();
   }); 
 
 });
 
 describe('Session Tests', () => {
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     th = await TestHelper.new();
+    done();
   });
 
-  it('Validate Session', async () => {
+  it('Validate Session', async (done) => {
     const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
 
     const token = result.user.session.token;
@@ -282,18 +306,20 @@ describe('Session Tests', () => {
     
     const invalidToken = await container.um.validateSession("notavalidtoken");
     expect(invalidToken).toBe(null, "Invalid token. Should return null.");
+    done();
   }); 
 
-  it('Expire Session', async () => {
+  it('Expire Session', async (done) => {
     const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
     const token = result.user.session.token;
 
     await container.um.expireSession(token);
     const expiredSession = await container.um.validateSession(token);
     expect(expiredSession).toBe(null, "Expired session. Should return null.");
+    done();
   }); 
 
-  it('Expire All Session', async () => {
+  it('Expire All Session', async (done) => {
     const token1 = (await container.um.login(correct.name, PasswordAuth, correct.pass)).user.session.token;
     const token2 = (await container.um.login(correct.name, PasswordAuth, correct.pass)).user.session.token;
 
@@ -304,15 +330,17 @@ describe('Session Tests', () => {
     
     expect(await container.um.validateSession(token1)).toBeFalsy("Should be expired.");
     expect(await container.um.validateSession(token2)).toBeFalsy("Should be expires.");
+    done();
   }); 
 });
 
 describe('Membership tests', () => {
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     th = await TestHelper.new();
+    done();
   });
 
-  it('adds single membership', async () => {
+  it('adds single membership', async (done) => {
     const membership: Membership = {
       app: 'test-app',
       role: 'admin',
@@ -326,9 +354,10 @@ describe('Membership tests', () => {
     expect(user.memberships[0].role).toBe(membership.role);
     expect(user.memberships[0].id).toBeDefined();
     expect(user.memberships[0].userId).toBe(userId);
+    done();
   });
 
-  it('Update membership', async () => {
+  it('Update membership', async (done) => {
     const membership: Membership = {
       id: 2,
       app: 'test-app',
@@ -343,9 +372,10 @@ describe('Membership tests', () => {
     expect(user.memberships[1].id).toBe(2, "Get the right membershipt");
     expect(user.memberships[1].app).toBe(membership.app);
     expect(user.memberships[1].role).toBe(membership.role);
+    done();
   });
 
-  it('adds multiple memberships', async () => {
+  it('adds multiple memberships', async (done) => {
     const memberships: Membership[] = [
       { app: 'test-app', role: 'admin', },
       { app: 'test-app', role: 'user', },
@@ -356,9 +386,10 @@ describe('Membership tests', () => {
     await container.um.addMemberships(userId, memberships);
     const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
+    done();
   });
 
-  it('replaces multiple memberships', async () => {
+  it('replaces multiple memberships', async (done) => {
 
     const initial: Membership[] = [
       { app: 'test-app', role: 'admin', },
@@ -377,9 +408,10 @@ describe('Membership tests', () => {
     await container.um.replaceMemberships(userId, newMemberships);
     user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
+    done();
   });
 
-  it('replaces with 0 memberships', async () => {
+  it('replaces with 0 memberships', async (done) => {
 
     const initial: Membership[] = [
       { app: 'test-app', role: 'admin', },
@@ -395,9 +427,10 @@ describe('Membership tests', () => {
     await container.um.replaceMemberships(userId, newMemberships);
     user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(0, "Should have 0 memberships now");
+    done();
   });
 
-  it ("Removes single membership", async () => {
+  it ("Removes single membership", async (done) => {
     const toAdd: Membership[] = [
       { app: 'test-app', role: 'admin', },
       { app: 'test-app', role: 'user', },
@@ -419,10 +452,10 @@ describe('Membership tests', () => {
 
     expect(user.memberships[1].app).toEqual('some-other-app');
     expect(user.memberships[1].role).toEqual('newbie');
-
+    done();
   });
 
-  it ("Removes multiple memberships", async () => {
+  it ("Removes multiple memberships", async (done) => {
     const memberships: Membership[] = [
       { app: 'test-app', role: 'admin', },
       { app: 'test-app', role: 'user', },
@@ -434,9 +467,10 @@ describe('Membership tests', () => {
     await container.um.removeMemberships(userId, memberships);
     const user = await container.um.getUserById(userId);
     expect(user.memberships.length).toBe(0, "All memberships are gone.");
+    done();
   });
 
-  it ("Removes app", async () => {
+  it ("Removes app", async (done) => {
     const memberships: Membership[] = [
       { app: 'test-app', role: 'admin', },
       { app: 'test-app', role: 'user', },
@@ -450,17 +484,18 @@ describe('Membership tests', () => {
     expect(user.memberships.length).toBe(1, "Should have one left.");
     expect(user.memberships[0].app).toEqual('some-other-app');
     expect(user.memberships[0].role).toEqual('newbie');
-    
+    done(); 
   });
 });
 
 describe("Email Confirmation Tests", () => {
 
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     th = await TestHelper.new();
+    done();
   });
 
-  it('confirm Email By Token', async () => {
+  it('confirm Email By Token', async (done) => {
     let user = new User();
     user.username = "Paul";
     user.email = "paul@someplace.com";
@@ -478,15 +513,16 @@ describe("Email Confirmation Tests", () => {
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmed).toBeDefined();
-
+    done();
   });
 
-  it('confirm Email wrong token', async () => {
+  it('confirm Email wrong token', async (done) => {
     const result = await container.um.confirmEmail("not a token");
     expect(result).toBeNull();
+    done();
   });
 
-  it('confirmEmailByUserId', async () => {
+  it('confirmEmailByUserId', async (done) => {
     let user = new User();
     user.username = "Paul";
     user.email = "paul@someplace.com";
@@ -502,9 +538,10 @@ describe("Email Confirmation Tests", () => {
     expect(user.emailConfirmTokenExpires).toBe(null);
     expect(user.emailConfirmToken).toBe(null);
     expect(user.emailConfirmed).toBeDefined();
+    done();
   });
 
-  it('email not confirmed', async () => {
+  it('email not confirmed', async (done) => {
     await container.db.query("UPDATE user SET emailConfirmToken = ?, emailConfirmed = null, emailConfirmTokenExpires = ? WHERE id = ?", ["some-token", moment().subtract(1, 'minute').unix(), 1]);
 
     const result = await container.um.login(correct.name, PasswordAuth, correct.pass);
@@ -515,5 +552,6 @@ describe("Email Confirmation Tests", () => {
     await container.um.confirmEmailByUserId(1);
     const result2 = await container.um.login(correct.name, PasswordAuth, correct.pass);
     expect(result2.success).toBe(true, "Now it's confirmed.");
+    done();
   }); 
 });

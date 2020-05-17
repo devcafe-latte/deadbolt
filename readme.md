@@ -41,10 +41,12 @@ npm test
 
 ## todo
 
-Swagger document routes (See `swagger-test` branch)
-Make Docker container to build and run.
-Add Social Logins
-- Google
-- Facebook? :(
-
-
+- Make new api class                  DONE
+- refactor all process.env settings   DONE
+- Make tests work again
+- Replace db model stuff              
+- Add 2fa for emails and TOTP         
+- Make sessions expire depending on login params.
+- Add migrations                      DONE
+- Add seeding                         DONE
+- Let plaintext passwords work until first login
