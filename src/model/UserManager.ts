@@ -165,7 +165,7 @@ export class UserManager {
       return LoginResult.failed("Email address not confirmed.");
     }
 
-    await this.createSession(user);
+    await this.createSession(user, data.sessionHours);
 
     return LoginResult.success(user);
   }
@@ -354,8 +354,9 @@ export class UserManager {
     await container.db.query("UPDATE `user` SET `lastActivity` = ? WHERE `id` = ?", [moment().unix(), session.userId]);
   }
 
-  private async createSession(user: User) {
-    user.session = await Session.new(user, moment().add(this._sessionHours, 'hours'));
+  private async createSession(user: User, sessionHours?: number) {
+    if (!sessionHours) sessionHours = this._sessionHours;
+    user.session = await Session.new(user, moment().add(sessionHours, 'hours'));
 
     const result = await container.db.query("INSERT INTO `session` SET ?", user.session.toDb());
     user.session.id = result.insertId;

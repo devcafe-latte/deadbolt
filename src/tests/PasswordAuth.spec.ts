@@ -27,6 +27,25 @@ describe("Password Verification", () => {
     done()
   });
 
+  it("Plaintext Password hack", async (done) => {
+    const plain = "plain:bluppo";
+    await container.db.query("UPDATE `authPassword` SET `passwordHash` = ? WHERE userId = 1", [plain]);
+
+    const pa = new PasswordAuth();
+    const u = new User();
+    u.id = 1;
+    const result = await pa.verify(u, "bluppo");
+    expect(result).toBe(true);
+
+    const row = await container.db.query("SELECT * FROM `authPassword` WHERE userId = 1");
+    expect(row.passwordHash).not.toBe(plain);
+
+    const result2 = await pa.verify(u, "bluppo");
+    expect(result2).toBe(true);
+
+    done()
+  });
+
   it("Wrong password", async (done) => {
     const pa = new PasswordAuth();
     const u = new User();

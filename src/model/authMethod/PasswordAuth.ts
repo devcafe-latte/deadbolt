@@ -15,7 +15,25 @@ export class PasswordAuth implements iAuthMethod {
     if (!result.success) return false;
 
     if (!result.record.passwordHash || !password) return false;
+
+    //Plaintext hack
+    if (result.record.passwordHash.toUpperCase().startsWith('PLAIN:')) {
+      const plainText = result.record.passwordHash.substring(6);
+      if (!plainText) return false;
+      if (plainText !== password) return false;
+
+      //Resave as bcrypt hash.
+      await this.setUnsafePassword(user.id, password);
+      
+      return true;
+    }
+
     return compareSync(password, result.record.passwordHash);
+  }
+
+  private async setUnsafePassword(userId: number, password: string) {
+    const hash = hashSync(password, PasswordAuth.ROUNDS);
+    await container.db.query("UPDATE `authPassword` SET passwordHash = ?, resetToken = null, resetTokenExpires = null, updated = ? WHERE userId = ?", [hash, moment().unix(), userId]);
   }
 
   async setPassword(userId: number, password: string): Promise<PasswordRecordResult> {

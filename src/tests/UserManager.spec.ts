@@ -317,6 +317,21 @@ describe('Session Tests', () => {
     done();
   });
 
+  it('Variable Expiry time', async (done) => {
+    const creds = { ...correct };
+
+    let result = await container.um.login(creds, PasswordAuth, correct.password);
+    const normalExpiry = moment().add(container.settings.sessionExpires, 'hours').unix();
+    expect(result.user.session.expires.unix()).toBe(normalExpiry);
+
+    creds.sessionHours = 1;
+    result = await container.um.login(creds, PasswordAuth, correct.password);
+    const shortExpiry = moment().add(creds.sessionHours, 'hours').unix();
+    expect(result.user.session.expires.unix()).toBe(shortExpiry);
+
+    done();
+  });
+
   it('Validate Session', async (done) => {
     const result = await container.um.login(correct, PasswordAuth, correct.password);
 
@@ -331,7 +346,7 @@ describe('Session Tests', () => {
   });
 
   it('Login With App', async (done) => {
-    const creds = {...correct};
+    const creds = { ...correct };
     creds.app = "test-app";
     const result = await container.um.login(creds, PasswordAuth, correct.password);
     expect(result.success).toBe(true);

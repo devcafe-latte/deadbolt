@@ -42,9 +42,11 @@ npm test
 ## todo
 
 - Add login with app filter           DONE
-- Make sessions expire depending on login params.
+- Make sessions expire depending on 
+  login params.                       DONE
+- Let plaintext passwords work 
+  until first login                   DONE
 - Add 2fa for emails and TOTP         
-- Let plaintext passwords work until first login
 - Replace db model stuff              
 - Fix Tests                           DONE
 - Make new api class                  DONE
