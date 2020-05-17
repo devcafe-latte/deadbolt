@@ -49,14 +49,3 @@ npm test
 ```
 
 ## todo
-
-- Add 2fa for emails and TOTP      
-  ROUTES
-    Add setup         DONE
-    add Verify        DONE
-    Try with TOTP
-  TOTP
-    Class             DONE
-    
-
-- Replace db model stuff              ?
