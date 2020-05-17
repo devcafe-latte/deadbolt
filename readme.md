@@ -52,13 +52,11 @@ npm test
 
 - Add 2fa for emails and TOTP      
   ROUTES
-    Add setup         
+    Add setup         DONE
     add Verify        DONE
-  EMAIL
-    Create class      DONE
-  USER MANAGER
-    Login with 2fa    DONE
-    Verify2fa         DONE
+    Try with TOTP
+  TOTP
+    Class             DONE
     
 
 - Replace db model stuff              ?

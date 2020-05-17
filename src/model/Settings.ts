@@ -3,6 +3,8 @@ export class Settings {
   debug: boolean = (process.env.NODE_ENV !== "production");
 
   emailTwoFactorTokenType: twoFactorTokenType = getEnumValue<twoFactorTokenType>(process.env.EMAIL_2FA_TOKEN_TYPE, twoFactorTokenType, twoFactorTokenType.digits);
+  otpLabel: string = process.env.OTP_LABEL || "some_label";
+  otpIssuer: string = process.env.OTP_ISSUER || "some_issuer";
 
   port: number = Number(process.env.PORT) || 3000;
   dbHost: string = process.env.DB_HOST || 'localhost';

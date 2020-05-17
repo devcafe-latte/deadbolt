@@ -8,6 +8,7 @@ import { Membership } from '../model/Membership';
 import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
 import { LoginRequest } from '../model/RequestBody';
+import { totp } from 'speakeasy';
 
 TestHelper.setTestEnv();
 let app: Express.Application;
@@ -96,6 +97,34 @@ describe("Sessions", () => {
 
     const body = result.body;
     expect(body.data.message).toContain("no setup needed");
+
+    done();
+  });
+
+  it("Setup TOTP 2fa", async (done) => {
+    const result = await request(app)
+      .post('/setup-2fa')
+      .send({ username: 'Co', type: "totp" })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.data.secret.length).toBe(52);
+    expect(body.data.qr).toBeDefined();
+
+    //Create a token
+    const secret = body.data.secret;
+    const token = totp({
+      secret: secret,
+      encoding: 'base32'
+    });
+
+    const result2 = await request(app)
+      .post('/verify-2fa')
+      .send({ username: 'Co', type: 'totp', data: { token } })
+      .expect(200);
+
+    const body2 = result2.body;
+    expect(body2.user.session.token).toBeDefined();
 
     done();
   });
