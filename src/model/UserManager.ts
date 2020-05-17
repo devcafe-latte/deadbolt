@@ -12,6 +12,7 @@ import { iAuthMethod } from './authMethod/iAuthMethod';
 import { isNumber } from 'util';
 import { SearchCriteria } from './SearchCriteria';
 import { UsersPage } from './UsersPage';
+import { LoginRequest } from './RequestBody';
 
 export class UserManager {
   private _sessionHours: number;
@@ -49,7 +50,7 @@ export class UserManager {
    * @returns {(Promise<User|null>)}
    * @memberof UserManager
    */
-  async getUser(identifier: any): Promise<User | null> {
+  async getUser(identifier: any, app?: string): Promise<User | null> {
     if (!identifier) return null;
 
     const type = getIdentifierType(identifier);
@@ -63,6 +64,11 @@ export class UserManager {
       user = await container.um.getUserByUsername(identifier);
     } else if (type === "email") {
       user = await container.um.getUserByEmail(identifier);
+    }
+    
+    //Check the App
+    if (user && app && !user.hasApp(app)) {
+      return null;
     }
 
     return user;
@@ -138,10 +144,10 @@ export class UserManager {
     return users[0];
   }
 
-  async login(usernameOrEmail: string, authMethod: any, authOptions: any): Promise<LoginResult> {
+  async login(data: LoginRequest, authMethod: any, authOptions: any): Promise<LoginResult> {
     await container.ready();
 
-    const user = await this.getUser(usernameOrEmail);
+    const user = await this.getUser(data.username, data.app);
     if (!user) return LoginResult.failed("Not found");
 
     const authService: iAuthMethod = new authMethod();

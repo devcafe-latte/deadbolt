@@ -33,6 +33,13 @@ export class Container {
     return this._ready;
   }
 
+  public async shutdown() {
+    await this._db.end();
+    this._um = null;
+    this._db = null;
+    this._ready = null;
+  }
+
   private async init() {
     //Load dotenv file if any.
     if (existsSync('.env')) dotenv.config();

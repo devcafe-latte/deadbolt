@@ -6,7 +6,7 @@ describe("userMiddleware", () => {
   let res: any;
   let th: TestHelper;
 
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     req = { body: {}, params: {} };
     res = {
       statusCode: 200,
@@ -20,12 +20,17 @@ describe("userMiddleware", () => {
         return res;
       }
     };
-    
+
     th = await TestHelper.new();
-    
+    done();
   });
 
-  it("Tests Missing Identifier", async () => {
+  afterEach(async (done) => {
+    await th.shutdown();
+    done();
+  });
+
+  it("Tests Missing Identifier", async (done) => {
     await userMiddleware(req, res, () => {
       throw new Error("Should not invoke next()");
     });
@@ -36,9 +41,10 @@ describe("userMiddleware", () => {
 
     expect(res.statusCode).toBe(400);
     expect(res.body.reason).toEqual("Missing identifier");
+    done();
   });
 
-  it("Tests wrong Identifier", async () => {
+  it("Tests wrong Identifier", async (done) => {
     req.body.identifier = "notauser";
 
     await userMiddleware(req, res, () => {
@@ -51,9 +57,10 @@ describe("userMiddleware", () => {
 
     expect(res.statusCode).toBe(404);
     expect(res.body.reason).toEqual("User not found");
+    done();
   });
 
-  it("Tests Identifier as param", async () => {
+  it("Tests Identifier as param", async (done) => {
     req.params.identifier = "Co";
     let next = false;
 
@@ -67,9 +74,10 @@ describe("userMiddleware", () => {
     expect(req.params._user.id).toBe(1);
 
     expect(res.statusCode).toBe(200);
+    done();
   });
 
-  it("Tests name as Identifier in body", async () => {
+  it("Tests name as Identifier in body", async (done) => {
     req.body.identifier = "Co";
     let next = false;
 
@@ -83,9 +91,10 @@ describe("userMiddleware", () => {
     expect(req.params._user.id).toBe(1);
 
     expect(res.statusCode).toBe(200);
+    done();
   });
 
-  it("Tests id as Identifier", async () => {
+  it("Tests id as Identifier", async (done) => {
     req.body.identifier = 1;
     let next = false;
 
@@ -99,9 +108,10 @@ describe("userMiddleware", () => {
     expect(req.params._user.id).toBe(1);
 
     expect(res.statusCode).toBe(200);
+    done();
   });
 
-  it("Tests uuid as Identifier", async () => {
+  it("Tests uuid as Identifier", async (done) => {
     req.body.identifier = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
     let next = false;
 
@@ -115,9 +125,10 @@ describe("userMiddleware", () => {
     expect(req.params._user.id).toBe(1);
 
     expect(res.statusCode).toBe(200);
+    done();
   });
 
-  it("Tests email as Identifier", async () => {
+  it("Tests email as Identifier", async (done) => {
     req.body.identifier = "jordan@example.com";
     let next = false;
 
@@ -131,6 +142,7 @@ describe("userMiddleware", () => {
     expect(req.params._user.id).toBe(2);
 
     expect(res.statusCode).toBe(200);
+    done();
   });
 
 

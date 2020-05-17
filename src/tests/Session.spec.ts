@@ -1,7 +1,7 @@
 import { Session } from '../model/Session';
-import moment = require('moment');
+
 describe ("Session Tests", () => {
-  it ("To db", async() => {
+  it ("To db", () => {
     const s = new Session();
     s.id = 1;
     s.token = "123";
@@ -14,7 +14,7 @@ describe ("Session Tests", () => {
     expect(s.toDb()).toEqual(expected);
   });
 
-  it ("From db", async() => {
+  it ("From db", () => {
     const row = {
       id: 2,
       token: "12345terfds"

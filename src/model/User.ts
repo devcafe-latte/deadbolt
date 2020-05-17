@@ -36,6 +36,10 @@ export class User {
     return Boolean(this.memberships.find(m => m.role === role));
   }
 
+  hasApp(app: string): boolean {
+    return Boolean(this.memberships.find(m => m.app === app));
+  }
+
   isValid(): boolean {
     if (!this.username) return false;
     if (!/^[a-z0-9]+$/i.test(this.username)) return false;

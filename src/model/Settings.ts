@@ -12,4 +12,13 @@ export class Settings {
   sessionExpires: number = Number(process.env.SESSION_HOURS) || 24 * 14;
   confirmTokenExpires: number = Number(process.env.CONFIRM_TOKEN_EXPIRES_HOURS) || 24 * 7;
   resetTokenExpires: number = Number(process.env.RESET_TOKEN_EXPIRES_HOURS) || 24;
+
+  requireApp: boolean = this.getBoolean(process.env.REQUIRE_APP_ON_LOGIN);
+
+  private getBoolean(val: string, defaultValue = false): boolean {
+    if (val === null || val === undefined || val === "") return defaultValue;
+    if (val === "0" || val === "false") return false;
+    return true;
+  }
+
 }

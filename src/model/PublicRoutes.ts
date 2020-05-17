@@ -10,6 +10,7 @@ import { requiredBody, userMiddleware } from './middlewares';
 import { SearchCriteria } from './SearchCriteria';
 import { User } from './User';
 import { Seeder } from './Seeder';
+import { LoginRequest } from './RequestBody';
 
 const router = express.Router();
 
@@ -54,19 +55,13 @@ router.post('/seed', async (req, res, next) => {
 
 //Region Sessions
 router.post('/session', requiredBody("username", "password"), async (req, res) => {
-  const username = req.body.username || null;
-  const pass = req.body.password || null;
+  const body: LoginRequest = req.body;
 
   //todo make this dynamic to support other methods..
   // Also allow login with email 
   const method = PasswordAuth;
 
-  if (!username || !pass) {
-    return res.status(400)
-      .send({ status: "failed", reason: "Missing arguments (username, password)" });
-  }
-
-  const result = await container.um.login(username, method, pass);
+  const result = await container.um.login(body, method, body.password);
   if (!result.success) {
     return res.status(422)
       .send({ status: "failed", reason: result.reason });
@@ -128,13 +123,8 @@ router.get("/users", async (req, res, next) => {
   }
 });
 
-router.post("/user", async (req, res) => {
+router.post("/user", requiredBody("username", "password", "email"), async (req, res) => {
   const body = req.body;
-  const required = ["username", "password", "email"];
-  if (!hasProperties(body, required)) {
-    return res.status(400)
-      .send({ status: "failed", reason: "Missing arguments: " + required.join(", ") });
-  }
 
   const u = new User();
   u.username = body.username;
@@ -162,7 +152,7 @@ router.post("/user", async (req, res) => {
       .send({ status: "failed", reason: passwordResult.reason });
   }
 
-  const loginResult = await container.um.login(body.username, PasswordAuth, body.password);
+  const loginResult = await container.um.login(body, PasswordAuth, body.password);
 
   cleanForSending(loginResult.user)
   res.send(loginResult.user);

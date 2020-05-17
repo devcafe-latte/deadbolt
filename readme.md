@@ -41,11 +41,12 @@ npm test
 
 ## todo
 
-- Add login with app filter
-- Add 2fa for emails and TOTP         
+- Add login with app filter           DONE
 - Make sessions expire depending on login params.
+- Add 2fa for emails and TOTP         
 - Let plaintext passwords work until first login
 - Replace db model stuff              
+- Fix Tests                           DONE
 - Make new api class                  DONE
 - refactor all process.env settings   DONE    
 - Make tests work again               DONE

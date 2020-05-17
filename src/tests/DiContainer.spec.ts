@@ -4,11 +4,17 @@ import { PoolConnection } from 'promise-mysql';
 
 describe('Dependency Container tests', () => {
   let th: TestHelper;
-  beforeEach(async () => {
+  beforeEach(async (done) => {
     th = await TestHelper.new();
+    done();
   });
 
-  it('Initiating', async () => {
+  afterEach(async (done) => {
+    await th.shutdown();
+    done();
+  });
+
+  it('Initiating', async (done) => {
     await container.ready();
 
     expect(container.um).toBeDefined();
@@ -26,6 +32,7 @@ describe('Dependency Container tests', () => {
     }
     
     expect(true).toBe(true);
+    done();
   });
 
 

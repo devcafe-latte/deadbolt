@@ -13,6 +13,10 @@ export class TestHelper {
     dotenv.config({ "path": __dirname + '/resources/.env' });
   }
 
+  async shutdown() {
+    await container.shutdown();
+  }
+
   private async init() {
     TestHelper.setTestEnv();
     const s = new Settings();

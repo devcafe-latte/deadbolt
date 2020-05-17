@@ -7,7 +7,7 @@ describe("Processing results", () => {
     { u: { id: 8, username: 'Bruce' }, m: { id: 34, app: 'some-app', role: 'user' } },
   ];
 
-  it ("processes nested results from Mysql", async() => {
+  it ("processes nested results from Mysql", () => {
     const expected = {
       u: {
         1: { id: 1, username: 'Jack' },
@@ -24,7 +24,7 @@ describe("Processing results", () => {
     expect(r.data).toEqual(expected);
   });
 
-  it("tries casting", async () => {
+  it("tries casting", () => {
     const r = SqlResult.new(rows);
     expect(r.data.u[1].constructor.name).toBe("Object");
     expect(r.data.u[8].constructor.name).toBe("Object");
