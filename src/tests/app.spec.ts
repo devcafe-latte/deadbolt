@@ -433,6 +433,16 @@ describe("Users", () => {
     done();
   });
 
+  it("Updates a user to existing email", async (done) => {
+    const data = { email: "jordan@example.com" };
+
+    await request(app).put("/user")
+      .send({ uuid: "ee13624b-cf22-4597-adb9-bfa4b16baa71", user: data })
+      .expect(500);
+
+    done();
+  });
+
   it("(De)activate a user", async (done) => {
     await request(app).put("/user")
       .send({ username: "co", user: { active: false } })

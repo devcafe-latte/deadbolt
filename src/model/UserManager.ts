@@ -199,11 +199,16 @@ export class UserManager {
     const update = SqlHelper.update('user', user.toDb());
     update.sql += " WHERE id = ?";
     update.values.push(user.id);
-    const result = await container.db.query(update.sql, update.values);
 
-    if (user.active === false) await this.expireAllSessions(user.id);
+    try {
+      const result = await container.db.query(update.sql, update.values);
+      if (user.active === false) await this.expireAllSessions(user.id);
+      return result.affectedRows;
+    } catch (err) {
+      console.error(err);
+      throw "Can't update user.";
+    }    
 
-    return result.affectedRows;
   }
 
   async purgeUser(uuid: string) {

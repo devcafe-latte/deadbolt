@@ -151,6 +151,21 @@ describe('User Tests', () => {
     done();
   });
 
+  it('Update User to existing email', async (done) => {
+    const um = container.um;
+    const user = new User();
+    user.id = 1;
+    user.email = 'jordan@example.com'
+    const result = await um.updateUser(user).catch((err) => {
+      expect(err).toContain("Can't update user");
+      return "error-thrown"
+    });
+
+    expect(result).toBe("error-thrown");
+    
+    done();
+  });
+
   it('Add User', async (done) => {
     const um = container.um;
     const user = new User();

@@ -214,7 +214,7 @@ router.post("/verify-password", userMiddleware, async (req, res) => {
 
 });
 
-router.put("/user", userMiddleware, async (req, res) => {
+router.put("/user", userMiddleware, async (req, res, next) => {
   const body = req.body;
   let user: User = req.params._user;
 
@@ -234,10 +234,14 @@ router.put("/user", userMiddleware, async (req, res) => {
       .send({ status: "failed", reason: "User is not valid" });
   }
 
-  await container.um.updateUser(user);
+  try {
+    await container.um.updateUser(user);
+    cleanForSending(user);
+    res.send(user);
+  } catch (err) {
+    next(err);
+  }
 
-  cleanForSending(user);
-  res.send(user);
 });
 
 router.delete("/user/:identifier", userMiddleware, async (req, res) => {
