@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import express = require('express');
 import { PoolConnection } from 'promise-mysql';
 
-import container from '../model/DiContainer';
+import container from './DiContainer';
 import { PasswordAuth } from './authMethod/PasswordAuth';
 import { cleanForSending, hasProperties } from './helpers';
 import { Membership } from './Membership';

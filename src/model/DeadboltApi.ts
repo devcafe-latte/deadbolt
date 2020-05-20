@@ -3,7 +3,7 @@ import express = require('express');
 import { Server } from 'http';
 
 import container from './DiContainer';
-import { publicRoutes } from './PublicRoutes';
+import { publicRoutes } from './routes';
 
 class DeadboltApi {
   private _app: express.Application = express();

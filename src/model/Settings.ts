@@ -2,6 +2,8 @@ import { getEnumValue } from './helpers';
 export class Settings {
   debug: boolean = (process.env.NODE_ENV !== "production");
 
+  max2faAttempts: number = Number(process.env.MAX_2FA_ATTEMPTS) || 3;
+   
   emailTwoFactorTokenType: twoFactorTokenType = getEnumValue<twoFactorTokenType>(process.env.EMAIL_2FA_TOKEN_TYPE, twoFactorTokenType, twoFactorTokenType.digits);
   otpLabel: string = process.env.OTP_LABEL || "some_label";
   otpIssuer: string = process.env.OTP_ISSUER || "some_issuer";

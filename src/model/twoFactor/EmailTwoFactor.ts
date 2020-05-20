@@ -1,12 +1,12 @@
-import { twoFactor } from './2faHelper';
-import { User } from '../User';
+import { randomBytes } from 'crypto';
+import moment, { Moment } from 'moment';
+import randomNumber from 'random-number-csprng';
+
 import container from '../DiContainer';
-import moment from 'moment';
-import { Moment } from 'moment';
-import uuidv4 from 'uuid/v4';
 import { stripComplexTypes } from '../helpers';
 import { twoFactorTokenType } from '../Settings';
-import randomNumber from "random-number-csprng";
+import { User } from '../User';
+import { twoFactor } from './2faHelper';
 
 
 export class EmailTwoFactor implements twoFactor {
@@ -17,13 +17,22 @@ export class EmailTwoFactor implements twoFactor {
     return { message: "no setup needed" }; 
   }
 
-  async verify(u: User, data: { token: string }) {
-    const rows = await container.db.query("SELECT id FROM `emailTwoFactor` WHERE used = 0 AND userId = ? AND token = ? AND expires > ?", [u.id, data.token, moment().unix()]);
+  async verify(u: User, data: { token: string, userToken: string }) {
+    const rows = await container.db.query("SELECT * FROM `emailTwoFactor` WHERE used = 0 AND userId = ? AND userToken = ? AND expires > ?", [u.id, data.userToken, moment().unix()]);
 
     if (rows.length !== 1) return false;
 
-    await container.db.query("UPDATE `emailTwoFactor` SET used = 1 WHERE id = ?", [rows[0].id]);
+    const row: EmailTwoFactorRow = rows[0];
+    if (row.attempt >= container.settings.max2faAttempts) return false;
 
+    if (row.token !== data.token) {
+      //increase attempt
+      row.attempt++;
+      await container.db.query("UPDATE `emailTwoFactor` SET attempt = ? WHERE id = ?", [row.attempt, row.id]);
+      return false;
+    }
+
+    await container.db.query("UPDATE `emailTwoFactor` SET used = 1 WHERE id = ?", [rows[0].id]);
     return true;
   }
 
@@ -34,6 +43,8 @@ export class EmailTwoFactor implements twoFactor {
     data.expires = moment().add(10, 'minute');
     data.used = false;
     data.token = await this.getToken();
+    data.userToken = randomBytes(16).toString('hex');
+    data.attempt = 0;
 
     const result = await container.db.query("INSERT INTO `emailTwoFactor` SET ?", data.toDb())
     data.id = result.insertId;
@@ -42,7 +53,7 @@ export class EmailTwoFactor implements twoFactor {
   }
 
   private async getToken(): Promise<string> {
-    if (container.settings.emailTwoFactorTokenType === twoFactorTokenType.uuid) return uuidv4();
+    if (container.settings.emailTwoFactorTokenType === twoFactorTokenType.uuid) return randomBytes(16).toString('hex');
 
     if (container.settings.emailTwoFactorTokenType === twoFactorTokenType.digits) {
       return (await randomNumber(100000, 999999)).toString();
@@ -58,6 +69,8 @@ export class EmailTwoFactorRow {
   token: string = null;
   expires: Moment = null;
   used: boolean = null;
+  userToken: string = null;
+  attempt: number = null;
 
   toDb() {
     const obj: any = stripComplexTypes(this);

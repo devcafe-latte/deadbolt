@@ -190,6 +190,11 @@ export class UserManager {
       await this.updateUser(user);
     }
 
+    //2fa by email will also confirm an email address if needed.
+    if (type === "email" && !user.emailConfirmed) {
+      await this.confirmEmailByUserId(user.id);
+    }
+
     await this.createSession(user, data.sessionHours);
 
     return LoginResult.success(user);

@@ -76,11 +76,20 @@ describe("Sessions", () => {
     expect(body.user.session).toBeNull();
     expect(body.twoFactorData.type).toBe("email");
     expect(body.twoFactorData.token.length).toBe(6);
+    expect(body.twoFactorData.userToken.length).toBe(32);
 
     const token = body.twoFactorData.token;
-    const result2 = await request(app)
+    const userToken = body.twoFactorData.userToken;
+
+    //Try without usertoken
+    await request(app)
       .post('/verify-2fa')
       .send({ username: 'Co', type: 'email', data: { token } })
+      .expect(422);
+
+    const result2 = await request(app)
+      .post('/verify-2fa')
+      .send({ username: 'Co', type: 'email', data: { token, userToken } })
       .expect(200);
 
     const body2 = result2.body;
@@ -113,6 +122,7 @@ describe("Sessions", () => {
 
     //Create a token
     const secret = body.data.secret;
+    const userToken = body.data.userToken;
     const token = totp({
       secret: secret,
       encoding: 'base32'
@@ -120,7 +130,7 @@ describe("Sessions", () => {
 
     const result2 = await request(app)
       .post('/verify-2fa')
-      .send({ username: 'Co', type: 'totp', data: { token } })
+      .send({ username: 'Co', type: 'totp', data: { token, userToken } })
       .expect(200);
 
     const body2 = result2.body;
@@ -347,6 +357,7 @@ describe("Users", () => {
     const body = result.body;
     expect(body.user.session).toBeNull();
     expect(body.twoFactorData.token).toBeDefined()
+    expect(body.twoFactorData.userToken).toBeDefined()
 
     done();
   });
