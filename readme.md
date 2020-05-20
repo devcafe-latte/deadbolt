@@ -3,6 +3,7 @@
 # Update to v2 from v1
 
 - `POST /session` will return the user in an envelope now, and will return Two Factor Auth data if needed.
+- `POST /user` will return the user in an envelope now, and will return Two Factor Auth data if needed.
 - Migrations have been added.
 - Database can now be seeded
 - Passwords can easily by reset (for development) by changing the `passwordHash` to "plain:whatever". Will be converted to proper hash when login occurs.

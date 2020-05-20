@@ -162,7 +162,7 @@ describe('User Tests', () => {
     });
 
     expect(result).toBe("error-thrown");
-    
+
     done();
   });
 
@@ -179,6 +179,26 @@ describe('User Tests', () => {
     expect(user.emailConfirmed).toBe(null);
     expect(user.emailConfirmToken).toBeDefined();
     expect(user.emailConfirmTokenExpires).toBeDefined();
+    done();
+  });
+
+  it('Add User with 2fa', async (done) => {
+    const um = container.um;
+    const user = new User();
+    user.username = "Paul";
+    user.firstName = "Paul";
+    user.twoFactor = "email";
+    user.email = "paul@someplace.com";
+    const result = await um.addUser(user);
+    expect(result.success).toBe(true);
+
+    expect(user.id).toBeGreaterThan(0);
+    expect(user.emailConfirmed).toBe(null);
+    expect(user.emailConfirmToken).toBeDefined();
+    expect(user.emailConfirmTokenExpires).toBeDefined();
+
+    const gotten = await um.getUser(user.username);
+    expect(gotten.twoFactor).toBe("email")
     done();
   });
 

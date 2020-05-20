@@ -166,6 +166,7 @@ router.post("/user", requiredBody("username", "password", "email"), async (req, 
   u.email = body.email;
   u.firstName = body.firstName;
   u.lastName = body.lastName;
+  u.twoFactor = body.twoFactor;
 
   //Create the user
   const result = await container.um.addUser(u);
@@ -189,8 +190,8 @@ router.post("/user", requiredBody("username", "password", "email"), async (req, 
 
   const loginResult = await container.um.login(body, PasswordAuth, body.password);
 
-  cleanForSending(loginResult.user)
-  res.send(loginResult.user);
+  cleanForSending(loginResult)
+  res.send(loginResult);
 });
 
 router.post("/verify-password", userMiddleware, async (req, res) => {

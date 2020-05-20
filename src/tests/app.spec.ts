@@ -45,7 +45,7 @@ describe("App", () => {
   it("Checks 404", async (done) => {
     const result = await request(app).get("/not-a-real-url")
       .expect(404);
-      done();
+    done();
   });
 });
 
@@ -168,7 +168,7 @@ describe("Sessions", () => {
       .post('/session')
       .send({ username: 'Co', password: "notapassword" })
       .expect(422);
-      done();
+    done();
   });
 
   it("Wrong username", async (done) => {
@@ -176,7 +176,7 @@ describe("Sessions", () => {
       .post('/session')
       .send({ username: 'Spongebob', password: "notapassword" })
       .expect(422);
-      done();
+    done();
   });
 
   it("Login missing arguments", async (done) => {
@@ -184,7 +184,7 @@ describe("Sessions", () => {
       .post('/session')
       .send({ password: "notapassword" })
       .expect(400);
-      done();
+    done();
   });
 
   it("Check session", async (done) => {
@@ -221,7 +221,7 @@ describe("Sessions", () => {
   it("Check Wrong session", async (done) => {
     await request(app).get(`/session/notatoken`)
       .expect(404);
-      done();
+    done();
   });
 
   it("Expire session", async (done) => {
@@ -332,10 +332,22 @@ describe("Users", () => {
       .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com" })
       .expect(200);
 
-    const body = result.body;
-    expect(body.session.token).toBeDefined();
+    const user = result.body.user;
+    expect(user.session.token).toBeDefined();
 
     await request(app).post('/session').send({ username: 'Morty', password: 'jessica69' }).expect(200);
+    done();
+  });
+
+  it("Registers a new user with 2fa", async (done) => {
+    const result = await request(app).post('/user')
+      .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com", twoFactor: "email" })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.user.session).toBeNull();
+    expect(body.twoFactorData.token).toBeDefined()
+
     done();
   });
 
@@ -350,8 +362,8 @@ describe("Users", () => {
       .expect(200);
 
     const body = result.body;
-    expect(body.session.token).toBeDefined();
-    expect(body.memberships.length).toBe(3);
+    expect(body.user.session.token).toBeDefined();
+    expect(body.user.memberships.length).toBe(3);
 
     await request(app).post('/session').send({ username: 'Morty', password: 'jessica69' }).expect(200);
     done();
@@ -363,7 +375,7 @@ describe("Users", () => {
     await request(app).post('/user')
       .send({ username: user.username, password: "doesn'treallymatterdoesit?!", email: "morty999@gmail.com" })
       .expect(400);
-      done();
+    done();
   });
 
   it("Try Register with bad password", async (done) => {
@@ -371,21 +383,21 @@ describe("Users", () => {
     await request(app).post('/user')
       .send({ username: "Morty", password: "123", email: "morty999@gmail.com" })
       .expect(400);
-      done();
+    done();
   });
 
   it("Try Register with existing email", async (done) => {
     await request(app).post('/user')
       .send({ username: "PeterParker", password: "doesn'treallymatterdoesit?!", email: "jordan@example.com" })
       .expect(400);
-      done();
+    done();
   });
 
   it("Try Register, missing arguments", async (done) => {
     await request(app).post('/user')
       .send({ password: "doesn'treallymatterdoesit?!" })
       .expect(400);
-      done();
+    done();
   });
 
   it("Updates a user by username", async (done) => {
@@ -473,7 +485,7 @@ describe("Users", () => {
     const uuid = "notauuid";
     await request(app).delete(`/user/${uuid}`)
       .expect(404);
-      done();
+    done();
   });
 
   it("Get user by uuid", async (done) => {
@@ -557,7 +569,7 @@ describe("Users", () => {
   it("Resets the password", async (done) => {
     const token = "token1234";
     await container.db.query("UPDATE `authPassword` SET resetToken = ?, resetTokenExpires = ? WHERE id = 1", [token, moment().add(1, 'day').unix()]);
-    
+
     const password = "angryticksfireoutofmynipples";
     await request(app).post("/reset-password")
       .send({ token, password })
@@ -625,7 +637,7 @@ describe("Users", () => {
     await request(app).put("/password")
       .send({ username, password })
       .expect(404);
-      done();
+    done();
   });
 });
 
@@ -640,7 +652,7 @@ describe("Memberships", () => {
     await container.shutdown();
     done();
   });
-  
+
   it("Adds a membership", async (done) => {
     const identifier = "co";
     const membership: Membership = { app: 'test-app', role: 'mistress' };
