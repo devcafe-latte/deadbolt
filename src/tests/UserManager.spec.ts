@@ -48,7 +48,7 @@ describe('2fa Tests', () => {
     expect(result.twoFactorData.type).toBe("email");
     expect(result.twoFactorData.token).toBeDefined();
 
-    const tokenData = { token: result.twoFactorData.token };
+    const tokenData = { token: result.twoFactorData.token, userToken: result.twoFactorData.userToken };
     const result2 = await container.um.verifyTwoFactor(result.user, result.twoFactorData.type, tokenData);
 
     expect(result2.success).toBe(true);

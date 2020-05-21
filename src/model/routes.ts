@@ -86,6 +86,21 @@ router.post('/setup-2fa', userMiddleware, requiredBody("type"), async (req, res,
     next(err);
   }
 });
+
+router.post('/request-2fa', userMiddleware, requiredBody("type"), async (req, res, next) => {
+  const type: any = req.body.type;
+  const user: User = req.params._user;
+
+  try {
+    const two = get2fa(type);
+    const data = await two.request(user);
+
+    cleanForSending(data)
+    res.send({ result: 'ok', data });
+  } catch (err) {
+    next(err);
+  }
+});
 //endregion
 
 //Region Sessions

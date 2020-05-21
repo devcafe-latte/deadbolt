@@ -110,6 +110,21 @@ describe("Sessions", () => {
     done();
   });
 
+  it("Requests new 2fa code", async (done) => {
+    const result = await request(app)
+      .post('/request-2fa')
+      .send({ username: "Co", type: "email" })
+      .expect(200);
+
+    const body = result.body;
+    
+    expect(body.data.token).toBeDefined()
+    expect(body.data.userToken).toBeDefined()
+    expect(body.data.expires).toBeDefined()
+
+    done();
+  });
+
   it("Setup TOTP 2fa", async (done) => {
     const result = await request(app)
       .post('/setup-2fa')
