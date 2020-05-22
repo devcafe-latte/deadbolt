@@ -37,7 +37,7 @@ class DeadboltApi {
 
     const port = container.settings.port;
     this._server = this._app.listen(port, () => {
-      console.log(`SGF API is listening on port ${port}!`);
+      console.log(`Deadbolt API is listening on port ${port}!`);
     });
 
     this._server.on('close', async () => {

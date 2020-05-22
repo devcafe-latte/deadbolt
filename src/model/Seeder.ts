@@ -2,6 +2,7 @@ import { Settings } from './Settings';
 import { Connection, createConnection } from 'promise-mysql';
 import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
+import { Deferred } from './Deferred';
 export class Seeder {
   private _con: Connection;
 
@@ -22,10 +23,8 @@ export class Seeder {
   }
 
   async seed() {
-    console.log("Checking for Database: " + this.settings.dbName);
-
     //Create connection
-    const c = await this.getConnection();
+    const c = await this.waitForDb();
 
     //Check if database exists
     if (await this.dbExists(this.settings.dbName)) return;
@@ -47,7 +46,6 @@ export class Seeder {
 
   private async getConnection(): Promise<Connection> {
     if (!this._con) {
-      //Reset the database
       this._con = await createConnection({
         host: this.settings.dbHost,
         user: this.settings.dbUser,
@@ -60,5 +58,33 @@ export class Seeder {
     return this._con;
   }
 
+  private async waitForDb() {
+
+    const interval = 1500;
+    const maxTries = 10;
+
+    const d = new Deferred<Connection>();
+    let current = 0;
+    const int = setInterval(() => {
+
+      current++;
+      console.log(`Attempting to connect to Database (${current})`);
+
+      this.getConnection()
+        .then(con => {
+          clearInterval(int);
+          d.resolve(con);
+        })
+        .catch(err => {
+          if (current >= maxTries) {
+            clearInterval(int);
+            d.reject(err);
+          }
+        });
+
+    }, interval);
+
+    return d.promise;
+  }
 
 }
