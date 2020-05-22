@@ -1,4 +1,5 @@
 import { getEnumValue } from './helpers';
+
 export class Settings {
   debug: boolean = (process.env.NODE_ENV !== "production");
 
@@ -14,6 +15,8 @@ export class Settings {
   dbPass: string = process.env.DB_PASS || '';
   dbPort: number = Number(process.env.DB_PORT) || 3306;
   dbName: string = process.env.DB_NAME || 'deadbolt';
+
+  seed: boolean = this.getBoolean(process.env.SEED_DEADBOLT);
 
   //All in hours
   sessionExpires: number = Number(process.env.SESSION_HOURS) || 24 * 14;

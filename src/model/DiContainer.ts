@@ -2,8 +2,9 @@ import dotenv from 'dotenv';
 import { existsSync } from 'fs';
 import { createPool, Pool, PoolConfig } from 'promise-mysql';
 
-import { UserManager } from './UserManager';
+import { Seeder } from './Seeder';
 import { Settings } from './Settings';
+import { UserManager } from './UserManager';
 
 export class Container {
   private _ready: Promise<void>;
@@ -49,6 +50,8 @@ export class Container {
     //Setup userManager
     this._um = new UserManager();
 
+    if (this.settings.seed) await this.trySeed();
+
     //Setup DB Connection
     const config: PoolConfig = {
       connectionLimit : 10,
@@ -76,6 +79,11 @@ export class Container {
 
       process.exit(1);
     }
+  }
+
+  private async trySeed() {
+    const s = new Seeder(this.settings);
+    await s.seed();
   }
 }
 

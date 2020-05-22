@@ -1,6 +1,7 @@
 import { Settings } from './Settings';
 import { Connection, createConnection } from 'promise-mysql';
 import { readFileSync } from 'fs';
+import { execSync } from 'child_process';
 export class Seeder {
   private _con: Connection;
 
@@ -21,16 +22,23 @@ export class Seeder {
   }
 
   async seed() {
+    console.log("Checking for Database: " + this.settings.dbName);
+
     //Create connection
     const c = await this.getConnection();
 
     //Check if database exists
     if (await this.dbExists(this.settings.dbName)) return;
 
+    console.log("Seeding Deadbolt Database: " + this.settings.dbName);
+
     //Seed it
     let sql = readFileSync(__dirname + "/../../migrations/seed/deadbolt-seed.sql").toString();
     sql = sql.replace(/(DEADBOLT_DB_NAME)/g, this.settings.dbName);
     await c.query(sql);
+
+    //Migrate
+    execSync("npx db-migrate up");
 
     this.close();
 
