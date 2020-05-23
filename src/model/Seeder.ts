@@ -3,6 +3,7 @@ import { Connection, createConnection } from 'promise-mysql';
 import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { Deferred } from './Deferred';
+import { ConnectionConfig } from 'mysql';
 export class Seeder {
   private _con: Connection;
 
@@ -46,13 +47,19 @@ export class Seeder {
 
   private async getConnection(): Promise<Connection> {
     if (!this._con) {
-      this._con = await createConnection({
+      const config: ConnectionConfig = {
         host: this.settings.dbHost,
         user: this.settings.dbUser,
         password: this.settings.dbPass,
         port: this.settings.dbPort,
         multipleStatements: true
-      });
+      };
+
+      //Add ssl
+      if (this.settings.dbUseSsl) {
+        config.ssl = { ca: readFileSync(this.settings.dbCaPath, { encoding: 'utf8' }) };
+      }
+      this._con = await createConnection(config);
     }
 
     return this._con;

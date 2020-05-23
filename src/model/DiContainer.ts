@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import { createPool, Pool, PoolConfig } from 'promise-mysql';
 
 import { Seeder } from './Seeder';
@@ -70,6 +70,11 @@ export class Container {
         }
       }
     }
+    //Add ssl
+    if (container.settings.dbUseSsl) {
+      config.ssl = { ca: readFileSync(container.settings.dbCaPath, { encoding: 'utf8' }) };
+    }
+    
     try {
       this._db = await createPool(config);
     } catch (err) {

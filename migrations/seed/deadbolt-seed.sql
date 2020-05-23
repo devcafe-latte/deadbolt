@@ -24,7 +24,7 @@ CREATE TABLE `authPassword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `authPassword` (`id`, `userId`, `passwordHash`, `resetToken`, `resetTokenExpires`, `created`, `updated`) VALUES
-(1,	1,	'$2b$10$Y.Vdh2cW/knJHGXBhm1rwuXTsVcVgmnunOmnqA0CXDmqVdW/rpL62',	NULL,	NULL,	1565550000,	1565550000);
+(1,	1,	'plain:pineapples',	NULL,	NULL,	1565550000,	1565550000);
 
 CREATE TABLE `membership` (
   `id` int NOT NULL AUTO_INCREMENT,

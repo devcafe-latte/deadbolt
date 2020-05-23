@@ -16,6 +16,9 @@ export class Settings {
   dbPort: number = Number(process.env.DB_PORT) || 3306;
   dbName: string = process.env.DB_NAME || 'deadbolt';
 
+  dbUseSsl: boolean = this.getBoolean(process.env.DB_USE_SSL, false);
+  dbCaPath: string = process.env.DB_CA_PATH || '/app/cert/ca-certificate.crt';
+
   seed: boolean = this.getBoolean(process.env.SEED_DEADBOLT);
 
   //All in hours
