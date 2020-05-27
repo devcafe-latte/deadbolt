@@ -18,6 +18,7 @@ export interface twoFactor {
   setup: (u: User) => Promise<any>;
   request: (u: User) => Promise<any>;
   verify: (u: User, data: any) => Promise<boolean>;
+  getLatest: (u: User) => Promise<any>
 }
 
 export type twoFactorType = "totp" | "email";

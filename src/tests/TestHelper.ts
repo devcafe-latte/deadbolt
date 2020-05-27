@@ -7,6 +7,8 @@ import container from '../model/DiContainer';
 import { Settings } from '../model/Settings';
 
 export class TestHelper {
+  private _jasmineTimeout;
+
   constructor() { }
 
   public static setTestEnv() {
@@ -15,6 +17,7 @@ export class TestHelper {
   }
 
   async shutdown() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = this._jasmineTimeout;
     await container.shutdown();
   }
 
@@ -42,6 +45,9 @@ export class TestHelper {
 
     //Make the container happen
     await container.ready();
+
+    this._jasmineTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 60 * 1000;
   }
 
   static async new(): Promise<TestHelper> {

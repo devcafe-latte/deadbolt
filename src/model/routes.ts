@@ -54,6 +54,17 @@ router.post('/seed', async (req, res, next) => {
 });
 
 //Region 2FA
+router.get('/2fa-token', userMiddleware, async (req, res, next) => {
+  const type = req.query.type || 'email';
+  try {
+    const result = await container.um.getLast2faToken(req.params._user, type);
+    cleanForSending(result);
+    return res.send({ result: 'ok', data: result });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post('/verify-2fa', userMiddleware, requiredBody("type", "data"), async (req, res, next) => {
   const type: any = req.body.type;
   const user: User = req.params._user;

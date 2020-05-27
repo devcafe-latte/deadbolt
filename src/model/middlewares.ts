@@ -7,7 +7,7 @@ import { hasProperties } from './helpers';
 export const userMiddleware = async (req: Request, res: Response, next: Function) => {
   if (req.body) {
     const body = req.body;
-    const identifier = req.params.identifier || body.identifier || body.uuid || body.username || body.email || body.id;
+    const identifier = req.params.identifier || body.identifier || body.uuid || body.username || body.email || body.id || req.query.identifier;
 
     if (!identifier) {
       return res

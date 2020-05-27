@@ -9,6 +9,7 @@ import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
 import { LoginRequest } from '../model/RequestBody';
 import { totp } from 'speakeasy';
+import { get2fa } from '../model/twoFactor/2faHelper';
 
 TestHelper.setTestEnv();
 let app: Express.Application;
@@ -94,6 +95,36 @@ describe("Sessions", () => {
 
     const body2 = result2.body;
     expect(body2.user.session.token).toBeDefined();
+
+    done();
+  });
+
+  it("Get Latest 2fa", async (done) => {
+
+    const user = await container.um.getUser("co");
+    user.twoFactor = "email";
+    await container.um.updateUser(user);
+
+    const result = await request(app)
+      .get('/2fa-token?type=email&identifier=Co')
+      .send()
+      .expect(200);
+
+    const body = result.body;
+    expect(body.data).toBeNull();
+    expect(body.result).toBe("ok");
+
+    const two = get2fa("email");
+    const tokenData = await two.request(user);
+
+    const result2 = await request(app)
+      .get('/2fa-token?type=email&identifier=Co')
+      .send()
+      .expect(200);
+
+    const body2 = result2.body;
+    expect(body2.data.userToken).toBe(tokenData.userToken);
+    expect(body2.result).toBe("ok");
 
     done();
   });

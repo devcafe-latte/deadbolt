@@ -73,6 +73,19 @@ describe("TOTP Two Factor Auth", () => {
     done();
   });
 
+  it("getLatest", async (done) => {
+    const two = new TotpTwoFactor();
+    await two.setup(user);
+    const data = await two.request(user);
+    
+    const latest = await two.getLatest(user);
+    expect(latest.id).toBe(2);
+    expect(data.expires.unix()).toBe(latest.expires.unix());
+    expect(data.userToken).toBe(latest.userToken);
+
+    done();
+  });
+
   // it("offline test", async (done) => {
   //   const works = totp.verify({
   //     secret: "OVOV2UTBINZGKRDYHRAH2ZRSPV5FUJDCHZGCK4BXOBNGMKCDLVKQ",

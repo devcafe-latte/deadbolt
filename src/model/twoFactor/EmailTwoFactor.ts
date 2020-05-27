@@ -3,7 +3,7 @@ import moment, { Moment } from 'moment';
 import randomNumber from 'random-number-csprng';
 
 import container from '../DiContainer';
-import { stripComplexTypes } from '../helpers';
+import { stripComplexTypes, toObject } from '../helpers';
 import { twoFactorTokenType } from '../Settings';
 import { User } from '../User';
 import { twoFactor } from './2faHelper';
@@ -61,6 +61,15 @@ export class EmailTwoFactor implements twoFactor {
 
   }
 
+  async getLatest(u: User): Promise<EmailTwoFactorRow> {
+    const rows = await container.db.query("SELECT * FROM `emailTwoFactor` WHERE userId = ? ORDER BY id DESC LIMIT 1", [u.id]);
+
+    if (rows.length === 0) return null;
+    const data = rows[0];
+
+    return EmailTwoFactorRow.fromDb(data);
+  }
+
 }
 
 export class EmailTwoFactorRow {
@@ -71,6 +80,13 @@ export class EmailTwoFactorRow {
   used: boolean = null;
   userToken: string = null;
   attempt: number = null;
+
+  static fromDb(row): EmailTwoFactorRow {
+    const r = toObject<EmailTwoFactorRow>(EmailTwoFactorRow, row);
+    if (row.expires) r.expires = moment.unix(row.expires);
+    
+    return r;
+  }
 
   toDb() {
     const obj: any = stripComplexTypes(this);

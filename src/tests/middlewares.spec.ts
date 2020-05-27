@@ -7,7 +7,7 @@ describe("userMiddleware", () => {
   let th: TestHelper;
 
   beforeEach(async (done) => {
-    req = { body: {}, params: {} };
+    req = { body: {}, params: {}, query: {} };
     res = {
       statusCode: 200,
       body: undefined,

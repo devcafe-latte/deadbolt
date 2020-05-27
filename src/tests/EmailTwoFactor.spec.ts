@@ -52,6 +52,21 @@ describe("Email Two Factor Auth", () => {
     done();
   });
 
+  it("getLatest", async (done) => {
+
+    container.settings.emailTwoFactorTokenType = twoFactorTokenType.digits;
+    const two = new EmailTwoFactor();
+    await two.request(user);
+    const data = await two.request(user);
+
+    const latest = await two.getLatest(user);
+    expect(latest.id).toBe(2);
+    expect(latest.expires.unix()).toBe(data.expires.unix());
+    expect(latest.userToken).toBe(data.userToken);
+
+    done();
+  });
+
   it("Verify", async (done) => {
 
     const two = new EmailTwoFactor();

@@ -178,6 +178,12 @@ export class UserManager {
     return LoginResult.success(user);
   }
 
+  async getLast2faToken(user: User, type: twoFactorType) {
+    const two = get2fa(type);
+    const token = await two.getLatest(user);
+    return token;
+  }
+
   async verifyTwoFactor(user: User, type: twoFactorType, data: any): Promise<LoginResult> {
     const two = get2fa(type);
     const verified = await two.verify(user, data);

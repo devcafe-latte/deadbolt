@@ -40,7 +40,7 @@ export class TotpTwoFactor implements twoFactor {
     const tokenRow = await this.getTokenRow(u.id, data.userToken);
     if (!tokenRow) return false;
     if (!data.token) return false;
-    
+
     if (tokenRow.attempt >= container.settings.max2faAttempts) return false;
 
     const verified = totp.verify({
@@ -90,15 +90,31 @@ export class TotpTwoFactor implements twoFactor {
 
   private async getTokenRow(userId: number, userToken: string): Promise<TotpToken> {
     const rows = await container.db.query([
-      "SELECT t.*, tf.secret", 
-      "FROM `totpToken` t", 
-      "JOIN `totpTwoFactor` tf ON t.totpTwoFactorId = t.id", 
-      "WHERE t.userToken = ?", 
+      "SELECT t.*, tf.secret",
+      "FROM `totpToken` t",
+      "JOIN `totpTwoFactor` tf ON t.totpTwoFactorId = tf.id",
+      "WHERE t.userToken = ?",
       "AND tf.userId = ?",
       "AND t.expires > ?",
       "AND t.used = 0",
     ].join('\n'),
       [userToken, userId, moment().unix()]);
+    if (rows.length === 0) return null;
+    const data = rows[0];
+
+    return TotpToken.fromDb(data);
+  }
+
+  async getLatest(u: User): Promise<TotpToken> {
+    const rows = await container.db.query([
+      "SELECT t.*",
+      "FROM `totpToken` t",
+      "JOIN `totpTwoFactor` tf ON t.totpTwoFactorId = tf.id",
+      "WHERE tf.userId = ?",
+      "ORDER BY `t`.`id` DESC",
+      "LIMIT 1"
+    ].join('\n'),
+      [u.id]);
     if (rows.length === 0) return null;
     const data = rows[0];
 
@@ -132,7 +148,7 @@ export class TotpToken {
   static fromDb(row: any): TotpToken {
     const u = toObject<TotpToken>(TotpToken, row);
     if (row.expires) u.expires = moment.unix(row.expires);
-    
+
     return u;
   }
 }
