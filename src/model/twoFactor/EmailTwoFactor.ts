@@ -7,6 +7,8 @@ import { stripComplexTypes, toObject } from '../helpers';
 import { twoFactorTokenType } from '../Settings';
 import { User } from '../User';
 import { twoFactor } from './2faHelper';
+import { Page, PageResult } from '../Page';
+import { ObjectMapping, Serializer } from '../Serializer';
 
 
 export class EmailTwoFactor implements twoFactor {
@@ -46,7 +48,7 @@ export class EmailTwoFactor implements twoFactor {
     data.userToken = randomBytes(16).toString('hex');
     data.attempt = 0;
 
-    const result = await container.db.query("INSERT INTO `emailTwoFactor` SET ?", data.toDb())
+    const result = await container.db.query("INSERT INTO `emailTwoFactor` SET ?", Serializer.serialize(data));
     data.id = result.insertId;
 
     return data;
@@ -67,7 +69,25 @@ export class EmailTwoFactor implements twoFactor {
     if (rows.length === 0) return null;
     const data = rows[0];
 
-    return EmailTwoFactorRow.fromDb(data);
+    return EmailTwoFactorRow.deserialize(data);
+  }
+
+  async getTokens(page = 0): Promise<Page<EmailTwoFactorRow>> {
+    const limit = 25;
+    const offset = limit * page;
+
+    const countRow = await container.db.query("SELECT COUNT(id) count FROM `emailTwoFactor`", [limit, offset]);
+    const count = countRow[0].count;
+
+    const rows = await container.db.query("SELECT * FROM `emailTwoFactor` ORDER BY id DESC LIMIT ? OFFSET ?", [limit, offset]);
+    const data: PageResult = {
+      currentPage: page,
+      totalItems: count,
+      items: rows,
+      perPage: limit,
+    }
+
+    return new Page<EmailTwoFactorRow>(data, EmailTwoFactorRow);
   }
 
 }
@@ -81,18 +101,12 @@ export class EmailTwoFactorRow {
   userToken: string = null;
   attempt: number = null;
 
-  static fromDb(row): EmailTwoFactorRow {
-    const r = toObject<EmailTwoFactorRow>(EmailTwoFactorRow, row);
-    if (row.expires) r.expires = moment.unix(row.expires);
-    
-    return r;
-  }
+  static deserialize(data) {
+    const mapping: ObjectMapping = {
+      expires: 'moment',
+    };
+    let result = Serializer.deserialize<EmailTwoFactorRow>(EmailTwoFactorRow, data, mapping);
 
-  toDb() {
-    const obj: any = stripComplexTypes(this);
-    if (this.expires) obj.expires = + this.expires.unix();
-    obj.used = this.used ? 1 : 0;
-
-    return obj;
+    return result;
   }
 }

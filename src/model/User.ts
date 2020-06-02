@@ -21,6 +21,7 @@ export class User {
   active: Boolean = null;
   memberships: Membership[] = [];
   twoFactor: twoFactorType = null;
+  //todo add phone number
 
   get displayName(): string {
     if (this.lastName || this.firstName){

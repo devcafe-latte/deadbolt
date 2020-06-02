@@ -3,9 +3,10 @@ import moment, { Moment } from 'moment';
 import { generateSecret, totp } from 'speakeasy';
 
 import container from '../DiContainer';
-import { stripComplexTypes, toObject } from '../helpers';
+import { ObjectMapping, Serializer } from '../Serializer';
 import { User } from '../User';
 import { twoFactor } from './2faHelper';
+import { Page, PageResult } from '../Page';
 
 export class TotpTwoFactor implements twoFactor {
   type: "totp";
@@ -73,7 +74,10 @@ export class TotpTwoFactor implements twoFactor {
     t.userToken = randomBytes(16).toString('hex');
     t.used = false;
 
-    await container.db.query("INSERT INTO `totpToken` SET ?", t.toDb());
+    const tokenData = Serializer.serialize(t)
+    delete tokenData.secret;
+
+    await container.db.query("INSERT INTO `totpToken` SET ?", tokenData);
 
     return t;
   }
@@ -102,7 +106,7 @@ export class TotpTwoFactor implements twoFactor {
     if (rows.length === 0) return null;
     const data = rows[0];
 
-    return TotpToken.fromDb(data);
+    return TotpToken.deserialize(data);
   }
 
   async getLatest(u: User): Promise<TotpToken> {
@@ -118,7 +122,25 @@ export class TotpTwoFactor implements twoFactor {
     if (rows.length === 0) return null;
     const data = rows[0];
 
-    return TotpToken.fromDb(data);
+    return TotpToken.deserialize(data);
+  }
+
+  async getTokens(page = 0): Promise<Page<TotpToken>> {
+    const limit = 25;
+    const offset = limit * page;
+
+    const countRow = await container.db.query("SELECT COUNT(id) count FROM `totpToken`", [limit, offset]);
+    const count = countRow[0].count;
+
+    const rows = await container.db.query("SELECT * FROM `totpToken` ORDER BY id DESC LIMIT ? OFFSET ?", [limit, offset]);
+    const data: PageResult = {
+      currentPage: page,
+      totalItems: count,
+      items: rows,
+      perPage: limit,
+    }
+
+    return new Page<TotpToken>(data, TotpToken);
   }
 }
 
@@ -137,18 +159,12 @@ export class TotpToken {
   used: boolean = null;
   secret?: string = null;
 
-  toDb() {
-    const obj: any = stripComplexTypes(this);
-    if (this.expires) obj.expires = + this.expires.unix();
-    obj.used = this.used ? 1 : 0;
+  static deserialize(data) {
+    const mapping: ObjectMapping = {
+      expires: 'moment',
+    };
+    let result = Serializer.deserialize<TotpToken>(TotpToken, data, mapping);
 
-    return obj;
-  }
-
-  static fromDb(row: any): TotpToken {
-    const u = toObject<TotpToken>(TotpToken, row);
-    if (row.expires) u.expires = moment.unix(row.expires);
-
-    return u;
+    return result;
   }
 }

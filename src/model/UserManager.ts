@@ -184,6 +184,12 @@ export class UserManager {
     return token;
   }
 
+  async get2faTokens(type: twoFactorType, page: number) {
+    const two = get2fa(type);
+    const data = await two.getTokens(page);
+    return data;
+  }
+
   async verifyTwoFactor(user: User, type: twoFactorType, data: any): Promise<LoginResult> {
     const two = get2fa(type);
     const verified = await two.verify(user, data);

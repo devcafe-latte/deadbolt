@@ -1,10 +1,9 @@
 import container from '../model/DiContainer';
-import { twoFactorTokenType } from '../model/Settings';
-import { EmailTwoFactor } from '../model/twoFactor/EmailTwoFactor';
+import { SmsTwoFactor } from '../model/twoFactor/SmsTwoFactor';
 import { User } from '../model/User';
 import { TestHelper } from './TestHelper';
 
-describe("Email Two Factor Auth", () => {
+describe("SMS Two Factor Auth", () => {
   let th: TestHelper;
   let user: User;
 
@@ -19,24 +18,8 @@ describe("Email Two Factor Auth", () => {
     done();
   });
 
-  it("Request uuid", async (done) => {
-
-    container.settings.emailTwoFactorTokenType = twoFactorTokenType.uuid;
-    const two = new EmailTwoFactor();
-    const data = await two.request(user);
-    expect(data.expires).not.toBeNull();
-    expect(data.expires.constructor.name).toBe("Moment");
-    expect(data.token.length).toBe(32);
-    expect(data.userToken.length).toBe(32);
-    expect(data.userId).toBe(user.id);
-
-    done();
-  });
-
-  it("Request digits", async (done) => {
-
-    container.settings.emailTwoFactorTokenType = twoFactorTokenType.digits;
-    const two = new EmailTwoFactor();
+  it("Request Code", async (done) => {
+    const two = new SmsTwoFactor();
     const data = await two.request(user);
     expect(data.expires).not.toBeNull();
     expect(data.expires.constructor.name).toBe("Moment");
@@ -53,9 +36,7 @@ describe("Email Two Factor Auth", () => {
   });
 
   it("getLatest", async (done) => {
-
-    container.settings.emailTwoFactorTokenType = twoFactorTokenType.digits;
-    const two = new EmailTwoFactor();
+    const two = new SmsTwoFactor();
     await two.request(user);
     const data = await two.request(user);
 
@@ -68,7 +49,7 @@ describe("Email Two Factor Auth", () => {
   });
 
   it("Get Tokens", async (done) => {
-    const two = new EmailTwoFactor();
+    const two = new SmsTwoFactor();
     await two.request(user);
     await two.request(user);
     await two.request(user);
@@ -79,14 +60,14 @@ describe("Email Two Factor Auth", () => {
     expect(page.currentPage).toBe(0);
     expect(page.items.length).toBe(4);
 
-    expect(page.items[0].constructor.name).toBe("EmailTwoFactorRow");
+    expect(page.items[0].constructor.name).toBe("SmsTwoFactorRow");
 
     done();
   });
 
   it("Verify", async (done) => {
 
-    const two = new EmailTwoFactor();
+    const two = new SmsTwoFactor();
     const data = await two.request(user);
     
     //Wrong attempt
@@ -96,7 +77,7 @@ describe("Email Two Factor Auth", () => {
     const verified = await two.verify(user, data);
     expect(verified).toBe(true);
 
-    const row = await container.db.query("SELECT * FROM `emailTwoFactor` WHERE id = ?", [data.id]);
+    const row = await container.db.query("SELECT * FROM `smsTwoFactor` WHERE id = ?", [data.id]);
 
     expect(row[0].used).toBe(true);
     expect(row[0].attempt).toBe(1);
@@ -111,7 +92,7 @@ describe("Email Two Factor Auth", () => {
 
     container.settings.max2faAttempts = 1
 
-    const two = new EmailTwoFactor();
+    const two = new SmsTwoFactor();
     const data = await two.request(user);
 
     //Wrong attempt

@@ -86,6 +86,24 @@ describe("TOTP Two Factor Auth", () => {
     done();
   });
 
+  it("Get Tokens", async (done) => {
+    const two = new TotpTwoFactor();
+    await two.setup(user);
+    await two.request(user);
+    await two.request(user);
+    await two.request(user);
+    await two.request(user);
+    const page = await two.getTokens(0);
+
+    expect(page.lastPage).toBe(0);
+    expect(page.currentPage).toBe(0);
+    expect(page.items.length).toBe(5);
+
+    expect(page.items[0].constructor.name).toBe("TotpToken");
+
+    done();
+  });
+
   // it("offline test", async (done) => {
   //   const works = totp.verify({
   //     secret: "OVOV2UTBINZGKRDYHRAH2ZRSPV5FUJDCHZGCK4BXOBNGMKCDLVKQ",

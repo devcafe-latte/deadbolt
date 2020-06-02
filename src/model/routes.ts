@@ -54,6 +54,18 @@ router.post('/seed', async (req, res, next) => {
 });
 
 //Region 2FA
+router.get('/2fa-tokens', async (req, res, next) => {
+  const type = req.query.type || 'email';
+  const page = Number(req.query.page) || 0;
+  try {
+    const result = await container.um.get2faTokens(type, page);
+    cleanForSending(result);
+    return res.send({ result: 'ok', data: result });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/2fa-token', userMiddleware, async (req, res, next) => {
   const type = req.query.type || 'email';
   try {
