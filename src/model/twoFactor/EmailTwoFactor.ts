@@ -3,12 +3,11 @@ import moment, { Moment } from 'moment';
 import randomNumber from 'random-number-csprng';
 
 import container from '../DiContainer';
-import { stripComplexTypes, toObject } from '../helpers';
+import { Page, PageResult } from '../Page';
+import { ObjectMapping, Serializer } from '../Serializer';
 import { twoFactorTokenType } from '../Settings';
 import { User } from '../User';
 import { twoFactor } from './2faHelper';
-import { Page, PageResult } from '../Page';
-import { ObjectMapping, Serializer } from '../Serializer';
 
 
 export class EmailTwoFactor implements twoFactor {

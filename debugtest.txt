@@ -1,0 +1,2639 @@
+
+> deadbolt@2.0.16 test /home/coo/dev/devcafe/deadbolt
+> jasmine-ts --config=jasmine.json
+
+Randomized with seed 68552
+Started
+.........Seeding DB: deadbolt_seed_test_1249
+Attempting to connect to Database (1)
+Seeding Deadbolt Database: deadbolt_seed_test_1249
+.Starting with id 39843
+Stopping with id 39843
+.......Starting with id 19338
+Stopping with id 19338
+.Starting with id 4848
+Stopping with id 4848
+.Starting with id 76915
+Stopping with id 76915
+.Starting with id 96800
+Stopping with id 96800
+.Starting with id 91051
+Stopping with id 91051
+.....Starting with id 72907
+Stopping with id 72907
+.Starting with id 67486
+Stopping with id 67486
+.Starting with id 1274
+Stopping with id 1274
+.Starting with id 30772
+Stopping with id 30772
+.Starting with id 1927
+Stopping with id 1927
+.Starting with id 39748
+Stopping with id 39748
+.Starting with id 43174
+Stopping with id 43174
+.Starting with id 71681
+Stopping with id 71681
+.Starting with id 26437
+Stopping with id 26437
+.Starting with id 10101
+Stopping with id 10101
+.Starting with id 86383
+Stopping with id 86383
+.Starting with id 80881
+Stopping with id 80881
+.Starting with id 77067
+Stopping with id 77067
+.Starting with id 759
+Stopping with id 759
+.Starting with id 53517
+Stopping with id 53517
+.Starting with id 42911
+Stopping with id 42911
+.Starting with id 30732
+Stopping with id 30732
+.Starting with id 95187
+Stopping with id 95187
+...Starting with id 83286
+Stopping with id 83286
+.Starting with id 91703
+Stopping with id 91703
+.Starting with id 83673
+Stopping with id 83673
+.Starting with id 34362
+Stopping with id 34362
+.Starting with id 45814
+Stopping with id 45814
+.Starting with id 60560
+Stopping with id 60560
+.Starting with id 48509
+Stopping with id 48509
+.Starting with id 75405
+Stopping with id 75405
+.Starting with id 99988
+Stopping with id 99988
+.Starting with id 56456
+Stopping with id 56456
+.Starting with id 12089
+Stopping with id 12089
+.Starting with id 65122
+Stopping with id 65122
+.Starting with id 98333
+Stopping with id 98333
+.Starting with id 41586
+Stopping with id 41586
+.Starting with id 24271
+Stopping with id 24271
+.Starting with id 27151
+Stopping with id 27151
+.Starting with id 3754
+Stopping with id 3754
+.Starting with id 59273
+Stopping with id 59273
+.Starting with id 8692
+Stopping with id 8692
+.Starting with id 279
+Stopping with id 279
+.Starting with id 26000
+Stopping with id 26000
+.Starting with id 45965
+Stopping with id 45965
+.Starting with id 87343
+Stopping with id 87343
+.Starting with id 16468
+Stopping with id 16468
+.Starting with id 92593
+Stopping with id 92593
+.Starting with id 72537
+Stopping with id 72537
+...Starting with id 75524
+Stopping with id 75524
+.Starting with id 73000
+Stopping with id 73000
+.Starting with id 48692
+Stopping with id 48692
+.Starting with id 45313
+Stopping with id 45313
+.Starting with id 16692
+Stopping with id 16692
+.Starting with id 888
+Stopping with id 888
+.Starting with id 92337
+Stopping with id 92337
+.Starting with id 28868
+Stopping with id 28868
+.Starting with id 65609
+Stopping with id 65609
+.Starting with id 4072
+Stopping with id 4072
+.Starting with id 24010
+Stopping with id 24010
+.Starting with id 27835
+Stopping with id 27835
+.Starting with id 52157
+Stopping with id 52157
+.Starting with id 34159
+Stopping with id 34159
+.Starting with id 9853
+Stopping with id 9853
+.Starting with id 16371
+Stopping with id 16371
+.Starting with id 51359
+Stopping with id 51359
+.Starting with id 2649
+Stopping with id 2649
+.Starting with id 39810
+Stopping with id 39810
+.Starting with id 66749
+Stopping with id 66749
+.Starting with id 37737
+[404]  Not found: GET /not-a-real-url
+Stopping with id 37737
+.Starting with id 26368
+Replacing memberships ee13624b-cf22-4597-adb9-bfa4b16baa71
+Replacing memberships ee13624b-cf22-4597-adb9-bfa4b16baa71
+Stopping with id 26368
+.Starting with id 73645
+Stopping with id 73645
+.Starting with id 96625
+Stopping with id 96625
+.Starting with id 7717
+Stopping with id 7717
+.Starting with id 42813
+Stopping with id 42813
+.Starting with id 67942
+Stopping with id 67942
+.Starting with id 75444
+Stopping with id 75444
+.Starting with id 24313
+Stopping with id 24313
+.Starting with id 20927
+Stopping with id 20927
+.Starting with id 89712
+Stopping with id 89712
+.Starting with id 68015
+Stopping with id 68015
+.Starting with id 60918
+Stopping with id 60918
+.Starting with id 40077
+Stopping with id 40077
+.Starting with id 60741
+Stopping with id 60741
+.Starting with id 56017
+Stopping with id 56017
+.Starting with id 3526
+Stopping with id 3526
+.Starting with id 24061
+Stopping with id 24061
+.Starting with id 20590
+Stopping with id 20590
+.Starting with id 24711
+Stopping with id 24711
+.Starting with id 73749
+Stopping with id 73749
+.Starting with id 42657
+[500]  Unknown Error
+Stopping with id 42657
+.Starting with id 147
+Stopping with id 147
+.Starting with id 12584
+Stopping with id 12584
+.Starting with id 67275
+Stopping with id 67275
+.Starting with id 40019
+Stopping with id 67275
+FStarting with id 86659
+Stopping with id 67275
+FStarting with id 94313
+Stopping with id 67275
+FStarting with id 35942
+Stopping with id 67275
+FStarting with id 55785
+Stopping with id 67275
+FStarting with id 39824
+Stopping with id 67275
+FStarting with id 25673
+Stopping with id 67275
+FStarting with id 44345
+Stopping with id 67275
+FStarting with id 64255
+Stopping with id 67275
+FStarting with id 60280
+Stopping with id 67275
+FStarting with id 34274
+Stopping with id 67275
+FStarting with id 17437
+Stopping with id 67275
+FStarting with id 49368
+Stopping with id 67275
+FStarting with id 10539
+Stopping with id 67275
+FStarting with id 63170
+Stopping with id 67275
+FStarting with id 96380
+Stopping with id 67275
+FStarting with id 44283
+Stopping with id 67275
+FStarting with id 18952
+FStarting with id 13377
+FStarting with id 45672
+FStarting with id 12271
+FStarting with id 11938
+FStarting with id 12339
+FStarting with id 61645
+FStarting with id 91325
+FStarting with id 91218
+FStarting with id 32730
+FStarting with id 48170
+FStarting with id 92023
+FStarting with id 12724
+FStarting with id 64366
+FStarting with id 33545
+FStarting with id 35135
+FStarting with id 94922
+FStarting with id 40926
+FStarting with id 72748
+FStarting with id 12925
+FStarting with id 14104
+FStarting with id 64269
+FStarting with id 41663
+FStarting with id 97067
+FStarting with id 77491
+FStarting with id 6804
+FStarting with id 59482
+FStarting with id 9293
+FStarting with id 40662
+F............
+
+Failures:
+1) Users Tries Reset the password (Wrong token)
+  Message:
+    Unhandled promise rejection: Error: Command failed: npx db-migrate up
+    [ERROR] AssertionError [ERR_ASSERTION]: ifError got unwanted exception: Packets out of order. Got: 1 Expected: 0
+        at module.exports (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/helper/assert.js:9:14)
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/up.js:19:14
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/connect.js:17:7
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:95:9
+        at Handshake.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate-mysql/index.js:510:14)
+        at Handshake.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Handshake._callback (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:491:16)
+        at Handshake.Sequence.end (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+        at Protocol.handleParserError (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:378:14)
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:478:10)
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        --------------------
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate-mysql/index.js:508:6)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:93:12)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:134:5)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/connect.js:15:10)
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/up.js:15:13
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+        at Immediate.Async.drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:17:14)
+    
+  Stack:
+    error properties: Object({ status: 1, signal: null, output: [ null, Buffer [  ], Buffer [ 91, 69, 82, 82, 79, 82, 93, 32, 65, 115, 115, 101, 114, 116, 105, 111, 110, 69, 114, 114, 111, 114, 32, 91, 69, 82, 82, 95, 65, 83, 83, 69, 82, 84, 73, 79, 78, 93, 58, 32, 105, 102, 69, 114, 114, 111, 114, 32, 103, 111, ... ] ], pid: 29704, stdout: Buffer [  ], stderr: Buffer [ 91, 69, 82, 82, 79, 82, 93, 32, 65, 115, 115, 101, 114, 116, 105, 111, 110, 69, 114, 114, 111, 114, 32, 91, 69, 82, 82, 95, 65, 83, 83, 69, 82, 84, 73, 79, 78, 93, 58, 32, 105, 102, 69, 114, 114, 111, 114, 32, 103, 111, ... ] })
+        at <Jasmine>
+        at module.exports (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/helper/assert.js:9:14)
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/up.js:19:14
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/connect.js:17:7
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:95:9
+        at Handshake.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate-mysql/index.js:510:14)
+        at Handshake.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Handshake._callback (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:491:16)
+        at Handshake.Sequence.end (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+        at Protocol.handleParserError (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:378:14)
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:478:10)
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate-mysql/index.js:508:6)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:93:12)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/driver/index.js:134:5)
+        at Object.exports.connect (/home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/connect.js:15:10)
+        at /home/coo/dev/devcafe/deadbolt/node_modules/db-migrate/lib/commands/up.js:15:13
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+        at Immediate.Async.drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:17:14)
+        at checkExecSyncError (child_process.js:629:11)
+        at Object.execSync (child_process.js:666:13)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:49:5)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at fulfilled (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:4:58)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+2) Users Purges a user
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+3) Users Try Register, missing arguments
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+4) Users Resets the password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+5) Users Try Register with existing username
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+6) Users Get user by username
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+7) Users (De)activate a user
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+8) Users Confirm Email
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+9) Users Get user by uuid
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+10) Users Updates a user by email
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+11) Users Updates a user by username
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+12) Users Purges a non existing user
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+13) Users Registers a new user With Memberships
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+14) Users Updates a user by uuid
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+15) Users Updates the password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+16) Users Search for users
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+17) Users Get user by email
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'end' of null
+  Stack:
+        at <Jasmine>
+        at Container.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:38:20)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:3:12)
+        at Container.shutdown (/home/coo/dev/devcafe/deadbolt/src/model/DiContainer.ts:85:16)
+        at TestHelper.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:26:21)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:3:12)
+        at TestHelper.shutdown (/home/coo/dev/devcafe/deadbolt/src/tests/TestHelper.ts:57:16)
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:349:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/app.spec.ts:32:23)
+
+18) Email Two Factor Auth getLatest
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+19) Email Two Factor Auth Get Tokens
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+20) Email Two Factor Auth Verify
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+21) Email Two Factor Auth Request digits
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+22) Email Two Factor Auth Exceed Verification Attempts
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+23) Email Two Factor Auth Request uuid
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:18:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/EmailTwoFactor.spec.ts:17:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+24) Dependency Container tests Initiating
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:13:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/DiContainer.spec.ts:12:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+25) Password (re)setting Wrong reset token
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+26) Password (re)setting Reset token expired
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+27) Password (re)setting Generate Token, wrong userId
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+28) Password (re)setting Reset password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+29) Password (re)setting set too long password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+30) Password (re)setting Generate Token
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+31) Password (re)setting set password non existing user
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+32) Password (re)setting set too short password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+33) Password (re)setting set password, existing record
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+34) Password (re)setting set password, new record
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:86:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:85:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+35) Password Verification Plaintext Password hack
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:17:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:16:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+36) Password Verification User doesn't exist
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:17:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:16:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+37) Password Verification Wrong password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:17:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:16:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+38) Password Verification Empty password
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:17:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:16:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+39) Password Verification Should verify
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:17:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/PasswordAuth.spec.ts:16:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+40) userMiddleware Tests wrong Identifier
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+41) userMiddleware Tests Identifier as param
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+42) userMiddleware Tests Missing Identifier
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+43) userMiddleware Tests uuid as Identifier
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+44) userMiddleware Tests email as Identifier
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+45) userMiddleware Tests id as Identifier
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+46) userMiddleware Tests name as Identifier in body
+  Message:
+    Unhandled promise rejection: Error: Packets out of order. Got: 1 Expected: 0
+  Stack:
+    error properties: Object({ code: 'PROTOCOL_PACKETS_OUT_OF_ORDER', fatal: true })
+    Error: Packets out of order. Got: 1 Expected: 0
+        at Parser._tryReadPacketHeader (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:470:15)
+        at Parser.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Parser.js:33:29)
+        at Protocol.write (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:91:28)
+        at Socket.<anonymous> (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:525:10)
+        at Socket.emit (events.js:198:13)
+        at addChunk (_stream_readable.js:288:12)
+        at readableAddChunk (_stream_readable.js:269:11)
+        at Socket.Readable.push (_stream_readable.js:224:10)
+        at TCP.onStreamRead [as onread] (internal/stream_base_commons.js:94:17)
+        at <Jasmine>
+        at Protocol._enqueue (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+        at Protocol.handshake (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+        at Connection.connect (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Connection.js:119:18)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:123:20)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at connect (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:122:12)
+        at Promise.resolve.then (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/connection.js:43:31)
+        at tryCatcher (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/util.js:16:23)
+        at Promise._settlePromiseFromHandler (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:517:31)
+        at Promise._settlePromise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:574:18)
+        at Promise._settlePromiseCtx (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:611:10)
+        at _drainQueueStep (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:142:12)
+        at _drainQueue (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:131:9)
+        at Async._drainQueues (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/async.js:147:5)
+  Message:
+    Unhandled promise rejection: TypeError: Cannot read property 'shutdown' of undefined
+  Stack:
+        at <Jasmine>
+        at Object.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:29:14)
+        at step (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:13:53)
+        at /home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:7:71
+        at <Jasmine>
+        at __awaiter (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:3:12)
+        at UserContext.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/tests/middlewares.spec.ts:28:24)
+        at <Jasmine>
+        at process.emit (events.js:198:13)
+
+Suite error: Sessions
+  Message:
+    Unhandled promise rejection: Error: Pool is closed.
+  Stack:
+    error properties: Object({ code: 'POOL_CLOSED' })
+    Error: Pool is closed.
+        at Pool.getConnection (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Pool.js:25:15)
+        at Pool.query (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Pool.js:202:8)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/helper.js:26:45)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at Pool.promiseCallback (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/helper.js:8:16)
+        at pool.query (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/pool.js:56:32)
+        at UserManager.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:401:24)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:13:53)
+        at fulfilled (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:4:58)
+        at <Jasmine>
+        at Pool.query (/home/coo/dev/devcafe/deadbolt/node_modules/mysql/lib/Pool.js:199:23)
+        at Promise (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/helper.js:26:45)
+        at Promise._execute (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/debuggability.js:313:9)
+        at Promise._resolveFromExecutor (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:488:18)
+        at new Promise (/home/coo/dev/devcafe/deadbolt/node_modules/bluebird/js/release/promise.js:79:10)
+        at Pool.promiseCallback (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/helper.js:8:16)
+        at pool.query (/home/coo/dev/devcafe/deadbolt/node_modules/promise-mysql/lib/pool.js:56:32)
+        at UserManager.<anonymous> (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:401:24)
+        at step (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:32:23)
+        at Object.next (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:13:53)
+        at fulfilled (/home/coo/dev/devcafe/deadbolt/src/model/UserManager.ts:4:58)
+
+177 specs, 47 failures
+Finished in 77.109 seconds
+Randomized with seed 68552 (jasmine --random=true --seed=68552)

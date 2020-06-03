@@ -10,7 +10,7 @@ RUN apk add --update \
   && pip install virtualenv \
   && rm -rf /var/cache/apk/*
 
-LABEL version="2.0.15"
+LABEL version="2.0.17"
 
 WORKDIR /app
 COPY package*.json ./

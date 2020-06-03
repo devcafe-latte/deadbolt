@@ -12,6 +12,7 @@ import { totp } from 'speakeasy';
 import { get2fa } from '../model/twoFactor/2faHelper';
 
 TestHelper.setTestEnv();
+let th: TestHelper;
 let app: Express.Application;
 
 const correct: LoginRequest = {
@@ -24,12 +25,12 @@ describe("App", () => {
 
   beforeEach(async (done) => {
     app = deadbolt.app;
-    await TestHelper.new();
+    th = await TestHelper.new();
     done();
   });
 
   afterEach(async (done) => {
-    await container.shutdown();
+    await th.shutdown();
     done();
   });
 
@@ -53,12 +54,12 @@ describe("App", () => {
 describe("Sessions", () => {
   beforeEach(async (done) => {
     app = deadbolt.app;
-    await TestHelper.new();
+    th = await TestHelper.new();
     done();
   });
 
   afterEach(async (done) => {
-    await container.shutdown();
+    await th.shutdown();
     done();
   });
 
@@ -340,12 +341,12 @@ describe("Sessions", () => {
 describe("Users", () => {
   beforeEach(async (done) => {
     app = deadbolt.app;
-    await TestHelper.new();
+    th = await TestHelper.new();
     done();
   });
 
   afterEach(async (done) => {
-    await container.shutdown();
+    await th.shutdown();
     done();
   });
 
@@ -716,12 +717,12 @@ describe("Users", () => {
 describe("Memberships", () => {
   beforeEach(async (done) => {
     app = deadbolt.app;
-    await TestHelper.new();
+    th = await TestHelper.new();
     done();
   });
 
   afterEach(async (done) => {
-    await container.shutdown();
+    await th.shutdown();
     done();
   });
 

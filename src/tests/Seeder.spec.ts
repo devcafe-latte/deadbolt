@@ -6,14 +6,14 @@ describe("Seeder", () => {
 
   beforeEach(() => {
     TestHelper.setTestEnv();
-  })
+  });
 
   it("Tries seeding", async(done) => {
     const settings = new Settings();
     settings.dbName = "deadbolt_seed_test_" + Math.floor(Math.random() * 100000);
     console.log("Seeding DB: " + settings.dbName);
 
-    const seeder = new Seeder(settings);
+    const seeder: any = new Seeder(settings);
 
     expect(await seeder.dbExists(settings.dbName)).toBe(false);
     await seeder.seed();

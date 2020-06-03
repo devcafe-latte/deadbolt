@@ -1,9 +1,11 @@
-import { Settings } from './Settings';
-import { Connection, createConnection } from 'promise-mysql';
-import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
-import { Deferred } from './Deferred';
+import { readFileSync } from 'fs';
 import { ConnectionConfig } from 'mysql';
+import { Connection, createConnection } from 'promise-mysql';
+
+import { Deferred } from './Deferred';
+import { Settings } from './Settings';
+
 export class Seeder {
   private _con: Connection;
 
@@ -11,14 +13,16 @@ export class Seeder {
 
   }
 
-  async dbExists(name: string): Promise<boolean> {
+  private async dbExists(name: string): Promise<boolean> {
     const c = await this.getConnection();
 
     const rows = await c.query("SHOW DATABASES LIKE ?;", [name]);
     return (rows.length > 0);
   }
 
-  async close() {
+  private close() {
+    if (!this._con) return;
+
     this._con.destroy();
     this._con = undefined;
   }
@@ -28,7 +32,10 @@ export class Seeder {
     const c = await this.waitForDb();
 
     //Check if database exists
-    if (await this.dbExists(this.settings.dbName)) return;
+    if (await this.dbExists(this.settings.dbName)) {
+      this.close();
+      return;
+    }
 
     console.log("Seeding Deadbolt Database: " + this.settings.dbName);
 
@@ -68,7 +75,7 @@ export class Seeder {
   private async waitForDb() {
 
     const interval = 1500;
-    const maxTries = 10;
+    const maxTries = 15;
 
     const d = new Deferred<Connection>();
     let current = 0;

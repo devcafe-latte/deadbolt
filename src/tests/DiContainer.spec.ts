@@ -15,8 +15,6 @@ describe('Dependency Container tests', () => {
   });
 
   it('Initiating', async (done) => {
-    await container.ready();
-
     expect(container.um).toBeDefined();
     expect(container.db).toBeDefined();
 

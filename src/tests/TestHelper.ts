@@ -8,8 +8,12 @@ import { Settings } from '../model/Settings';
 
 export class TestHelper {
   private _jasmineTimeout;
+  private _id: number;
 
-  constructor() { }
+  constructor() { 
+    this._id = Math.floor(Math.random() * 100000);
+    console.log("Starting with id " + this._id);
+  }
 
   public static setTestEnv() {
     //Set some test settings (these don't overwrite. So if they are already set, that's good too)
@@ -17,6 +21,7 @@ export class TestHelper {
   }
 
   async shutdown() {
+    console.log("Stopping with id " + this._id);
     jasmine.DEFAULT_TIMEOUT_INTERVAL = this._jasmineTimeout;
     await container.shutdown();
   }
