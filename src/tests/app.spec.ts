@@ -100,6 +100,26 @@ describe("Sessions", () => {
     done();
   });
 
+  it("New Session with other 2fa", async (done) => {
+
+    const user = await container.um.getUser("co");
+    user.twoFactor = "email";
+    await container.um.updateUser(user);
+
+    const result = await request(app)
+      .post('/session')
+      .send({ username: 'Co', password: "password", twoFactorType: 'totp' })
+      .expect(200);
+
+    const body = result.body;
+    expect(body.user.session).toBeNull();
+    expect(body.twoFactorData.type).toBe("totp");
+    expect(body.twoFactorData.userToken).toBeUndefined();
+    expect(body.twoFactorData.code).toBe('not-set-up');
+
+    done();
+  });
+
   it("Get Latest 2fa", async (done) => {
 
     const user = await container.um.getUser("co");

@@ -145,7 +145,7 @@ export class UserManager {
     return users[0];
   }
 
-  async login(data: LoginRequest, authMethod: any, authOptions: any): Promise<LoginResult> {
+  async login(data: LoginRequest, authMethod: any, authOptions: any, twoFactorType?: twoFactorType): Promise<LoginResult> {
     await container.ready();
 
     const user = await this.getUser(data.username, data.app);
@@ -167,15 +167,25 @@ export class UserManager {
     }
 
     //Two factor Auth needed?
-    if (user.twoFactor) {
-      const two = get2fa(user.twoFactor);
-      const result = await two.request(user);
+    if (twoFactorType || user.twoFactor) {
+      const result = await this.tryRequest2fa(user, twoFactorType || user.twoFactor);
       return LoginResult.twoFactor(user, result);
     }
 
     await this.createSession(user, data.sessionHours);
 
     return LoginResult.success(user);
+  }
+
+  private async tryRequest2fa(user: User, type: twoFactorType) {
+      const two = get2fa(type);
+      user.twoFactor = type;
+      try {
+        return await two.request(user);
+      } catch (err) {
+        //Notify it's not setup
+        return { code: 'not-set-up' }
+      }
   }
 
   async getLast2faToken(user: User, type: twoFactorType) {

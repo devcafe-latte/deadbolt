@@ -6,6 +6,7 @@ import { PasswordAuth } from '../model/authMethod/PasswordAuth';
 import moment from 'moment';
 import { SearchCriteria } from '../model/SearchCriteria';
 import { LoginRequest } from '../model/RequestBody';
+import { get2fa } from '../model/twoFactor/2faHelper';
 
 const correct: LoginRequest = {
   username: 'Co',
@@ -53,6 +54,30 @@ describe('2fa Tests', () => {
 
     expect(result2.success).toBe(true);
     expect(result2.user.session).not.toBeNull();
+
+    done();
+  });
+
+  it('Login with preferred totp', async (done) => {
+    const user = await container.um.getUser("co");
+    user.twoFactor = "email";
+    await container.um.updateUser(user);
+
+    const result = await container.um.login(correct, PasswordAuth, correct.password, "totp");
+    expect(result.user).toBeDefined();
+    expect(result.user.session).toBeNull();
+
+    expect(result.twoFactorData.type).toBe("totp");
+    expect(result.twoFactorData.userToken).toBeUndefined();
+    expect(result.twoFactorData.code).toBe('not-set-up');
+
+    const totpRequest = get2fa("totp").setup(user);
+    const result2 = await container.um.login(correct, PasswordAuth, correct.password, "totp");
+    expect(result2.user).toBeDefined();
+    expect(result2.user.session).toBeNull();
+
+    expect(result2.twoFactorData.type).toBe("totp");
+    expect(result2.twoFactorData.userToken).toBeDefined();
 
     done();
   });

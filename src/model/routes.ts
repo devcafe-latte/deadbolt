@@ -134,7 +134,7 @@ router.post('/session', requiredBody("username", "password"), async (req, res) =
   // Also allow login with email 
   const method = PasswordAuth;
 
-  const result = await container.um.login(body, method, body.password);
+  const result = await container.um.login(body, method, body.password, body.twoFactorType);
   if (!result.success) {
     return res.status(422)
       .send({ status: "failed", reason: result.reason });
