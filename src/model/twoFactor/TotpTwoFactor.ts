@@ -21,13 +21,14 @@ export class TotpTwoFactor implements twoFactor {
     const secret: TotpSecret = {
       userId: u.id,
       secret: se.base32,
+      confirmed: false,
     }
 
     await container.db.query("INSERT INTO `totpTwoFactor` SET ?", secret);
 
     const otpAuthUrl = `otpauth://totp/${encodeURIComponent(container.settings.otpLabel)}:${encodeURIComponent(u.email || u.username)}?secret=${secret.secret}&issuer=${encodeURIComponent(container.settings.otpIssuer)}`;
 
-    const request = await this.request(u);
+    const request = await this.newtoken(u, true);
 
     return {
       ...secret,
@@ -57,15 +58,16 @@ export class TotpTwoFactor implements twoFactor {
     } else {
       tokenRow.used = true;
       await container.db.query("UPDATE `totpToken` SET used = 1 WHERE id = ?", [tokenRow.id]);
+      await container.db.query("UPDATE `totpTwoFactor` SET confirmed = 1 WHERE userId = ?", [u.id]);
     }
 
     return verified;
   }
 
-  async request(u: User): Promise<TotpToken> {
-
+  private async newtoken(u: User, force: boolean): Promise<TotpToken> {
     const tfSecret = await this.getSecret(u.id);
     if (!tfSecret) throw "Totp Not set up for user " + u.id;
+    if (!force && !tfSecret.confirmed) throw "Totp Not activated for user " + u.id;
 
     const t = new TotpToken();
     t.attempt = 0;
@@ -80,6 +82,26 @@ export class TotpTwoFactor implements twoFactor {
     await container.db.query("INSERT INTO `totpToken` SET ?", tokenData);
 
     return t;
+  }
+
+  async request(u: User): Promise<TotpToken> {
+    return this.newtoken(u, false);
+    // const tfSecret = await this.getSecret(u.id);
+    // if (!tfSecret || !tfSecret.confirmed) throw "Totp Not set up for user " + u.id;
+
+    // const t = new TotpToken();
+    // t.attempt = 0;
+    // t.expires = moment().add(10, 'minute');
+    // t.totpTwoFactorId = tfSecret.id;
+    // t.userToken = randomBytes(16).toString('hex');
+    // t.used = false;
+
+    // const tokenData = Serializer.serialize(t)
+    // delete tokenData.secret;
+
+    // await container.db.query("INSERT INTO `totpToken` SET ?", tokenData);
+
+    // return t;
   }
 
   async reset(u: User) {
@@ -148,6 +170,7 @@ export interface TotpSecret {
   id?: number;
   userId: number;
   secret: string;
+  confirmed: boolean;
 }
 
 export class TotpToken {

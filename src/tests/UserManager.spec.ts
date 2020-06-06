@@ -63,21 +63,30 @@ describe('2fa Tests', () => {
     user.twoFactor = "email";
     await container.um.updateUser(user);
 
-    const result = await container.um.login(correct, PasswordAuth, correct.password, "totp");
+    let result = await container.um.login(correct, PasswordAuth, correct.password, "totp");
+    expect(result.user).toBeDefined();
+    expect(result.user.session).toBeNull();
+    expect(result.twoFactorData.type).toBe("totp");
+    expect(result.twoFactorData.confirmed).toBe(false);
+    expect(result.twoFactorData.userToken).toBeDefined();
+    expect(result.twoFactorData.secret).toBeDefined();
+
+    result = await container.um.login(correct, PasswordAuth, correct.password, "totp");
+    expect(result.user).toBeDefined();
+    expect(result.user.session).toBeNull();
+    expect(result.twoFactorData.type).toBe("totp");
+    expect(result.twoFactorData.confirmed).toBe(false);
+    expect(result.twoFactorData.userToken).toBeDefined();
+    expect(result.twoFactorData.secret).toBeDefined();
+
+    const totpRequest = get2fa("totp").setup(user);
+    await container.db.query("UPDATE totpTwoFactor SET confirmed = 1 WHERE userId = ?", [user.id]);
+    result = await container.um.login(correct, PasswordAuth, correct.password, "totp");
     expect(result.user).toBeDefined();
     expect(result.user.session).toBeNull();
 
     expect(result.twoFactorData.type).toBe("totp");
-    expect(result.twoFactorData.userToken).toBeUndefined();
-    expect(result.twoFactorData.code).toBe('not-set-up');
-
-    const totpRequest = get2fa("totp").setup(user);
-    const result2 = await container.um.login(correct, PasswordAuth, correct.password, "totp");
-    expect(result2.user).toBeDefined();
-    expect(result2.user.session).toBeNull();
-
-    expect(result2.twoFactorData.type).toBe("totp");
-    expect(result2.twoFactorData.userToken).toBeDefined();
+    expect(result.twoFactorData.userToken).toBeDefined();
 
     done();
   });

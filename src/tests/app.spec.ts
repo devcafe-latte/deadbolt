@@ -114,8 +114,8 @@ describe("Sessions", () => {
     const body = result.body;
     expect(body.user.session).toBeNull();
     expect(body.twoFactorData.type).toBe("totp");
-    expect(body.twoFactorData.userToken).toBeUndefined();
-    expect(body.twoFactorData.code).toBe('not-set-up');
+    expect(body.twoFactorData.userToken).toBeDefined();
+    expect(body.twoFactorData.secret).toBeDefined();
 
     done();
   });

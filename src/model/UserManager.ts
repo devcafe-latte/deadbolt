@@ -183,8 +183,7 @@ export class UserManager {
       try {
         return await two.request(user);
       } catch (err) {
-        //Notify it's not setup
-        return { code: 'not-set-up' }
+        return await two.setup(user);
       }
   }
 

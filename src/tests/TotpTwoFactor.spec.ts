@@ -23,6 +23,8 @@ describe("TOTP Two Factor Auth", () => {
   it("Request", async (done) => {
     const two = new TotpTwoFactor();
     await two.setup(user);
+    await container.db.query("UPDATE totpTwoFactor SET confirmed = 1 WHERE userId = ?", [user.id]);
+
     const data = await two.request(user);
     expect(data.attempt).toBe(0);
     expect(data.userToken.length).toBe(32);
@@ -76,6 +78,7 @@ describe("TOTP Two Factor Auth", () => {
   it("getLatest", async (done) => {
     const two = new TotpTwoFactor();
     await two.setup(user);
+    await container.db.query("UPDATE totpTwoFactor SET confirmed = 1 WHERE userId = ?", [user.id]);
     const data = await two.request(user);
     
     const latest = await two.getLatest(user);
@@ -89,6 +92,7 @@ describe("TOTP Two Factor Auth", () => {
   it("Get Tokens", async (done) => {
     const two = new TotpTwoFactor();
     await two.setup(user);
+    await container.db.query("UPDATE totpTwoFactor SET confirmed = 1 WHERE userId = ?", [user.id]);
     await two.request(user);
     await two.request(user);
     await two.request(user);
