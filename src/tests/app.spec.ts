@@ -402,20 +402,18 @@ describe("Users", () => {
       .expect(200);
 
     const body = result.body;
-    expect(body.users.length).toBe(1);
-    expect(body.criteria.orderBy).toEqual(['u.id']);
-    expect(body.users[0].firstName).toBe("Jordan");
+    expect(body.items.length).toBe(1);
+    expect(body.items[0].firstName).toBe("Jordan");
     done();
   });
 
   it("Search for users, based on role", async (done) => {
-    const result = await request(app).get('/users?memberships=admin&memberships=whatever')
+    const result = await request(app).get('/users?membership=test-app:admin&membership=test-app:whatever')
       .expect(200);
 
     const body = result.body;
-    expect(body.users.length).toBe(1);
-    expect(body.criteria.orderBy).toEqual(['u.id']);
-    expect(body.users[0].username).toBe("Co");
+    expect(body.items.length).toBe(1);
+    expect(body.items[0].username).toBe("Co");
     done();
   });
 

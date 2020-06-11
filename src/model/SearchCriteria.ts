@@ -1,12 +1,15 @@
 import { toObject, trimCharLeft } from './helpers';
+import { Membership } from './Membership';
 
 export class SearchCriteria {
   q?: string = null;
+  email?: string = null;
   uuids?: string[] = null;
-  memberships?: string[] = null;
+
+  memberships?: Membership[] = null;
   page: number = 0;
   perPage: number = 25;
-  orderBy: OrderByCriteria[] = [{ column: 'u.id' }];
+  orderBy: OrderByCriteria[] = [{ column: 'u.email' }];
 
   static fromQueryParams(params: any): SearchCriteria {
     const s = toObject<SearchCriteria>(SearchCriteria, params);
@@ -17,9 +20,21 @@ export class SearchCriteria {
     s.setOrderBy(params.orderBy);
 
     if (typeof params.uuids === "string") s.uuids = [params.uuids];
-    if (typeof params.memberships === "string") s.memberships = [params.memberships];
+    s.decodeMemberships(params.membership);
 
     return s;
+  }
+
+  private decodeMemberships(data: any) {
+    //Memberships come in like: ?membership=some-app:some-role&membership=some-other-app:some-other-role
+    if (!data) return;
+    if (!Array.isArray(data)) data = [data];
+    this.memberships = [];    
+    for (let d of data) {
+      const parts = d.split(':');
+      this.memberships.push({ app: parts[0], role: parts[1]});
+    }
+
   }
 
   private setOrderBy(data: string | string[]) {
@@ -99,6 +114,10 @@ export class SearchSqlBuilder {
         ].join(" OR ")
       );
       this.values.push(searchValue, searchValue, searchValue);
+    } else if (this.search.email) {
+      const searchValue = this.search.email + "%";
+      whereArray.push("(u.email LIKE ?)");
+      this.values.push(searchValue);
     }
 
     if (this.search.uuids && this.search.uuids.length > 0) {
@@ -107,8 +126,12 @@ export class SearchSqlBuilder {
     }
 
     if (this.search.memberships && this.search.memberships.length > 0) {
-      whereArray.push('m.role IN (?)');
-      this.values.push(this.search.memberships);
+      const msWhere = [];
+      for (let m of this.search.memberships) {
+        msWhere.push('(`m`.`app` = ? AND `m`.`role` = ?)');
+        this.values.push(m.app, m.role);
+      }
+      whereArray.push('(' + msWhere.join(' OR ') + ')');
     }
     const where = whereArray.length > 0 ? "WHERE " + whereArray.join("\nAND ") : "";
 

@@ -140,9 +140,8 @@ describe('User Tests', () => {
     const s = new SearchCriteria();
 
     const page = await container.um.getUsers(s);
-    expect(page.criteria).toBe(s);
     expect(page.lastPage).toBe(0);
-    expect(page.users.length).toBe(2);
+    expect(page.items.length).toBe(2);
     done();
   });
 
@@ -151,17 +150,16 @@ describe('User Tests', () => {
     s.perPage = 1;
 
     let page = await container.um.getUsers(s);
-    expect(page.criteria).toBe(s);
     expect(page.lastPage).toBe(1);
-    expect(page.users.length).toBe(1);
+    expect(page.items.length).toBe(1);
 
     s.page = 1;
     page = await container.um.getUsers(s);
-    expect(page.users.length).toBe(1);
+    expect(page.items.length).toBe(1);
 
     s.page = 2;
     page = await container.um.getUsers(s);
-    expect(page.users.length).toBe(0);
+    expect(page.items.length).toBe(0);
     done();
   });
 
@@ -170,8 +168,8 @@ describe('User Tests', () => {
     s.q = "jordan";
 
     let page = await container.um.getUsers(s);
-    expect(page.users.length).toBe(1);
-    expect(page.users[0].firstName).toBe("Jordan");
+    expect(page.items.length).toBe(1);
+    expect(page.items[0].firstName).toBe("Jordan");
     done();
   });
 

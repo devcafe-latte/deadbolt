@@ -14,6 +14,7 @@ import { SearchCriteria } from './SearchCriteria';
 import { UsersPage } from './UsersPage';
 import { LoginRequest } from './RequestBody';
 import { get2fa, twoFactorType } from './twoFactor/2faHelper';
+import { PageResult, Page } from './Page';
 
 export class UserManager {
   private _sessionHours: number;
@@ -75,7 +76,7 @@ export class UserManager {
     return user;
   }
 
-  async getUsers(search: SearchCriteria): Promise<UsersPage> {
+  async getUsers(search: SearchCriteria): Promise<Page<User>> {
 
     //Get full count
     const countResults = await container.db.query(search.getSqlBuilder().getSql("SELECT COUNT(DISTINCT u.id) count", false));
@@ -85,34 +86,24 @@ export class UserManager {
     const idResult = await container.db.query(search.getSqlBuilder().getSql("SELECT DISTINCT u.id"));
     const ids = idResult.map(r => r.id);
 
+    const r: PageResult = {
+      currentPage: search.page,
+      perPage: search.perPage,
+      totalItems: total,
+      items: []
+    }
+
     if (ids.length === 0) {
-      return {
-        criteria: search,
-        users: [],
-        lastPage: 0,
-      }
+      return new Page<User>(r);
     }
 
     //Get users
     const sql = this.userQuery() + "WHERE u.id IN (?)";
     const users = await this.processUserQuery(sql, [ids]);
 
-    const page: UsersPage = {
-      criteria: search,
-      users,
-      lastPage: Math.ceil(total / search.perPage) - 1,
-    };
+    r.items = users;
 
-    return page;
-  }
-
-  private async getSearchTotals(search: SearchCriteria) {
-    let select = "SELECT COUNT(DISTINCT u.id)";
-
-    const builder = search.getSqlBuilder();
-
-    const totalResult = await container.db.query(`${select} ${builder.getFrom()} ${builder.getWhere()} ${builder.getOrderBy()} ${builder.getLimit()}`);
-
+    return new Page<User>(r, User);
   }
 
   async getUserByUsername(name: string): Promise<User | null> {
