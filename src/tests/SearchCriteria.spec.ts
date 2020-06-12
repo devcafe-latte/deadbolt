@@ -77,7 +77,8 @@ describe("Search Sql Builder", () => {
       q: 'foo',
       uuids: ["111", "222"],
       memberships: [{ role: "support", app: 'app' }],
-      orderBy: ['id', 'lastName'],
+      orderBy: null,
+      //orderBy: ['id', 'lastName'],
       perPage: 10,
       page: 4,
     };
@@ -86,10 +87,11 @@ describe("Search Sql Builder", () => {
 
     expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
     expect(builder.getWhere()).toBe("WHERE (u.email LIKE ? OR u.firstName LIKE ? OR u.lastName LIKE ?)\nAND u.uuid IN (?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?))");
-    expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
+    expect(builder.getOrderBy()).toBe("");
+    //expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
     expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
 
-    expect(builder.values).toEqual(['foo%', 'foo%', 'foo%', ['111', '222'], 'app', 'support', 'id', 'lastName', 10, 40]);
+    expect(builder.values).toEqual(['foo%', 'foo%', 'foo%', ['111', '222'], 'app', 'support', 10, 40]);
   });
 
   it("Find email", () => {
@@ -97,7 +99,7 @@ describe("Search Sql Builder", () => {
       email: 'foo',
       uuids: ["111", "222"],
       memberships: [{ role: "support", app: 'app' }],
-      orderBy: ['id', 'lastName'],
+      //orderBy: ['id', 'lastName'],
       perPage: 10,
       page: 4,
     };
@@ -106,10 +108,11 @@ describe("Search Sql Builder", () => {
 
     expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
     expect(builder.getWhere()).toBe("WHERE (u.email LIKE ?)\nAND u.uuid IN (?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?))");
-    expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
+    // expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
+    expect(builder.getOrderBy()).toBe("");
     expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
 
-    expect(builder.values).toEqual(['foo%', ['111', '222'], 'app', 'support', 'id', 'lastName', 10, 40]);
+    expect(builder.values).toEqual(['foo%', ['111', '222'], 'app', 'support', 10, 40]);
   });
 
   it("gets multiple memberships", () => {
@@ -125,10 +128,11 @@ describe("Search Sql Builder", () => {
 
     expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
     expect(builder.getWhere()).toBe("WHERE (u.email LIKE ?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?) OR (`m`.`app` = ? AND `m`.`role` = ?))");
-    expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC");
+    // expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC");
+    expect(builder.getOrderBy()).toBe("");
     expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
 
-    expect(builder.values).toEqual(['foo%', 'app', 'support', 'app', 'admin', 'u.email', 25, 0]);
+    expect(builder.values).toEqual(['foo%', 'app', 'support', 'app', 'admin', 25, 0]);
   });
 
   it("gets minimal query", () => {
@@ -137,10 +141,10 @@ describe("Search Sql Builder", () => {
 
     const sql = builder.getSql();
 
-    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`  ORDER BY ?? ASC LIMIT ? OFFSET ?";
+    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`   LIMIT ? OFFSET ?";
 
     expect(sql.sql).toBe(expectedSql);
-    expect(sql.values).toEqual(['u.email', 25, 0]);
+    expect(sql.values).toEqual([25, 0]);
   });
 
   it("gets minimal query, no limit", () => {
@@ -149,9 +153,9 @@ describe("Search Sql Builder", () => {
 
     const sql = builder.getSql("SELECT *", false);
 
-    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`  ORDER BY ?? ASC ";
+    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`   ";
 
     expect(sql.sql).toBe(expectedSql);
-    expect(sql.values).toEqual(['u.email']);
+    expect(sql.values).toEqual([]);
   });
 });

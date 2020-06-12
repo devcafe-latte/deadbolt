@@ -92,14 +92,16 @@ export class SearchSqlBuilder {
   }
 
   getOrderBy(): string {
-    if (this.search.orderBy.length === 0) return "";
+    //todo fix this
+    return "";
+    // if (this.search.orderBy.length === 0) return "";
 
-    const orderArray = []
-    for (let o of this.search.orderBy) {
-      orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
-      this.values.push(o.column);
-    }
-    return "ORDER BY " + orderArray.join(", ");
+    // const orderArray = []
+    // for (let o of this.search.orderBy) {
+    //   orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
+    //   this.values.push(o.column);
+    // }
+    // return "ORDER BY " + orderArray.join(", ");
   }
 
   getWhere(): string {
