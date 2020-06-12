@@ -48,7 +48,7 @@ describe('Helpers', function () {
     expect(expected).toEqual(input);
   });
 
-  it("tests transform Id", () => {
+  it("tests transform Id 1", () => {
     let input: any = { id: 3, uuid: uuidv4() };
 
     cleanForSending(input);

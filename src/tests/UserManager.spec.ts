@@ -136,7 +136,7 @@ describe('User Tests', () => {
     done();
   });
 
-  it('Get Users', async (done) => {
+  it('Get Users normal', async (done) => {
     const s = new SearchCriteria();
 
     const page = await container.um.getUsers(s);
@@ -173,7 +173,7 @@ describe('User Tests', () => {
     done();
   });
 
-  it('Update User', async (done) => {
+  it('Update User 1', async (done) => {
     const um = container.um;
     const user = new User();
     user.id = 1;
@@ -198,7 +198,7 @@ describe('User Tests', () => {
     done();
   });
 
-  it('Add User', async (done) => {
+  it('Add User normal', async (done) => {
     const um = container.um;
     const user = new User();
     user.username = "Paul";
@@ -215,6 +215,7 @@ describe('User Tests', () => {
   });
 
   it('Add User with 2fa', async (done) => {
+    console.log("Me too?");
     const um = container.um;
     const user = new User();
     user.username = "Paul";

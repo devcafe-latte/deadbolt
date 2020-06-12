@@ -140,7 +140,7 @@ describe("Password (re)setting", () => {
     done()
   });
 
-  it("Generate Token", async (done) => {
+  it("Generate Token, normal", async (done) => {
     const pa = new PasswordAuth();
     await pa.generateResetToken(1);
     const rows = await container.db.query("SELECT * FROM `authPassword`");

@@ -12,7 +12,6 @@ export class TestHelper {
 
   constructor() { 
     this._id = Math.floor(Math.random() * 100000);
-    console.log("Starting with id " + this._id);
   }
 
   public static setTestEnv() {
@@ -21,7 +20,6 @@ export class TestHelper {
   }
 
   async shutdown() {
-    console.log("Stopping with id " + this._id);
     jasmine.DEFAULT_TIMEOUT_INTERVAL = this._jasmineTimeout;
     await container.shutdown();
   }

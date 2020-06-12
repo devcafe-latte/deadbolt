@@ -243,6 +243,23 @@ export class UserManager {
     return result.affectedRows;
   }
 
+  private async getUuid() {
+    
+    //Check if it's actually unique.
+    let uuid: string;
+    let unique = false;
+    let i = 0;
+    do {
+      uuid = uuidv4();
+      const result = await container.db.query("SELECT `id` FROM `user` WHERE `uuid` = ?", [uuid]);
+      unique = result.length === 0;
+      i++;
+      if (i > 1000) throw "Can't get UUID?!";
+    } while(!unique);
+
+    return uuid;
+  }
+
   async addUser(user: User) {
     //Check validity
     if (!user.isValid()) {
@@ -255,7 +272,7 @@ export class UserManager {
       return { success: false, reason: "Email already exists" };
     }
 
-    user.uuid = uuidv4();
+    user.uuid = await this.getUuid();
     user.created = moment();
     user.lastActivity = moment();
 

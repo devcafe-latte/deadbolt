@@ -1,7 +1,7 @@
 import { SearchCriteria } from '../model/SearchCriteria';
 
 describe('SearchCriteria', () => {
-  it("Tests fromQueryParams", () => {
+  it("Tests fromQueryParams 1", () => {
 
     const params = {
       q: 'foo',
@@ -19,7 +19,7 @@ describe('SearchCriteria', () => {
     expect(s.orderBy[2]).toEqual({ column: 'lastName', desc: false });
   });
 
-  it("Tests fromQueryParams2", () => {
+  it("Tests fromQueryParams 2", () => {
 
     const params = {
       q: 'foo',
@@ -135,7 +135,7 @@ describe("Search Sql Builder", () => {
     expect(builder.values).toEqual(['foo%', 'app', 'support', 'app', 'admin', 25, 0]);
   });
 
-  it("gets minimal query", () => {
+  it("gets minimal query, with limit", () => {
     const params = { };
     const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
 

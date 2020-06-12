@@ -221,7 +221,7 @@ describe("Sessions", () => {
     done();
   });
 
-  it("New Session", async (done) => {
+  it("New Session normal", async (done) => {
     const result = await request(app)
       .post('/session')
       .send({ username: 'Co', password: "password" })
@@ -370,7 +370,7 @@ describe("Users", () => {
     done();
   });
 
-  it("Verify password", async (done) => {
+  it("Verify password normal", async (done) => {
     const result = await request(app).post('/verify-password').send({ email: 'co', password: 'password' })
       .expect(200);
 
@@ -417,7 +417,7 @@ describe("Users", () => {
     done();
   });
 
-  it("Registers a new user", async (done) => {
+  it("Registers a new user, normal", async (done) => {
     const result = await request(app).post('/user')
       .send({ username: "Morty", password: "jessica69", email: "morty999@gmail.com" })
       .expect(200);
@@ -624,7 +624,7 @@ describe("Users", () => {
     done();
   });
 
-  it("Requests password reset", async (done) => {
+  it("Requests password reset, normal", async (done) => {
     const email = "jordan@example.com";
 
     const result = await request(app).post("/reset-password-token")
@@ -695,7 +695,7 @@ describe("Users", () => {
     done();
   });
 
-  it("Confirm Email", async (done) => {
+  it("Confirm Email normal", async (done) => {
     let user = new User();
     user.username = "Paul";
     user.email = "paul@someplace.com";
