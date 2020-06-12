@@ -6,6 +6,7 @@ import container from '../DiContainer';
 import { SqlHelper, stripComplexTypes, toObject } from '../helpers';
 import { User } from '../User';
 import { iAuthMethod } from './iAuthMethod';
+import { randomBytes } from 'crypto';
 
 export class PasswordAuth implements iAuthMethod {
   static ROUNDS = 10;
@@ -76,8 +77,12 @@ export class PasswordAuth implements iAuthMethod {
 
   async generateResetToken(userId: number): Promise<PasswordRecordResult> {
     const expiresHours = container.settings.resetTokenExpires;
-    const result = await this.getRecord(userId);
-    if (!result.success) return result;
+    let result = await this.getRecord(userId);
+    if (!result.success) {
+      //generate record first.
+      result = await this.setPassword(userId, uuidv4());
+      if (!result.success) return result;
+    }
     result.record.resetTokenExpires = moment().add(expiresHours, 'hours');
     result.record.resetToken = uuidv4();
 
