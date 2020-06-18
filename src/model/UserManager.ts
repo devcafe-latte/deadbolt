@@ -284,10 +284,15 @@ export class UserManager {
       user.emailConfirmTokenExpires = moment().add(expiresHours, 'hours');
     }
 
-    const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
-    user.id = result.insertId;
+    try {
+      const result = await container.db.query("INSERT INTO `user` SET ?", user.toDb());
+      user.id = result.insertId;
+      return { success: true };
+    } catch (err) {
+      console.log("Can't insert user", user.email, err);
+      return { success: false, reason: "Other error" };
+    }
 
-    return { success: true };
   }
 
   async validateSession(token: string): Promise<Session | null> {

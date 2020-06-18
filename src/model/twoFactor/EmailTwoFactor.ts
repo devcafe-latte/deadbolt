@@ -41,7 +41,7 @@ export class EmailTwoFactor implements twoFactor {
 
     const data = new EmailTwoFactorRow();
     data.userId = u.id;
-    data.expires = moment().add(10, 'minute');
+    data.expires = moment().add(container.settings.email2faTokenExpires, 'hours');
     data.used = false;
     data.token = await this.getToken();
     data.userToken = randomBytes(16).toString('hex');

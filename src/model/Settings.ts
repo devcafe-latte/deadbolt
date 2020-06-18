@@ -26,6 +26,8 @@ export class Settings {
   confirmTokenExpires: number = Number(process.env.CONFIRM_TOKEN_EXPIRES_HOURS) || 24 * 7;
   resetTokenExpires: number = Number(process.env.RESET_TOKEN_EXPIRES_HOURS) || 24;
 
+  email2faTokenExpires: number = Number(process.env.EMAIL_2FA_EXPIRES) || 2;
+
   requireApp: boolean = this.getBoolean(process.env.REQUIRE_APP_ON_LOGIN);
 
   private getBoolean(val: string, defaultValue = false): boolean {
