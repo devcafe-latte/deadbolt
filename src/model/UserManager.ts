@@ -1,20 +1,19 @@
 import moment from 'moment';
+import { isNumber } from 'util';
 import uuidv4 from 'uuid/v4';
 
-import container from './DiContainer';
-import { SqlHelper, getIdentifierType } from './helpers';
-import { LoginResult } from './LoginResult';
-import { Session } from './Session';
-import { User } from './User';
-import { Membership } from './Membership';
-import { SqlResult } from './SqlResult';
 import { iAuthMethod } from './authMethod/iAuthMethod';
-import { isNumber } from 'util';
-import { SearchCriteria } from './SearchCriteria';
-import { UsersPage } from './UsersPage';
+import container from './DiContainer';
+import { getIdentifierType, SqlHelper } from './helpers';
+import { LoginResult } from './LoginResult';
+import { Membership } from './Membership';
+import { Page, PageResult } from './Page';
 import { LoginRequest } from './RequestBody';
+import { SearchCriteria } from './SearchCriteria';
+import { Session } from './Session';
+import { SqlResult } from './SqlResult';
 import { get2fa, twoFactorType } from './twoFactor/2faHelper';
-import { PageResult, Page } from './Page';
+import { User } from './User';
 
 export class UserManager {
   private _sessionHours: number;

@@ -28,6 +28,22 @@ export const userMiddleware = async (req: Request, res: Response, next: Function
   }
 };
 
+export const userActiveMiddleware = async (req: Request, res: Response, next: Function) => {
+  if (!req.params._user) {
+    return res
+      .status(404)
+      .send({ status: "failed", reason: "User not found" })
+  }
+
+  if (!req.params._user.active) {
+    return res
+    .status(422)
+    .send({ status: "failed", reason: "User not active" })
+  }
+
+  next();
+}
+
 export function requiredBody(...args: any[]) {
 
   return async (req: Request, res: Response, next: Function) => {

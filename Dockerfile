@@ -1,5 +1,5 @@
 # -- Compiler --
-FROM node:10.16-alpine as compiler
+FROM node:12.18-alpine as compiler
 
 # Add Python to build node dependencies.
 RUN apk add --update \
@@ -25,7 +25,7 @@ RUN npm install --only=production
 # Todo maybe build a test phase here.
 
 # -- Release build --
-FROM node:10.16-alpine
+FROM node:12.18-alpine
 WORKDIR /app
 COPY --from=compiler /app .
 

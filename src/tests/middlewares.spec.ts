@@ -1,4 +1,5 @@
-import { userMiddleware } from '../model/middlewares';
+import container from '../model/DiContainer';
+import { userMiddleware, userActiveMiddleware } from '../model/middlewares';
 import { TestHelper } from './TestHelper';
 
 describe("userMiddleware", () => {
@@ -146,4 +147,83 @@ describe("userMiddleware", () => {
   });
 
 
+});
+
+describe("User Active Middleware", () => {
+  let req: any;
+  let res: any;
+  let th: TestHelper;
+
+  beforeEach(async (done) => {
+    req = { body: {}, params: {}, query: {} };
+    res = {
+      statusCode: 200,
+      body: undefined,
+      status: (value: number) => {
+        res.statusCode = value;
+        return res;
+      },
+      send: (value: any) => {
+        res.body = value;
+        return res;
+      }
+    };
+
+    th = await TestHelper.new();
+    done();
+  });
+
+  afterEach(async (done) => {
+    await th.shutdown();
+    done();
+  });
+
+  it("Tests Missing user", async (done) => {
+    await userActiveMiddleware(req, res, () => {
+      throw new Error("Should not invoke next()");
+    });
+
+    expect(req.body.identifier).toBeUndefined();
+    expect(req.params._identifier).toBeUndefined();
+    expect(req.params._user).toBeUndefined();
+
+    expect(res.statusCode).toBe(404);
+    expect(res.body.reason).toContain("User not found");
+    done();
+  });
+
+  it("Tests inactive user", async (done) => {
+    await container.db.query("UPDATE user SET active = 0 WHERE username = ?", ["Jordan"]);
+    req.body.identifier = "Jordan";
+
+    await userMiddleware(req, res, () => {});
+
+    await userActiveMiddleware(req, res, () => {
+      throw new Error("Should not invoke next()");
+    });
+
+    expect(req.params._user).not.toBe(null);
+
+    expect(res.statusCode).toBe(422);
+    expect(res.body.reason).toEqual("User not active");
+    done();
+  });
+
+  it("Tests active user", async (done) => {
+    req.body.identifier = "Jordan";
+
+    await userMiddleware(req, res, () => {});
+
+    let next = false;
+    await userActiveMiddleware(req, res, () => {
+      next = true;
+    });
+
+    expect(next).toBe(true);
+
+    expect(req.params._user).not.toBe(null);
+
+    expect(res.statusCode).toBe(200);
+    done();
+  });
 });

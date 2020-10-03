@@ -6,12 +6,13 @@ import container from './DiContainer';
 import { PasswordAuth } from './authMethod/PasswordAuth';
 import { cleanForSending, hasProperties } from './helpers';
 import { Membership } from './Membership';
-import { requiredBody, userMiddleware } from './middlewares';
+import { requiredBody, userMiddleware, userActiveMiddleware } from './middlewares';
 import { LoginRequest } from './RequestBody';
 import { SearchCriteria } from './SearchCriteria';
 import { Seeder } from './Seeder';
 import { User } from './User';
 import { get2fa } from './twoFactor/2faHelper';
+import { LoginResult } from './LoginResult';
 
 const router = express.Router();
 
@@ -77,7 +78,7 @@ router.get('/2fa-token', userMiddleware, async (req, res, next) => {
   }
 });
 
-router.post('/verify-2fa', userMiddleware, requiredBody("type", "data"), async (req, res, next) => {
+router.post('/verify-2fa', userMiddleware, userActiveMiddleware, requiredBody("type", "data"), async (req, res, next) => {
   const type: any = req.body.type;
   const user: User = req.params._user;
 
@@ -95,7 +96,7 @@ router.post('/verify-2fa', userMiddleware, requiredBody("type", "data"), async (
   }
 });
 
-router.post('/setup-2fa', userMiddleware, requiredBody("type"), async (req, res, next) => {
+router.post('/setup-2fa', userMiddleware, userActiveMiddleware, requiredBody("type"), async (req, res, next) => {
   const type: any = req.body.type;
   const user: User = req.params._user;
 
@@ -110,7 +111,7 @@ router.post('/setup-2fa', userMiddleware, requiredBody("type"), async (req, res,
   }
 });
 
-router.post('/request-2fa', userMiddleware, requiredBody("type"), async (req, res, next) => {
+router.post('/request-2fa', userMiddleware, userActiveMiddleware, requiredBody("type"), async (req, res, next) => {
   const type: any = req.body.type;
   const user: User = req.params._user;
 
