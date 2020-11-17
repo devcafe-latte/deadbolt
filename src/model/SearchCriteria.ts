@@ -25,13 +25,18 @@ export class SearchCriteria {
     return s;
   }
 
-  private decodeMemberships(data: any) {
+  private decodeMemberships(data: string|string[]) {
     //Memberships come in like: ?membership=some-app:some-role&membership=some-other-app:some-other-role
     if (!data) return;
     if (!Array.isArray(data)) data = [data];
-    this.memberships = [];    
+    this.memberships = [];
+
+    const regex = /(:)(?=(?:[^"]|"[^"]*")*$)/g;
     for (let d of data) {
-      const parts = d.split(':');
+      
+      const parts = d.split(regex)
+        .filter(p => p !== ':')
+        .map(p => p.replace(/^"|"$/g, ''));
       this.memberships.push({ app: parts[0], role: parts[1]});
     }
 

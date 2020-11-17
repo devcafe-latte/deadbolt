@@ -41,6 +41,38 @@ describe('SearchCriteria', () => {
     expect(s.orderBy[0]).toEqual({ column: 'id', desc: false });
   });
 
+  it("Tests fromQueryParams memberships 1", () => {
+
+    const params = {
+      membership: ["first-app:first-role", "second-app:second-role"]
+    };
+
+    const s = SearchCriteria.fromQueryParams(params);
+    expect(s.memberships.length).toBe(2);
+    expect(s.memberships[0].app).toBe('first-app');
+    expect(s.memberships[0].role).toBe('first-role');
+
+    expect(s.memberships[1].app).toBe('second-app');
+    expect(s.memberships[1].role).toBe('second-role');
+
+  });
+
+  it("Tests fromQueryParams memberships 2", () => {
+
+    const params = {
+      membership: ['"first:app":"first:role"', '"second:app":"second:role"']
+    };
+
+    const s = SearchCriteria.fromQueryParams(params);
+    expect(s.memberships.length).toBe(2);
+    expect(s.memberships[0].app).toBe('first:app');
+    expect(s.memberships[0].role).toBe('first:role');
+
+    expect(s.memberships[1].app).toBe('second:app');
+    expect(s.memberships[1].role).toBe('second:role');
+
+  });
+
   it("Tests ids and memberships", () => {
 
     const params: any = {
