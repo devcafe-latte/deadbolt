@@ -215,7 +215,6 @@ describe('User Tests', () => {
   });
 
   it('Add User with 2fa', async (done) => {
-    console.log("Me too?");
     const um = container.um;
     const user = new User();
     user.username = "Paul";

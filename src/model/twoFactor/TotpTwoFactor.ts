@@ -49,7 +49,7 @@ export class TotpTwoFactor implements twoFactor {
       secret: tokenRow.secret,
       encoding: 'base32',
       token: data.token,
-      window: 1,
+      window: container.settings.totpWindow,
     });
 
     if (!verified) {

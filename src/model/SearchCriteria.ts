@@ -20,16 +20,17 @@ export class SearchCriteria {
     s.setOrderBy(params.orderBy);
 
     if (typeof params.uuids === "string") s.uuids = [params.uuids];
-    s.decodeMemberships(params.membership);
+    if (params.membership) s.memberships = s.decodeMemberships(params.membership);
 
     return s;
   }
 
   private decodeMemberships(data: string|string[]) {
     //Memberships come in like: ?membership=some-app:some-role&membership=some-other-app:some-other-role
-    if (!data) return;
+    //    or: ?membership="some:app":"some:role"&membership="some-other-app":"some-other-role"
+    if (!data) return null;
     if (!Array.isArray(data)) data = [data];
-    this.memberships = [];
+    const memberships = [];
 
     const regex = /(:)(?=(?:[^"]|"[^"]*")*$)/g;
     for (let d of data) {
@@ -37,9 +38,11 @@ export class SearchCriteria {
       const parts = d.split(regex)
         .filter(p => p !== ':')
         .map(p => p.replace(/^"|"$/g, ''));
-      this.memberships.push({ app: parts[0], role: parts[1]});
+
+      memberships.push({ app: parts[0], role: parts[1]});
     }
 
+    return memberships;
   }
 
   private setOrderBy(data: string | string[]) {
@@ -83,30 +86,12 @@ export class SearchSqlBuilder {
 
   getSql(select: string = "SELECT *", addLimit = true) {
     this.values = [];
-    return { sql: `${select} ${this.getFrom()} ${this.getWhere()} ${this.getOrderBy()} ${addLimit ? this.getLimit() : ''}`, values: this.values };
+    const sql = `${select} ${this.getFrom()} ${this.getWhere()} ${this.getOrderBy()} ${addLimit ? this.getLimit() : ''}`;
+    return { sql, values: this.values };
   }
 
   getFrom() {
     return "FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`";
-  }
-
-  getLimit() {
-    const offset = this.search.page * this.search.perPage;
-    this.values.push(this.search.perPage, offset);
-    return "LIMIT ? OFFSET ?";
-  }
-
-  getOrderBy(): string {
-    //todo fix this
-    return "";
-    // if (this.search.orderBy.length === 0) return "";
-
-    // const orderArray = []
-    // for (let o of this.search.orderBy) {
-    //   orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
-    //   this.values.push(o.column);
-    // }
-    // return "ORDER BY " + orderArray.join(", ");
   }
 
   getWhere(): string {
@@ -143,6 +128,25 @@ export class SearchSqlBuilder {
     const where = whereArray.length > 0 ? "WHERE " + whereArray.join("\nAND ") : "";
 
     return where;
+  }
+
+  getLimit() {
+    const offset = this.search.page * this.search.perPage;
+    this.values.push(this.search.perPage, offset);
+    return "LIMIT ? OFFSET ?";
+  }
+
+  getOrderBy(): string {
+    //todo fix this
+    return "";
+    // if (this.search.orderBy.length === 0) return "";
+
+    // const orderArray = []
+    // for (let o of this.search.orderBy) {
+    //   orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
+    //   this.values.push(o.column);
+    // }
+    // return "ORDER BY " + orderArray.join(", ");
   }
 
 }

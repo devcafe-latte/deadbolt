@@ -28,6 +28,8 @@ export class Settings {
 
   email2faTokenExpires: number = Number(process.env.EMAIL_2FA_EXPIRES) || 2;
 
+  totpWindow: number = Number(process.env.TOTP_WINDOW) || 5;
+
   //todo implement
   requireApp: boolean = this.getBoolean(process.env.REQUIRE_APP_ON_LOGIN);
 

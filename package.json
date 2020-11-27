@@ -1,13 +1,13 @@
 {
   "name": "deadbolt",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Authentication server",
   "main": "index.ts",
   "scripts": {
     "dev": "ts-node ./src/app.ts",
     "serve": "nodemon",
     "start": "tsc && node ./build/app.js",
-    "test": "jasmine-ts --config=jasmine.json",
+    "test": "jasmine-ts --random=false --config=jasmine.json",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" jasmine-ts --config=jasmine.json",
     "migrate": "db-migrate up"
   },
@@ -21,7 +21,7 @@
     "@types/random-number-csprng": "^1.0.0",
     "@types/speakeasy": "^2.0.5",
     "@types/uuid": "^3.4.5",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "db-migrate": "^0.11.11",
     "db-migrate-mysql": "^2.1.1",

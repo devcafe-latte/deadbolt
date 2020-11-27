@@ -6,7 +6,6 @@ import container from '../DiContainer';
 import { SqlHelper, stripComplexTypes, toObject } from '../helpers';
 import { User } from '../User';
 import { iAuthMethod } from './iAuthMethod';
-import { randomBytes } from 'crypto';
 
 export class PasswordAuth implements iAuthMethod {
   static ROUNDS = 10;
