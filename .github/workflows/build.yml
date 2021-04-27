@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
     - name: start mysql
@@ -28,6 +28,9 @@ jobs:
         CI: true
         SEED_DEADBOLT: "1"
         DB_NAME: deadbolt_test
+        DB_HOST: localhost
+        DB_USER: root
+        DB_PASS: root
 
   build:
     needs: test
