@@ -44,7 +44,7 @@ export class UserManager {
 
   /**
    * Get a user by either id, uuid, username or email.
-   * 
+   *
    * The function will figure it out what you've supplied and go from there.
    *
    * @param {*} identifier
@@ -66,7 +66,7 @@ export class UserManager {
     } else if (type === "email") {
       user = await container.um.getUserByEmail(identifier);
     }
-    
+
     //Check the App
     if (user && app && !user.hasApp(app)) {
       return null;
@@ -76,13 +76,24 @@ export class UserManager {
   }
 
   async getUsers(search: SearchCriteria): Promise<Page<User>> {
+    // globals
+    // order related
+    const orderBy = search.getSqlBuilder().getOrderBy();
+    const shouldMaintainOrder = !!orderBy.sql;
 
     //Get full count
-    const countResults = await container.db.query(search.getSqlBuilder().getSql("SELECT COUNT(DISTINCT u.id) count", false));
+    const countResults = await container.db.query(search.getSqlBuilder().getSql("SELECT COUNT(DISTINCT u.id) count", false, false));
     const total = Number(countResults[0].count);
 
+    // if `shouldMaintainOrder` is `true` and in order to perform ordered search, perform and ordered search and then select its IDS
+    const select = shouldMaintainOrder ? 'SELECT u.*' : 'SELECT DISTINCT u.id';
+    const idResultQuery = search.getSqlBuilder().getSql(select, true, shouldMaintainOrder);
+    if (shouldMaintainOrder) {
+      // Select distinct ordered IDS by wraping the original sql with a distinct select
+      idResultQuery.sql = 'SELECT DISTINCT u.id FROM (' + idResultQuery.sql + ') u';
+    }
     //Get page Ids
-    const idResult = await container.db.query(search.getSqlBuilder().getSql("SELECT DISTINCT u.id"));
+    const idResult = await container.db.query(idResultQuery);
     const ids = idResult.map(r => r.id);
 
     const r: PageResult = {
@@ -97,8 +108,8 @@ export class UserManager {
     }
 
     //Get users
-    const sql = this.userQuery() + "WHERE u.id IN (?)";
-    const users = await this.processUserQuery(sql, [ids]);
+    const sql = this.userQuery() + "WHERE u.id IN (?) " + orderBy.sql;
+    const users = await this.processUserQuery(sql, [ids, ...orderBy.values], shouldMaintainOrder);
 
     r.items = users;
 
@@ -192,7 +203,7 @@ export class UserManager {
   async verifyTwoFactor(user: User, type: twoFactorType, data: any): Promise<LoginResult> {
     const two = get2fa(type);
     const verified = await two.verify(user, data);
-    
+
     if (!verified) return LoginResult.failed("two-factor-verification-failed");
 
     //Set as 2-factor method
@@ -223,7 +234,7 @@ export class UserManager {
     } catch (err) {
       console.error(err);
       throw "Can't update user.";
-    }    
+    }
 
   }
 
@@ -243,7 +254,7 @@ export class UserManager {
   }
 
   private async getUuid() {
-    
+
     //Check if it's actually unique.
     let uuid: string;
     let unique = false;
@@ -339,7 +350,7 @@ export class UserManager {
   async replaceMemberships(userId: number, memberships: Membership[]) {
     const con = await container.db.getConnection();
     await con.beginTransaction();
-    
+
     await con.query("DELETE FROM `membership` WHERE `userId` = ?", userId );
 
     if (memberships.length > 0){
@@ -418,8 +429,12 @@ export class UserManager {
 
   private async touchSession(session: Session) {
     const expires = moment().add(this._sessionHours, 'hours').unix();
-    await container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, session.token]);
-    await container.db.query("UPDATE `user` SET `lastActivity` = ? WHERE `id` = ?", [moment().unix(), session.userId]);
+    const promises = [
+      container.db.query("UPDATE `session` SET `expires` = ? WHERE `token` = ?", [expires, session.token]),
+      container.db.query("UPDATE `user` SET `lastActivity` = ? WHERE `id` = ?", [moment().unix(), session.userId])
+    ];
+    // Using promisee all fixed an issue where user activity was not setting properly. The session.userId was undefined while awaiting the first query
+    await Promise.all(promises);
   }
 
   private async createSession(user: User, sessionHours?: number) {
@@ -443,7 +458,14 @@ export class UserManager {
     return sql;
   }
 
-  private async processUserQuery(sql: string, values: any): Promise<User[]> {
+  /**
+   * @param recoverOrdering Default value: `false`
+   *
+   * If `true`, ordering will be performed based on the data returned according to the sql query.
+   *
+   * > WARNING: Recovering the order is an expensive operation. Make sure that the collection you are operating with is limited/paginated.
+   */
+  private async processUserQuery(sql: string, values: any, recoverOrdering = false): Promise<User[]> {
     const rows = await container.db.query({ sql, values, nestTables: true });
     if (rows.length === 0) return [];
 
@@ -455,6 +477,6 @@ export class UserManager {
       results.data.u[m.userId].memberships.push(m);
     }
 
-    return results.array('u');
+    return results.array('u', recoverOrdering);
   }
 }

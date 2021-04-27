@@ -9,7 +9,7 @@ export class SearchCriteria {
   memberships?: Membership[] = null;
   page: number = 0;
   perPage: number = 25;
-  orderBy: OrderByCriteria[] = [{ column: 'u.email' }];
+  orderBy: OrderByCriteria[] = [/*{ column: 'u.email' }*/];
 
   static fromQueryParams(params: any): SearchCriteria {
     const s = toObject<SearchCriteria>(SearchCriteria, params);
@@ -34,7 +34,7 @@ export class SearchCriteria {
 
     const regex = /(:)(?=(?:[^"]|"[^"]*")*$)/g;
     for (let d of data) {
-      
+
       const parts = d.split(regex)
         .filter(p => p !== ':')
         .map(p => p.replace(/^"|"$/g, ''));
@@ -84,9 +84,9 @@ export class SearchSqlBuilder {
 
   }
 
-  getSql(select: string = "SELECT *", addLimit = true) {
+  getSql(select: string = "SELECT *", addLimit = true, addOrderBy = true) {
     this.values = [];
-    const sql = `${select} ${this.getFrom()} ${this.getWhere()} ${this.getOrderBy()} ${addLimit ? this.getLimit() : ''}`;
+    const sql = `${select} ${this.getFrom()} ${this.getWhere()} ${addOrderBy ? this.getOrderBy({ isIntegrated: true}).sql: ''} ${addLimit ? this.getLimit() : ''}`;
     return { sql, values: this.values };
   }
 
@@ -136,17 +136,40 @@ export class SearchSqlBuilder {
     return "LIMIT ? OFFSET ?";
   }
 
-  getOrderBy(): string {
-    //todo fix this
-    return "";
-    // if (this.search.orderBy.length === 0) return "";
+  getOrderBy(opts: GetOrderByOptions = { isIntegrated: false }): SqlAndValuesDto {
+    const result: SqlAndValuesDto = {
+      sql: '',
+      values: []
+    };
 
-    // const orderArray = []
-    // for (let o of this.search.orderBy) {
-    //   orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
-    //   this.values.push(o.column);
-    // }
-    // return "ORDER BY " + orderArray.join(", ");
+    if (this.search.orderBy.length === 0) return result;
+
+    const orderArray = [];
+
+    for (let o of this.search.orderBy) {
+      orderArray.push(`?? ${o.desc ? 'DESC' : 'ASC'}`);
+      opts.isIntegrated ? this.values.push(o.column) : result.values.push(o.column);
+    }
+
+    result.sql = 'ORDER BY ' + orderArray.join(', ');
+
+    return result;
   }
 
+}
+
+export interface GetOrderByOptions {
+  /**
+   * If `true` this method will modify internal properties (used as a part of an integrated function `getSql`).
+   * If `false`, it returns a clean object containing the sql and values without modifying the internal properties.
+   * Set this property to `false` when ever you need a clean output of this function which can be used in custom sql.
+   *
+   * Default is `false`.
+   */
+  isIntegrated?: boolean;
+}
+
+export interface SqlAndValuesDto {
+  sql: string;
+  values: any[]
 }
