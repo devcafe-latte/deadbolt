@@ -42,7 +42,7 @@ class DeadboltApi {
 
     this._server.on('close', async () => {
       console.info("Closing DB Connections...");
-      await container.db.end()
+      await container.shutdown()
         .catch(() => { console.warn("Closing DB connections did not go gracefully."); });
       console.info("Exiting.");
       process.exit(0);

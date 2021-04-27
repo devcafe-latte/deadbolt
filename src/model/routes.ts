@@ -28,8 +28,7 @@ router.get('/', async (req, res) => {
 
   let con: PoolConnection;
   try {
-    con = await container.db.getConnection();
-    con.ping();
+    await container.db.ping()
   } catch (error) {
     response.database = "not ok";
     response.status = "not ok";

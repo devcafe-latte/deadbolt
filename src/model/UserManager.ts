@@ -337,10 +337,9 @@ export class UserManager {
   }
 
   async replaceMemberships(userId: number, memberships: Membership[]) {
-    const con = await container.db.getConnection();
-    await con.beginTransaction();
+    const tran = await container.db.getTransaction()
     
-    await con.query("DELETE FROM `membership` WHERE `userId` = ?", userId );
+    await tran.query("DELETE FROM `membership` WHERE `userId` = ?", userId );
 
     if (memberships.length > 0){
       const rows = [];
@@ -348,24 +347,22 @@ export class UserManager {
         const row = [m.app, m.role, userId, moment().unix()];
         rows.push(row);
       }
-      await con.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
+      await tran.query("INSERT INTO `membership` (app, role, userId, created) VALUES ?", [rows]);
     }
 
-    await con.commit();
-    await con.release();
+    await tran.commit();
   }
 
   async removeMemberships(userId: number, memberships: Membership | Membership[]) {
     if (!Array.isArray(memberships)) memberships = [memberships];
     if (memberships.length === 0) return;
 
-    const con = await container.db.getConnection();
-    await con.beginTransaction();
+    const tran = await container.db.getTransaction()
+
     for (let m of memberships) {
-      await con.query("DELETE FROM `membership` WHERE userId = ? AND app = ? AND role = ?", [userId, m.app, m.role]);
+      await tran.query("DELETE FROM `membership` WHERE userId = ? AND app = ? AND role = ?", [userId, m.app, m.role]);
     }
-    await con.commit();
-    con.release();
+    await tran.commit();
   }
 
   async removeApp(userId: number, app: string) {
