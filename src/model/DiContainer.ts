@@ -35,6 +35,9 @@ export class Container {
   }
 
   public async shutdown() {
+    if (!this._db) {
+      console.log("No db on shutdown...??");
+    }
     await this._db.end();
     this._um = null;
     this._db = null;
@@ -61,7 +64,7 @@ export class Container {
       database: this.settings.dbName,
       port: this.settings.dbPort || 3306,
 
-      typeCast: (field, next) => {
+      typeCast: (field: any, next) => {
         if (field.type === 'TINY') {
           //Convert tiny ints to bools.
           return (field.string() === '1');

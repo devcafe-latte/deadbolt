@@ -7,8 +7,7 @@
     "dev": "ts-node ./src/app.ts",
     "serve": "nodemon",
     "start": "tsc && node ./build/app.js",
-    "test": "jasmine-ts --random=false --config=jasmine.json",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.spec.ts\" jasmine-ts --config=jasmine.json",
+    "test": "jest -i",
     "migrate": "db-migrate up"
   },
   "author": "Co van Leeuwen",
@@ -36,14 +35,17 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.4.0",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/jest": "^26.0.23",
     "@types/supertest": "^2.0.8",
-    "jasmine": "^3.4.0",
-    "jasmine-core": "^3.4.0",
-    "jasmine-ts": "^0.3.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2",
+    "ts-jest": "^26.5.5",
     "ts-node": "^8.3.0"
   }
 }

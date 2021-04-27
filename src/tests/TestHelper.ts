@@ -42,6 +42,7 @@ export class TestHelper {
       multipleStatements: true
     });
     await connection.query(readFileSync(__dirname + "/resources/fixture.sql").toString());
+    await connection.end();
 
     //Run migrations
     execSync("npx db-migrate up");

@@ -300,7 +300,7 @@ export class UserManager {
     if (rows.length === 0) return null;
 
     const session = Session.fromDb(rows[0]);
-    this.touchSession(session);
+    await this.touchSession(session);
     return session;
   }
 

@@ -314,7 +314,7 @@ describe('User Tests', () => {
 
     const uuid = "ee13624b-cf22-4597-adb9-bfa4b16baa71";
     expect(await um.purgeUser(uuid)).toBe(true);
-    expect(await um.purgeUser(uuid)).toBe(false, "It's already gone.");
+    expect(await um.purgeUser(uuid)).toBe(false);
 
     user = await um.getUserById(1);
     expect(user).toBeFalsy();
@@ -366,7 +366,7 @@ describe('User Tests', () => {
     const um = container.um;
     const result = await um.login(correct, PasswordAuth, correct.password);
 
-    expect(result.success).toBe(true, "Should log in just fine.");
+    expect(result.success).toBe(true);
     expect(result.user.displayName).toBe('Co');
     expect(result.user.session).toBeDefined();
     expect(result.user.session.id).toBeDefined();
@@ -383,7 +383,7 @@ describe('User Tests', () => {
   it('Wrong user', async (done) => {
     const um = container.um;
     const result = await um.login(wrongName, PasswordAuth, wrongName.password);
-    expect(result.success).toBe(false, "Should not log in");
+    expect(result.success).toBe(false);
     expect(result.reason).toBe('Not found');
     done();
   });
@@ -391,7 +391,7 @@ describe('User Tests', () => {
   it('Wrong pasword', async (done) => {
     const um = container.um;
     const result = await um.login(wrongPass, PasswordAuth, wrongPass.password);
-    expect(result.success).toBe(false, "Should not log in");
+    expect(result.success).toBe(false);
     expect(result.reason).toBe('Password incorrect');
     done();
   });
@@ -401,7 +401,7 @@ describe('User Tests', () => {
     await container.um.activateUser(1, false);
 
     const result = await um.login(correct, PasswordAuth, correct.password);
-    expect(result.success).toBe(false, "Should not log in");
+    expect(result.success).toBe(false);
     expect(result.reason).toBe('User cannot login');
     done();
   });
@@ -440,10 +440,10 @@ describe('Session Tests', () => {
     const token = result.user.session.token;
 
     const session = await container.um.validateSession(token);
-    expect(session).toBeDefined("Valid session, should work.");
+    expect(session).toBeDefined();
 
     const invalidToken = await container.um.validateSession("notavalidtoken");
-    expect(invalidToken).toBe(null, "Invalid token. Should return null.");
+    expect(invalidToken).toBe(null);
     done();
   });
 
@@ -466,7 +466,7 @@ describe('Session Tests', () => {
 
     await container.um.expireSession(token);
     const expiredSession = await container.um.validateSession(token);
-    expect(expiredSession).toBe(null, "Expired session. Should return null.");
+    expect(expiredSession).toBe(null);
     done();
   });
 
@@ -474,13 +474,13 @@ describe('Session Tests', () => {
     const token1 = (await container.um.login(correct, PasswordAuth, correct.password)).user.session.token;
     const token2 = (await container.um.login(correct, PasswordAuth, correct.password)).user.session.token;
 
-    expect(await container.um.validateSession(token1)).toBeTruthy("Should be valid.");
-    expect(await container.um.validateSession(token2)).toBeTruthy("Should be valid.");
+    expect(await container.um.validateSession(token1)).toBeTruthy();
+    expect(await container.um.validateSession(token2)).toBeTruthy();
 
     await container.um.expireAllSessions(1);
 
-    expect(await container.um.validateSession(token1)).toBeFalsy("Should be expired.");
-    expect(await container.um.validateSession(token2)).toBeFalsy("Should be expires.");
+    expect(await container.um.validateSession(token1)).toBeFalsy();
+    expect(await container.um.validateSession(token2)).toBeFalsy();
     done();
   });
 });
@@ -505,7 +505,7 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, membership);
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(1, "Should have a membership now");
+    expect(user.memberships.length).toBe(1);
     expect(user.memberships[0].app).toBe(membership.app);
     expect(user.memberships[0].role).toBe(membership.role);
     expect(user.memberships[0].id).toBeDefined();
@@ -524,8 +524,8 @@ describe('Membership tests', () => {
     await container.um.updateMembership(membership);
 
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(2, "Should have a memberships still");
-    expect(user.memberships[1].id).toBe(2, "Get the right membershipt");
+    expect(user.memberships.length).toBe(2);
+    expect(user.memberships[1].id).toBe(2);
     expect(user.memberships[1].app).toBe(membership.app);
     expect(user.memberships[1].role).toBe(membership.role);
     done();
@@ -541,7 +541,7 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, memberships);
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(3, "Should have 3 memberships now");
+    expect(user.memberships.length).toBe(3);
     done();
   });
 
@@ -558,12 +558,12 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, initial);
     let user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(1, "Should have 1 memberships now");
+    expect(user.memberships.length).toBe(1);
 
     //Replace
     await container.um.replaceMemberships(userId, newMemberships);
     user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
+    expect(user.memberships.length).toBe(2);
     done();
   });
 
@@ -577,12 +577,12 @@ describe('Membership tests', () => {
 
     await container.um.addMemberships(userId, initial);
     let user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(1, "Should have 1 memberships now");
+    expect(user.memberships.length).toBe(1);
 
     //Replace
     await container.um.replaceMemberships(userId, newMemberships);
     user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(0, "Should have 0 memberships now");
+    expect(user.memberships.length).toBe(0);
     done();
   });
 
@@ -601,7 +601,7 @@ describe('Membership tests', () => {
 
 
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(2, "Should have 2 memberships now");
+    expect(user.memberships.length).toBe(2);
 
     expect(user.memberships[0].app).toEqual('test-app');
     expect(user.memberships[0].role).toEqual('admin');
@@ -622,7 +622,7 @@ describe('Membership tests', () => {
     await container.um.addMemberships(userId, memberships);
     await container.um.removeMemberships(userId, memberships);
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(0, "All memberships are gone.");
+    expect(user.memberships.length).toBe(0);
     done();
   });
 
@@ -637,7 +637,7 @@ describe('Membership tests', () => {
     await container.um.addMemberships(userId, memberships);
     await container.um.removeApp(userId, 'test-app');
     const user = await container.um.getUserById(userId);
-    expect(user.memberships.length).toBe(1, "Should have one left.");
+    expect(user.memberships.length).toBe(1);
     expect(user.memberships[0].app).toEqual('some-other-app');
     expect(user.memberships[0].role).toEqual('newbie');
     done();
@@ -706,13 +706,13 @@ describe("Email Confirmation Tests", () => {
     await container.db.query("UPDATE user SET emailConfirmToken = ?, emailConfirmed = null, emailConfirmTokenExpires = ? WHERE id = ?", ["some-token", moment().subtract(1, 'minute').unix(), 1]);
 
     const result = await container.um.login(correct, PasswordAuth, correct.password);
-    expect(result.success).toBe(false, "Should not log in");
+    expect(result.success).toBe(false);
     expect(result.reason).toBe('Email address not confirmed.');
 
     //todo confirm and try again
     await container.um.confirmEmailByUserId(1);
     const result2 = await container.um.login(correct, PasswordAuth, correct.password);
-    expect(result2.success).toBe(true, "Now it's confirmed.");
+    expect(result2.success).toBe(true);
     done();
   });
 });

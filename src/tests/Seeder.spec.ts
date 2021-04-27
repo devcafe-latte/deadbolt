@@ -8,17 +8,19 @@ describe("Seeder", () => {
     TestHelper.setTestEnv();
   });
 
-  it("Tries seeding", async(done) => {
+  it("Tries seeding", async() => {
     const settings = new Settings();
     settings.dbName = "deadbolt_seed_test_" + Math.floor(Math.random() * 100000);
     console.log("Seeding DB: " + settings.dbName);
 
-    const seeder: any = new Seeder(settings);
+    const seeder: Seeder = new Seeder(settings);
 
     expect(await seeder.dbExists(settings.dbName)).toBe(false);
-    await seeder.seed();
-    expect(await seeder.dbExists(settings.dbName)).toBe(true);
     
-    done();
+    await seeder.seed();
+    
+    expect(await seeder.dbExists(settings.dbName)).toBe(true);
+    seeder.close();
+    
   });
 });

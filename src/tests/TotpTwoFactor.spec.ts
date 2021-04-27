@@ -60,13 +60,13 @@ describe("TOTP Two Factor Auth", () => {
       encoding: 'base32'
     });
     //Wrong
-    expect(await two.verify(user, { token: "000000", userToken: data.userToken })).toBe(false, "Token Wrong token");
+    expect(await two.verify(user, { token: "000000", userToken: data.userToken })).toBe(false);
 
     //Right
     const verified = await two.verify(user, { token, userToken: data.userToken });
     expect(verified).toBe(true);
 
-    expect(await two.verify(user, { token, userToken: data.userToken })).toBe(false, "Token already used");
+    expect(await two.verify(user, { token, userToken: data.userToken })).toBe(false);
 
     const rows = await container.db.query("SELECT * FROM `totpToken` WHERE userToken = ?", [data.userToken]);
     expect(rows[0].attempt).toBe(1);

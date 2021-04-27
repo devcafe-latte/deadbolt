@@ -13,17 +13,17 @@ export class Seeder {
 
   }
 
-  private async dbExists(name: string): Promise<boolean> {
+  async dbExists(name: string): Promise<boolean> {
     const c = await this.getConnection();
 
     const rows = await c.query("SHOW DATABASES LIKE ?;", [name]);
     return (rows.length > 0);
   }
 
-  private close() {
+  async close() {
     if (!this._con) return;
 
-    this._con.destroy();
+    await this._con.end();
     this._con = undefined;
   }
 
@@ -33,7 +33,7 @@ export class Seeder {
 
     //Check if database exists
     if (await this.dbExists(this.settings.dbName)) {
-      this.close();
+      await this.close();
       return;
     }
 
@@ -47,7 +47,7 @@ export class Seeder {
     //Migrate
     execSync("npx db-migrate up");
 
-    this.close();
+    await this.close();
 
     if (!await this.dbExists(this.settings.dbName)) throw new Error("Seeding failed");
   }

@@ -90,7 +90,7 @@ describe("Email Two Factor Auth", () => {
     const data = await two.request(user);
     
     //Wrong attempt
-    expect(await two.verify(user, { token: "spongbob", userToken: data.userToken })).toBe(false, "Token incorrect");
+    expect(await two.verify(user, { token: "spongbob", userToken: data.userToken })).toBe(false);
 
     //Correct attempt
     const verified = await two.verify(user, data);
@@ -101,7 +101,7 @@ describe("Email Two Factor Auth", () => {
     expect(row[0].used).toBe(true);
     expect(row[0].attempt).toBe(1);
 
-    expect(await two.verify(user, data)).toBe(false, "Token already used");
+    expect(await two.verify(user, data)).toBe(false);
 
 
     done();
@@ -115,10 +115,10 @@ describe("Email Two Factor Auth", () => {
     const data = await two.request(user);
 
     //Wrong attempt
-    expect(await two.verify(user, { token: "spongbob", userToken: data.userToken })).toBe(false, "Token incorrect");
+    expect(await two.verify(user, { token: "spongbob", userToken: data.userToken })).toBe(false);
     
     const verified = await two.verify(user, data);
-    expect(verified).toBe(false, "max Attempts exceeded");
+    expect(verified).toBe(false);
 
     done();
   });

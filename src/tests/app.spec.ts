@@ -252,7 +252,6 @@ describe("Sessions", () => {
       .expect(422);
 
     done();
-    done();
   });
 
   it("Wrong password", async (done) => {
@@ -283,7 +282,7 @@ describe("Sessions", () => {
     const login = await container.um.login(correct, PasswordAuth, "password");
     const user = login.user;
 
-    expect(user.session.token).toBeDefined("Session token should be here");
+    expect(user.session.token).toBeDefined();
 
     const checkResult = await request(app).get(`/session/${user.session.token}`).expect(200);
 
@@ -298,7 +297,7 @@ describe("Sessions", () => {
     const login = await container.um.login(correct, PasswordAuth, "password");
     const user = login.user;
 
-    expect(user.session.token).toBeDefined("Session token should be here");
+    expect(user.session.token).toBeDefined();
 
     const checkResult = await request(app).get(`/user-by-session/${user.session.token}`).expect(200);
 
@@ -320,7 +319,7 @@ describe("Sessions", () => {
     const login = await container.um.login(correct, PasswordAuth, "password");
     const user = login.user;
 
-    expect(user.session.token).toBeDefined("Session token should be here");
+    expect(user.session.token).toBeDefined();
 
     //Expire session
     await request(app).delete(`/session/${user.session.token}`).expect(200);
@@ -340,7 +339,7 @@ describe("Sessions", () => {
     const login = await container.um.login(correct, PasswordAuth, "password");
     const user = login.user;
 
-    expect(user.uuid).toBeDefined("uuid should be available");
+    expect(user.uuid).toBeDefined();
 
     //Expire session
     await request(app).delete(`/session/all/${user.uuid}`).expect(200);

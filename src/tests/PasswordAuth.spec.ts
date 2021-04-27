@@ -92,13 +92,13 @@ describe("Password (re)setting", () => {
     const u = new User();
     u.id = 1;
 
-    expect(await pa.verify(u, "password")).toBe(true, "Check current password");
+    expect(await pa.verify(u, "password")).toBe(true);
 
     const result = await pa.setPassword(1, "password2");
-    expect(result.success).toBe(true, "New password set.");
+    expect(result.success).toBe(true);
 
-    expect(await pa.verify(u, "password")).toBe(false, "Check current password no longer works.");
-    expect(await pa.verify(u, "password2")).toBe(true, "Check new password");
+    expect(await pa.verify(u, "password")).toBe(false);
+    expect(await pa.verify(u, "password2")).toBe(true);
     done()
   });
 
@@ -109,12 +109,12 @@ describe("Password (re)setting", () => {
     //kill existing record
     await container.db.query("DELETE FROM `authPassword` WHERE `userId` = 1");
 
-    expect(await pa.verify(u, "password")).toBe(false, "No current password set");
+    expect(await pa.verify(u, "password")).toBe(false);
 
     const result = await pa.setPassword(1, "password");
-    expect(result.success).toBe(true, "New password set.");
+    expect(result.success).toBe(true);
 
-    expect(await pa.verify(u, "password")).toBe(true, "Password should be set now.");
+    expect(await pa.verify(u, "password")).toBe(true);
     done()
   });
 
@@ -122,7 +122,7 @@ describe("Password (re)setting", () => {
     const pa = new PasswordAuth();
 
     const result = await pa.setPassword(74, "password");
-    expect(result.success).toBe(false, "User doens't exist.");
+    expect(result.success).toBe(false);
     done()
   });
 
@@ -153,7 +153,7 @@ describe("Password (re)setting", () => {
   it("Generate Token, wrong userId", async (done) => {
     const pa = new PasswordAuth();
     const result = await pa.generateResetToken(6363);
-    expect(result.success).toBe(false, "Invalid user ID");
+    expect(result.success).toBe(false);
     done()
   });
 
@@ -164,8 +164,8 @@ describe("Password (re)setting", () => {
     let record = PasswordRecord.fromDb(rows[0]);
 
     const result = await pa.resetPassword(record.resetToken, "password2");
-    expect(result.success).toBe(true, "Reset should have happened");
-    expect(result.record).toBeDefined("Reset should have happened");
+    expect(result.success).toBe(true);
+    expect(result.record).toBeDefined();
     expect(result.record.userId).toBe(1);
 
     rows = await container.db.query("SELECT * FROM `authPassword`");
@@ -185,7 +185,7 @@ describe("Password (re)setting", () => {
     await pa.generateResetToken(1);
 
     const result = await pa.resetPassword("Definitelynotthetoken", "password2");
-    expect(result.success).toBe(false, "Should fail: Invalid token");
+    expect(result.success).toBe(false);
     done()
   });
 
@@ -199,7 +199,7 @@ describe("Password (re)setting", () => {
     const record = PasswordRecord.fromDb(rows[0]);
 
     const result = await pa.resetPassword(record.resetToken, "password2");
-    expect(result.success).toBe(false, "Should fail: Expired token");
+    expect(result.success).toBe(false);
     done()
   });
 });

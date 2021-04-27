@@ -34,19 +34,19 @@ describe('User', function() {
 
   it("isValid", () => {
     const u = new User();
-    expect(u.isValid()).toBe(false, "No username");
+    expect(u.isValid()).toBe(false);
 
     u.username = "Fishies!"
-    expect(u.isValid()).toBe(false, "Illegal character '!'");
+    expect(u.isValid()).toBe(false);
 
     u.username = "bluppy";
-    expect(u.isValid()).toBe(true, "A username");
+    expect(u.isValid()).toBe(true);
 
     u.email = "notagoodemail";
-    expect(u.isValid()).toBe(false, "Invalid email");
+    expect(u.isValid()).toBe(false);
 
     u.email = "spoon@thematrix.com";
-    expect(u.isValid()).toBe(true, "All good");
+    expect(u.isValid()).toBe(true);
 
 
   });

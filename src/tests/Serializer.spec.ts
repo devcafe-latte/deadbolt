@@ -1,8 +1,8 @@
 import moment from 'moment';
 
 import { Serializer, ObjectMapping } from '../model/Serializer';
-import { User } from '../../../../www/docker/nqloans-docker/nqloans-api/src/model/users/User';
-import { Session } from '../../../../www/docker/nqloans-docker/nqloans-api/src/model/users/Session';
+import { Session } from '../model/Session';
+import { User } from '../model/User';
 
 describe('Deserialize', () => {
 
@@ -43,7 +43,7 @@ describe('Deserialize', () => {
     };
 
     const user = Serializer.deserialize<User>(User, { uuid: "123", firstName: 'coo', created: timestamp }, mapping);
-    expect(user.firstName).toBe('COO', "Should be uppercase");
+    expect(user.firstName).toBe('COO');
     expect(user.uuid).toBe("123");
     expect(user.created.constructor.name).toBe("Moment");
     expect(user.created.unix()).toBe(timestamp);
@@ -65,7 +65,7 @@ describe('Deserialize', () => {
       emailConfirmed: 'moment',
       emailConfirmTokenExpires: 'moment',
       lastActivity: 'moment',
-      session: (data) => Session.deserialize(data),
+      session: (data) => Session.fromDb(data),
     };
     let u = Serializer.deserialize<User>(User, exampleJson, mapping);
     expect(u.created.constructor.name).toBe("Moment");

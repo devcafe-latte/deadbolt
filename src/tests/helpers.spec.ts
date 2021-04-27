@@ -53,8 +53,8 @@ describe('Helpers', function () {
 
     cleanForSending(input);
 
-    expect(input.id).toBeUndefined("Uuid is present, so id gets removed.");
-    expect(input.uuid).toBeDefined("uuid gets to stay.");
+    expect(input.id).toBeUndefined();
+    expect(input.uuid).toBeDefined();
   });
 
   it("tests transform Id 2", () => {
@@ -62,7 +62,7 @@ describe('Helpers', function () {
 
     cleanForSending(input);
 
-    expect(input.id).toBeDefined("No uuid, so id should stay.");
+    expect(input.id).toBeDefined();
   });
 
   it("tests transform deep", () => {
@@ -70,10 +70,10 @@ describe('Helpers', function () {
 
     cleanForSending(input);
 
-    expect(input.uuid).toBeDefined("uuid gets to stay.");
-    expect(input.a.b.c.uuid).toBeDefined("uuid gets to stay.");
-    expect(input.a.b.c.id).toBeUndefined("id should be cleared");
-    expect(isNaN(input.a.b.c.created)).toBe(false, "Should be a number now.");
+    expect(input.uuid).toBeDefined();
+    expect(input.a.b.c.uuid).toBeDefined();
+    expect(input.a.b.c.id).toBeUndefined();
+    expect(isNaN(input.a.b.c.created)).toBe(false);
   });
 
   it("tests transform nulls", () => {
