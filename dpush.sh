@@ -49,12 +49,6 @@ echo "Updating package.json..."
 cp package.json package.json.bak
 cat package.json | jq ".version = \"$VERSION\"" > __tmp_package.json && mv __tmp_package.json package.json
 
-# Replace version in Dockerfile
-echo "Updating Dockerfile..."
-OLD_LABEL=$(cat Dockerfile|grep "LABEL version=")
-NEW_LABEL="LABEL version=\"$VERSION\""
-replace Dockerfile "$OLD_LABEL" "$NEW_LABEL"
-
 # Build it.
 echo "Building Docker image: $NAME:$VERSION..."
 docker build . -t "$NAME:$VERSION" -t "$REGISTRY/$NAME:$VERSION" -t "$NAME:latest" -t "$REGISTRY/$NAME:latest"
