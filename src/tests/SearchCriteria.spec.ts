@@ -5,7 +5,7 @@ describe('SearchCriteria', () => {
 
     const params = {
       q: 'foo',
-      orderBy: ['+id', '-firstName', 'lastName']
+      orderBy: ['+email', '-first-name', 'last-name']
     };
 
     const s = SearchCriteria.fromQueryParams(params);
@@ -14,31 +14,31 @@ describe('SearchCriteria', () => {
     expect(s.q).toBe('foo');
     expect(s.orderBy.length).toBe(3);
 
-    expect(s.orderBy[0]).toEqual({ column: 'id', desc: false });
-    expect(s.orderBy[1]).toEqual({ column: 'firstName', desc: true });
-    expect(s.orderBy[2]).toEqual({ column: 'lastName', desc: false });
+    expect(s.orderBy[0]).toEqual({ column: '`u`.`email`', desc: false });
+    expect(s.orderBy[1]).toEqual({ column: '`u`.`firstName`', desc: true });
+    expect(s.orderBy[2]).toEqual({ column: '`u`.`lastName`', desc: false });
   });
 
   it("Tests fromQueryParams 2", () => {
 
     const params = {
       q: 'foo',
-      orderBy: '+id'
+      orderBy: '+email'
     };
 
     let s = SearchCriteria.fromQueryParams(params);
     expect(s.orderBy.length).toBe(1);
-    expect(s.orderBy[0]).toEqual({ column: 'id', desc: false });
+    expect(s.orderBy[0]).toEqual({ column: '`u`.`email`', desc: false });
 
-    params.orderBy = "-id";
+    params.orderBy = "-email";
     s = SearchCriteria.fromQueryParams(params);
     expect(s.orderBy.length).toBe(1);
-    expect(s.orderBy[0]).toEqual({ column: 'id', desc: true });
+    expect(s.orderBy[0]).toEqual({ column: '`u`.`email`', desc: true });
 
-    params.orderBy = "id";
+    params.orderBy = "email";
     s = SearchCriteria.fromQueryParams(params);
     expect(s.orderBy.length).toBe(1);
-    expect(s.orderBy[0]).toEqual({ column: 'id', desc: false });
+    expect(s.orderBy[0]).toEqual({ column: '`u`.`email`', desc: false });
   });
 
   it("Tests fromQueryParams memberships 1", () => {
@@ -99,95 +99,5 @@ describe('SearchCriteria', () => {
     expect(s.memberships[1].role).toBe("some-other-role");
     expect(s.memberships[1].app).toBe("some-app");
 
-  });
-});
-
-describe("Search Sql Builder", () => {
-
-  it("gets full query", () => {
-    const params = {
-      q: 'foo',
-      uuids: ["111", "222"],
-      memberships: [{ role: "support", app: 'app' }],
-      orderBy: null,
-      //orderBy: ['id', 'lastName'],
-      perPage: 10,
-      page: 4,
-    };
-
-    const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
-
-    expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
-    expect(builder.getWhere()).toBe("WHERE (u.email LIKE ? OR u.firstName LIKE ? OR u.lastName LIKE ?)\nAND u.uuid IN (?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?))");
-    expect(builder.getOrderBy()).toBe("");
-    //expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
-    expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
-
-    expect(builder.values).toEqual(['foo%', 'foo%', 'foo%', ['111', '222'], 'app', 'support', 10, 40]);
-  });
-
-  it("Find email", () => {
-    const params = {
-      email: 'foo',
-      uuids: ["111", "222"],
-      memberships: [{ role: "support", app: 'app' }],
-      //orderBy: ['id', 'lastName'],
-      perPage: 10,
-      page: 4,
-    };
-
-    const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
-
-    expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
-    expect(builder.getWhere()).toBe("WHERE (u.email LIKE ?)\nAND u.uuid IN (?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?))");
-    // expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC, ?? ASC");
-    expect(builder.getOrderBy()).toBe("");
-    expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
-
-    expect(builder.values).toEqual(['foo%', ['111', '222'], 'app', 'support', 10, 40]);
-  });
-
-  it("gets multiple memberships", () => {
-    const params = {
-      email: 'foo',
-      memberships: [
-        { role: "support", app: 'app' },
-        { role: "admin", app: 'app' },
-      ],
-    };
-
-    const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
-
-    expect(builder.getFrom()).toBe("FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`");
-    expect(builder.getWhere()).toBe("WHERE (u.email LIKE ?)\nAND ((`m`.`app` = ? AND `m`.`role` = ?) OR (`m`.`app` = ? AND `m`.`role` = ?))");
-    // expect(builder.getOrderBy()).toBe("ORDER BY ?? ASC");
-    expect(builder.getOrderBy()).toBe("");
-    expect(builder.getLimit()).toBe("LIMIT ? OFFSET ?");
-
-    expect(builder.values).toEqual(['foo%', 'app', 'support', 'app', 'admin', 25, 0]);
-  });
-
-  it("gets minimal query, with limit", () => {
-    const params = { };
-    const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
-
-    const sql = builder.getSql();
-
-    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`   LIMIT ? OFFSET ?";
-
-    expect(sql.sql).toBe(expectedSql);
-    expect(sql.values).toEqual([25, 0]);
-  });
-
-  it("gets minimal query, no limit", () => {
-    const params = { };
-    const builder = SearchCriteria.fromQueryParams(params).getSqlBuilder();
-
-    const sql = builder.getSql("SELECT *", false);
-
-    const expectedSql = "SELECT * FROM `user` u LEFT OUTER JOIN `membership` m ON `u`.`id` = `m`.`userId`   ";
-
-    expect(sql.sql).toBe(expectedSql);
-    expect(sql.values).toEqual([]);
   });
 });

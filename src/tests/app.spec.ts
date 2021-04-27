@@ -396,7 +396,7 @@ describe("Users", () => {
     done();
   });
 
-  it("Search for users", async (done) => {
+  it("Search for users, basic", async (done) => {
     const result = await request(app).get('/users?q=jordan')
       .expect(200);
 
@@ -404,6 +404,26 @@ describe("Users", () => {
     expect(body.items.length).toBe(1);
     expect(body.items[0].firstName).toBe("Jordan");
     done();
+  });
+
+  it("Search for users, order results 1", async () => {
+    const result = await request(app).get(`/users?orderBy=${encodeURIComponent("+username")}&orderBy=${encodeURIComponent("-lastActivity")}`)
+      .expect(200);
+
+    const body = result.body;
+    expect(body.items.length).toBe(2);
+    expect(body.items[0].username).toBe("Co");
+    
+  });
+
+  it("Search for users, order results 2", async () => {
+    const result = await request(app).get(`/users?orderBy=${encodeURIComponent("-username")}`)
+      .expect(200);
+
+    const body = result.body;
+    expect(body.items.length).toBe(2);
+    expect(body.items[0].username).toBe("Jordan");
+    
   });
 
   it("Search for users, based on role", async (done) => {

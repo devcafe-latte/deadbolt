@@ -22,16 +22,7 @@ export class Container {
     if (!this._db) throw new Error("Container still starting up... (Maybe await ready() first.");
     return this._db;
   }
-
-
-  // /** @deprecated */
-  // private _oldDb: Pool;
-  // /** @deprecated */
-  // get oldDb() {
-  //   if (!this._oldDb) throw new Error("Container still starting up... (Maybe await ready() first.");
-  //   return this._oldDb;
-  // }
-
+  
   get debug(): boolean {
     return this.settings.debug;
   }
@@ -46,8 +37,6 @@ export class Container {
   }
 
   public async shutdown() {
-    // await this._oldDb.end();
-    // this._oldDb = null;
     await this._db.shutdown();
     this._db = null;
     this._um = null;
@@ -90,7 +79,6 @@ export class Container {
     }
 
     try {
-      // this._oldDb = await createPool(oldConfig);
       this._db = new Database(config);
       await this._db.ready();
     } catch (err) {

@@ -22,7 +22,7 @@ describe('User', function() {
       lastActivity: 1565513069
     };
 
-    const u = User.fromDb(row);
+    const u = User.deserialize(row);
     expect(u.id).toBe(row.id);
     expect(u.uuid).toBe(row.uuid);
     expect(u.username).toBe(row.username);

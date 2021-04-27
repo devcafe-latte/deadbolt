@@ -152,6 +152,7 @@ describe('User Tests', () => {
     let page = await container.um.getUsers(s);
     expect(page.lastPage).toBe(1);
     expect(page.items.length).toBe(1);
+    expect(page.items[0].memberships.length).toBe(2);
 
     s.page = 1;
     page = await container.um.getUsers(s);
@@ -171,6 +172,44 @@ describe('User Tests', () => {
     expect(page.items.length).toBe(1);
     expect(page.items[0].firstName).toBe("Jordan");
     done();
+  });
+
+  test('Ordering 1', async () => {
+    const s = new SearchCriteria();
+
+    s.orderBy = [{ column: "`u`.`username`", desc: false }];
+    let page = await container.um.getUsers(s);
+    expect(page.items.length).toBe(2);
+    expect(page.items[0].username).toBe("Co");
+    expect(page.items[1].username).toBe("Jordan");
+
+    s.orderBy = [{ column: "`u`.`username`", desc: true }];
+    page = await container.um.getUsers(s);
+    expect(page.items.length).toBe(2);
+    expect(page.items[0].username).toBe("Jordan");
+    expect(page.items[1].username).toBe("Co");
+  });
+
+  test('Ordering 2', async () => {
+    const s = new SearchCriteria();
+
+    s.orderBy = [
+      { column: "`u`.`lastActivity`", desc: false },
+      { column: "`u`.`username`", desc: false }
+    ];
+    let page = await container.um.getUsers(s);
+    expect(page.items.length).toBe(2);
+    expect(page.items[0].username).toBe("Co");
+    expect(page.items[1].username).toBe("Jordan");
+
+    s.orderBy = [
+      { column: "`u`.`lastActivity`", desc: true },
+      { column: "`u`.`username`", desc: true }
+    ];
+    page = await container.um.getUsers(s);
+    expect(page.items.length).toBe(2);
+    expect(page.items[0].username).toBe("Jordan");
+    expect(page.items[1].username).toBe("Co");
   });
 
   it('Update User 1', async (done) => {

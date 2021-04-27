@@ -7,11 +7,10 @@ import container from './DiContainer';
 import { getIdentifierType, SqlHelper } from './helpers';
 import { LoginResult } from './LoginResult';
 import { Membership } from './Membership';
-import { Page, PageResult } from './Page';
+import { Page } from './Page';
 import { LoginRequest } from './RequestBody';
-import { SearchCriteria } from './SearchCriteria';
+import { OrderByCriteria, SearchCriteria } from './SearchCriteria';
 import { Session } from './Session';
-import { SqlResult } from './SqlResult';
 import { get2fa, twoFactorType } from './twoFactor/2faHelper';
 import { User } from './User';
 
@@ -23,23 +22,23 @@ export class UserManager {
   }
 
   async getUserById(id: number): Promise<User | null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.id = ?";
-    const users = await this.processUserQuery(sql, [id]);
-    if (users.length === 0) return null;
-
-    return users[0];
+    const users = await this.getUsersByIds([id]);
+    return users[0] || null;
   }
 
   async getUserByConfirmToken(token: string): Promise<User | null> {
     await container.ready();
 
-    const sql = this.userQuery() + "WHERE `u`.`emailConfirmToken` = ?";
-    const users = await this.processUserQuery(sql, [token]);
-    if (users.length === 0) return null;
+    const sql = [
+      "SELECT * FROM `user` u",
+      "LEFT JOIN `membership` m on `m`.`userId` = `u`.`id`",
+      "WHERE `u`.`emailConfirmToken` = ?"
+    ];
 
-    return users[0];
+    const results = await container.db.getObjects({ sql: sql.join("\n"), values: [token] }, { u: User });
+    results.put('m').into('u', 'memberships').on("userId");
+
+    return results.get<User>('u')[0] || null;
   }
 
   /**
@@ -54,20 +53,19 @@ export class UserManager {
   async getUser(identifier: any, app?: string): Promise<User | null> {
     if (!identifier) return null;
 
-    const type = getIdentifierType(identifier);
-    let user: User;
+    const type = "u." + getIdentifierType(identifier);
 
-    if (type === "id") {
-      user = await container.um.getUserById(identifier);
-    } else if (type === "uuid") {
-      user = await container.um.getUserByUuid(identifier);
-    } else if (type === "username") {
-      user = await container.um.getUserByUsername(identifier);
-    } else if (type === "email") {
-      user = await container.um.getUserByEmail(identifier);
-    }
-    
-    //Check the App
+    const sql = [
+      "SELECT * FROM `user` u",
+      "LEFT JOIN `membership` m on `m`.`userId` = `u`.`id`",
+      "WHERE ?? = ?"
+    ];
+
+    const results = await container.db.getObjects({ sql: sql.join("\n"), values: [type, identifier] }, { u: User });
+    results.put('m').into('u', 'memberships').on("userId");
+
+    const user = results.get<User>('u')[0] || null;
+
     if (user && app && !user.hasApp(app)) {
       return null;
     }
@@ -77,62 +75,98 @@ export class UserManager {
 
   async getUsers(search: SearchCriteria): Promise<Page<User>> {
 
-    //Get full count
-    const countResults = await container.db.query(search.getSqlBuilder().getSql("SELECT COUNT(DISTINCT u.id) count", false));
-    const total = Number(countResults[0].count);
+    //Create base SQL
+    const sql = [
+      "FROM `user` u",
+      "LEFT JOIN `membership` m on `m`.`userId` = `u`.`id`",
+      "WHERE 1 = 1"
+    ];
+    const values = [];
 
-    //Get page Ids
-    const idResult = await container.db.query(search.getSqlBuilder().getSql("SELECT DISTINCT u.id"));
-    const ids = idResult.map(r => r.id);
+    if (search.q) {
+      //q applies to email, firstname and lastname
+      sql.push(
+        "AND (`u`.`email` LIKE ?",
+        "OR `u`.`firstName` LIKE ?",
+        "OR `u`.`lastName` LIKE ?)",
+      );
+      const v = search.q + '%';
+      values.push(v, v, v);
+    } else if (search.email) {
+      sql.push("AND `u`.`email` LIKE ?");
+      values.push(search.email + '%');
+    }
 
-    const r: PageResult = {
-      currentPage: search.page,
+    if (search.uuids && search.uuids.length > 0) {
+      sql.push("AND `u`.`uuid` IN (?)");
+      values.push(search.uuids);
+    }
+
+    if (search.memberships && search.memberships.length > 0) {
+      const msWhere = [];
+      for (let m of search.memberships) {
+        msWhere.push('(`m`.`app` = ? AND `m`.`role` = ?)');
+        values.push(m.app, m.role);
+      }
+      sql.push('AND (' + msWhere.join(' OR ') + ')');
+    }
+
+    //Get total
+    const total = await container.db.getValue("SELECT COUNT(DISTINCT `u`.`id`) " + sql.join("\n"), values);
+
+    sql.push("GROUP BY `u`.`id`");
+
+    if (search.orderBy && search.orderBy.length > 0) {
+      const ordering = search.orderBy.map(o => `${o.column} ${o.desc ? 'DESC' : ''}`);
+      sql.push("ORDER BY ", ordering.join(", "));
+    }
+    
+
+    const offset = search.perPage * search.page;
+    const ids = await container.db.getValues("SELECT `u`.`id` " + sql.join("\n") + " LIMIT ? OFFSET ?", [...values, search.perPage, offset]);
+
+    const users = await this.getUsersByIds(ids, search.orderBy);
+
+    return new Page<User>({
       perPage: search.perPage,
-      totalItems: total,
-      items: []
+      items: users,
+      currentPage: search.page,
+      totalItems: total
+    });
+  }
+
+  private async getUsersByIds(ids: number[], order?: OrderByCriteria[]): Promise<User[]> {
+    await container.ready();
+
+    if (ids.length === 0) return [];
+
+    const sql = [
+      "SELECT * FROM `user` u",
+      "LEFT JOIN `membership` m on `m`.`userId` = `u`.`id`",
+      "WHERE `u`.`id` IN (?)"
+    ];
+
+    if (order && order.length > 0) {
+      const ordering = order.map(o => `${o.column} ${o.desc ? 'DESC' : ''}`);
+      sql.push("ORDER BY ", ordering.join(", "));
     }
 
-    if (ids.length === 0) {
-      return new Page<User>(r);
-    }
+    const results = await container.db.getObjects({ sql: sql.join("\n"), values: [ids] }, { u: User });
+    results.put('m').into('u', 'memberships').on("userId");
 
-    //Get users
-    const sql = this.userQuery() + "WHERE u.id IN (?)";
-    const users = await this.processUserQuery(sql, [ids]);
-
-    r.items = users;
-
-    return new Page<User>(r, User);
+    return results.get('u');
   }
 
   async getUserByUsername(name: string): Promise<User | null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.username = ?";
-    const users = await this.processUserQuery(sql, [name]);
-    if (users.length === 0) return null;
-
-    return users[0];
+    return this.getUser(name);
   }
 
   async getUserByEmail(email: string): Promise<User | null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.email = ?";
-    const users = await this.processUserQuery(sql, [email]);
-    if (users.length === 0) return null;
-
-    return users[0];
+    return this.getUser(email);
   }
 
   async getUserByUuid(uuid: string): Promise<User | null> {
-    await container.ready();
-
-    const sql = this.userQuery() + "WHERE u.uuid = ?";
-    const users = await this.processUserQuery(sql, [uuid]);
-    if (users.length === 0) return null;
-
-    return users[0];
+    return this.getUser(uuid);
   }
 
   async login(data: LoginRequest, authMethod: any, authOptions: any, twoFactorType?: twoFactorType): Promise<LoginResult> {
@@ -168,13 +202,13 @@ export class UserManager {
   }
 
   private async tryRequest2fa(user: User, type: twoFactorType) {
-      const two = get2fa(type);
-      user.twoFactor = type;
-      try {
-        return await two.request(user);
-      } catch (err) {
-        return await two.setup(user);
-      }
+    const two = get2fa(type);
+    user.twoFactor = type;
+    try {
+      return await two.request(user);
+    } catch (err) {
+      return await two.setup(user);
+    }
   }
 
   async getLast2faToken(user: User, type: twoFactorType) {
@@ -192,7 +226,7 @@ export class UserManager {
   async verifyTwoFactor(user: User, type: twoFactorType, data: any): Promise<LoginResult> {
     const two = get2fa(type);
     const verified = await two.verify(user, data);
-    
+
     if (!verified) return LoginResult.failed("two-factor-verification-failed");
 
     //Set as 2-factor method
@@ -223,7 +257,7 @@ export class UserManager {
     } catch (err) {
       console.error(err);
       throw "Can't update user.";
-    }    
+    }
 
   }
 
@@ -243,7 +277,7 @@ export class UserManager {
   }
 
   private async getUuid() {
-    
+
     //Check if it's actually unique.
     let uuid: string;
     let unique = false;
@@ -254,7 +288,7 @@ export class UserManager {
       unique = result.length === 0;
       i++;
       if (i > 1000) throw "Can't get UUID?!";
-    } while(!unique);
+    } while (!unique);
 
     return uuid;
   }
@@ -338,10 +372,10 @@ export class UserManager {
 
   async replaceMemberships(userId: number, memberships: Membership[]) {
     const tran = await container.db.getTransaction()
-    
-    await tran.query("DELETE FROM `membership` WHERE `userId` = ?", userId );
 
-    if (memberships.length > 0){
+    await tran.query("DELETE FROM `membership` WHERE `userId` = ?", userId);
+
+    if (memberships.length > 0) {
       const rows = [];
       for (let m of memberships) {
         const row = [m.app, m.role, userId, moment().unix()];
@@ -433,25 +467,4 @@ export class UserManager {
     return null;
   }
 
-  private userQuery() {
-    const sql = "SELECT * FROM `user` u " +
-      "LEFT OUTER JOIN `membership` m ON u.id = m.userId ";
-
-    return sql;
-  }
-
-  private async processUserQuery(sql: string, values: any): Promise<User[]> {
-    const rows = await container.db.query({ sql, values, nestTables: true });
-    if (rows.length === 0) return [];
-
-    const results = SqlResult.new(rows);
-    results.cast('u', User);
-
-    const memberships: Membership[] = results.array('m');
-    for (let m of memberships) {
-      results.data.u[m.userId].memberships.push(m);
-    }
-
-    return results.array('u');
-  }
 }

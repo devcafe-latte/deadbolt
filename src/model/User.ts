@@ -1,6 +1,7 @@
-import moment, { Moment } from 'moment';
+import { Serializer } from 'cereal-bowl/build/util/Serializer';
+import { Moment } from 'moment';
 
-import { stripComplexTypes, toObject, isValidEmail } from './helpers';
+import { isValidEmail, stripComplexTypes } from './helpers';
 import { Membership } from './Membership';
 import { Session } from './Session';
 import { twoFactorType } from './twoFactor/2faHelper';
@@ -51,6 +52,7 @@ export class User {
     return true;
   }
 
+  /** @deprecated */
   toDb(): any {
     const obj: any = stripComplexTypes(this);
     if (this.created) obj.created = + this.created.unix();
@@ -61,13 +63,15 @@ export class User {
     return obj;
   }
 
-  static fromDb(row: any): User {
-    const u = toObject<User>(User, row);
-    if (row.created) u.created = moment.unix(row.created);
-    if (row.lastActivity) u.lastActivity = moment.unix(row.lastActivity);
-    if (row.emailConfirmed) u.emailConfirmed = moment.unix(row.emailConfirmed);
-    if (row.emailConfirmTokenExpires) u.emailConfirmTokenExpires = moment.unix(row.emailConfirmTokenExpires);
-    
-    return u;
+  static deserialize(data: any): User {
+
+    const m = {
+      created: 'moment',
+      lastActivity: 'moment',
+      emailConfirmed: 'moment',
+      emailConfirmTokenExpires: 'moment'
+    }
+
+    return Serializer.deserialize(User, data, m);
   }
 }
