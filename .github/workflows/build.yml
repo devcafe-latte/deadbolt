@@ -2,6 +2,8 @@ name: Build
 
 on: 
   push:
+    branches:
+      - "test"
     tags:
       - 2.*
 
@@ -16,6 +18,7 @@ jobs:
     steps:
     - name: start mysql
       run: sudo systemctl start mysql.service
+    - run: mysql -u root -proot -e "CREATE USER 'test'@'%' IDENTIFIED WITH mysql_native_password BY 'test'; GRANT ALL PRIVILEGES ON *.* TO 'test'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -29,8 +32,8 @@ jobs:
         SEED_DEADBOLT: "1"
         DB_NAME: deadbolt_test
         DB_HOST: localhost
-        DB_USER: root
-        DB_PASS: root
+        DB_USER: test
+        DB_PASS: test
 
   build:
     needs: test
